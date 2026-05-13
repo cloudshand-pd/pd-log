@@ -1,0 +1,1231 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MN 118 — Ānāpānassatisutta (제6부)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Gentium+Plus:ital,wght@0,400;0,700;1,400;1,700&family=Noto+Serif+KR:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #1a1611;
+  --ink-soft: #4a4238;
+  --ink-faint: #8a8073;
+  --paper: #f4ede0;
+  --paper-warm: #ede4d0;
+  --gold: #8b6f3a;
+  --gold-deep: #6b5328;
+  --rust: #9c4a2a;
+  --rule: #c9bda3;
+  --pali-bg: #e8dcc1;
+  --commentary-bg: #f9f3e3;
+  --commentary-border: #b89a5e;
+  --refrain-bg: #ede4d0;
+  --pd-warning-bg: #f4e4d4;
+  --pd-warning-border: #9c4a2a;
+  --foundation-bg: #f0e6d0;
+  --foundation-border: #6b5328;
+  --bojjhanga-bg: #f4ede0;
+  --bojjhanga-accent: #8b6f3a;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--paper);
+  background-image:
+    radial-gradient(ellipse at top, rgba(139, 111, 58, 0.06) 0%, transparent 50%),
+    radial-gradient(ellipse at bottom, rgba(156, 74, 42, 0.04) 0%, transparent 50%);
+  color: var(--ink);
+  font-family: 'Gentium Plus', 'Noto Serif KR', serif;
+  line-height: 1.75;
+  font-size: 17px;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    repeating-linear-gradient(0deg, transparent 0, transparent 2px,
+      rgba(74, 66, 56, 0.015) 2px, rgba(74, 66, 56, 0.015) 3px);
+  z-index: 0;
+}
+
+.container {
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 80px 48px 120px;
+  position: relative;
+  z-index: 1;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 60px;
+  padding-bottom: 48px;
+  border-bottom: 1px solid var(--rule);
+  position: relative;
+}
+
+.header::after {
+  content: '❋';
+  position: absolute;
+  bottom: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--paper);
+  padding: 0 16px;
+  color: var(--gold);
+  font-size: 14px;
+}
+
+.sutta-number {
+  font-family: 'Gentium Plus', serif;
+  font-style: italic;
+  font-size: 14px;
+  letter-spacing: 0.3em;
+  color: var(--gold-deep);
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.sutta-title-pali {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 44px;
+  font-weight: 500;
+  font-style: italic;
+  color: var(--ink);
+  margin: 0 0 8px;
+  letter-spacing: -0.01em;
+}
+
+.sutta-title-ko {
+  font-family: 'Gentium Plus', 'Noto Serif KR', serif;
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--ink-soft);
+  letter-spacing: 0.15em;
+  margin-bottom: 24px;
+}
+
+.sutta-subtitle {
+  font-family: 'Gentium Plus', serif;
+  font-style: italic;
+  font-size: 15px;
+  color: var(--ink-faint);
+  letter-spacing: 0.05em;
+}
+
+.stage-banner {
+  background: linear-gradient(135deg, var(--gold) 0%, var(--gold-deep) 100%);
+  color: var(--paper);
+  padding: 24px 32px;
+  margin: 32px 0 48px;
+  border-radius: 2px;
+  position: relative;
+  box-shadow: 0 2px 8px rgba(107, 83, 40, 0.15);
+}
+
+.stage-banner .stage-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 13px;
+  letter-spacing: 0.3em;
+  opacity: 0.85;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.stage-banner .stage-title {
+  font-family: 'Gentium Plus', 'Noto Serif KR', serif;
+  font-size: 22px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  margin-bottom: 6px;
+}
+
+.stage-banner .stage-pali {
+  font-family: 'Gentium Plus', serif;
+  font-style: italic;
+  font-size: 16px;
+  opacity: 0.9;
+}
+
+.stage-banner .stage-goal {
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(244, 237, 224, 0.25);
+  font-family: 'Gentium Plus', 'Noto Serif KR', serif;
+  font-size: 13px;
+  letter-spacing: 0.02em;
+  opacity: 0.95;
+}
+
+/* === Bojjhaṅga cascade visualization === */
+.cascade-overview {
+  background: linear-gradient(180deg, rgba(232, 220, 193, 0.5) 0%, rgba(244, 237, 224, 0.5) 100%);
+  border: 1px solid var(--gold);
+  border-radius: 4px;
+  padding: 32px 28px;
+  margin: 32px 0 48px;
+}
+
+.cascade-overview .cascade-label {
+  text-align: center;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 14px;
+  letter-spacing: 0.3em;
+  color: var(--gold-deep);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.cascade-overview .cascade-title {
+  text-align: center;
+  font-family: 'Gentium Plus', 'Noto Serif KR', serif;
+  font-size: 18px;
+  color: var(--ink);
+  margin-bottom: 24px;
+  font-weight: 500;
+}
+
+.cascade-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.cascade-item {
+  display: grid;
+  grid-template-columns: 50px 1fr;
+  gap: 16px;
+  align-items: center;
+  background: var(--paper);
+  padding: 12px 18px;
+  border-left: 3px solid var(--bojjhanga-accent);
+  position: relative;
+}
+
+.cascade-item .cascade-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--gold-deep);
+  text-align: center;
+  line-height: 1;
+}
+
+.cascade-item .cascade-content {
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.cascade-item .cascade-pali {
+  font-family: 'Gentium Plus', serif;
+  font-style: italic;
+  font-size: 16px;
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.cascade-item .cascade-ko {
+  font-family: 'Gentium Plus', 'Noto Serif KR', serif;
+  color: var(--ink-soft);
+  margin-left: 10px;
+  font-size: 14px;
+}
+
+.cascade-item .cascade-trigger {
+  font-family: 'Gentium Plus', 'Noto Serif KR', serif;
+  font-size: 12.5px;
+  color: var(--ink-faint);
+  margin-top: 2px;
+  font-style: italic;
+}
+
+.cascade-arrow {
+  text-align: center;
+  color: var(--gold);
+  font-size: 14px;
+  height: 8px;
+  line-height: 8px;
+  margin: -2px 0;
+}
+
+.cascade-arrow::before {
+  content: '↓';
+}
+
+.chapter-heading {
+  text-align: center;
+  margin: 60px 0 36px;
+  padding: 16px 0;
+  border-top: 2px double var(--gold);
+  border-bottom: 2px double var(--gold);
+}
+
+.chapter-heading .label {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 13px;
+  letter-spacing: 0.3em;
+  color: var(--gold-deep);
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.chapter-heading .title {
+  font-family: 'Gentium Plus', 'Noto Serif KR', serif;
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--ink);
+  letter-spacing: 0.05em;
+}
+
+.chapter-heading .subtitle {
+  font-family: 'Gentium Plus', serif;
+  font-style: italic;
+  font-size: 14px;
+  color: var(--ink-faint);
+  margin-top: 4px;
+}
+
+/* === Bojjhaṅga section header === */
+.bojjhanga-header {
+  background: linear-gradient(90deg, var(--gold-deep) 0%, var(--gold) 100%);
+  color: var(--paper);
+  padding: 14px 24px;
+  margin: 48px 0 24px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  border-radius: 2px;
+}
+
+.bojjhanga-header .bojjhanga-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 1;
+  opacity: 0.7;
+}
+
+.bojjhanga-header .bojjhanga-text .name {
+  font-family: 'Gentium Plus', serif;
+  font-style: italic;
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.bojjhanga-header .bojjhanga-text .ko {
+  font-family: 'Gentium Plus', 'Noto Serif KR', serif;
+  font-size: 14px;
+  opacity: 0.9;
+  margin-left: 12px;
+}
+
+.bojjhanga-header .bojjhanga-text .desc {
+  font-family: 'Gentium Plus', 'Noto Serif KR', serif;
+  font-size: 13px;
+  opacity: 0.85;
+  margin-top: 2px;
+  letter-spacing: 0.02em;
+}
+
+.section {
+  margin-bottom: 40px;
+  position: relative;
+}
+
+.section-marker {
+  display: inline-block;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  color: var(--gold-deep);
+  background: var(--paper-warm);
+  padding: 4px 14px;
+  border: 1px solid var(--rule);
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+
+.korean-text {
+  font-family: 'Gentium Plus', 'Noto Serif KR', serif;
+  font-size: 17.5px;
+  font-weight: 400;
+  color: var(--ink);
+  line-height: 1.85;
+  margin: 0 0 20px;
+  letter-spacing: -0.005em;
+}
+
+.pali-block {
+  background: linear-gradient(to right,
+    var(--pali-bg) 0%, rgba(232, 220, 193, 0.5) 100%);
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  padding: 22px 32px;
+  margin: 16px 0 12px;
+  position: relative;
+  font-family: 'Gentium Plus', serif;
+}
+
+
+.pali-text {
+  font-size: 21px;
+  line-height: 2.6;
+  color: var(--ink);
+  font-style: italic;
+  word-spacing: 0.15em;
+}
+
+.refrain-marker {
+  background: var(--refrain-bg);
+  border-left: 3px dashed var(--gold-deep);
+  padding: 14px 22px;
+  margin: 16px 0;
+  font-family: 'Gentium Plus', 'Noto Serif KR', serif;
+  font-size: 14px;
+  color: var(--ink-soft);
+  font-style: italic;
+}
+
+.refrain-marker::before {
+  content: '↻ ';
+  font-style: normal;
+  color: var(--gold-deep);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+}
+
+.refrain-marker code, .refrain-marker em {
+  font-family: 'Gentium Plus', serif;
+  font-style: italic;
+  color: var(--gold-deep);
+  font-size: 14px;
+}
+
+ruby {
+  ruby-position: over;
+  display: inline-flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  vertical-align: baseline;
+  line-height: 1;
+  margin: 0 1px;
+  text-align: center;
+}
+
+ruby > rt {
+  font-family: 'Gentium Plus', 'Noto Serif KR', serif;
+  font-style: normal;
+  font-size: 10.5px;
+  font-weight: 400;
+  color: var(--gold-deep);
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+  margin-bottom: 4px;
+  white-space: nowrap;
+  opacity: 0.92;
+  display: block;
+  text-align: center;
+}
+
+ruby:hover > rt {
+  color: var(--rust);
+  opacity: 1;
+}
+
+.commentary {
+  background: var(--commentary-bg);
+  border: 1px solid var(--commentary-border);
+  border-left-width: 3px;
+  padding: 18px 24px;
+  margin: 18px 0;
+  font-family: 'Gentium Plus', 'Noto Serif KR', serif;
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--ink-soft);
+  position: relative;
+}
+
+.commentary-label {
+  display: inline-block;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  color: var(--rust);
+  text-transform: uppercase;
+  margin-right: 8px;
+}
+
+.commentary-label::before {
+  content: '❖ ';
+}
+
+.commentary code, .commentary em {
+  font-family: 'Gentium Plus', serif;
+  font-style: normal;
+  color: var(--gold-deep);
+  font-size: 15px;
+}
+
+/* Footnote box - for §A·§B style citations */
+.footnote-box {
+  background: rgba(232, 220, 193, 0.4);
+  border-left: 3px solid var(--gold-deep);
+  padding: 14px 20px;
+  margin: 16px 0;
+  font-family: 'Gentium Plus', 'Noto Serif KR', serif;
+  font-size: 13.5px;
+  line-height: 1.7;
+  color: var(--ink-soft);
+}
+
+.footnote-box code, .footnote-box em {
+  font-family: 'Gentium Plus', serif;
+  font-style: normal;
+  color: var(--gold-deep);
+  font-size: 13.5px;
+}
+
+.footnote-box strong {
+  color: var(--gold-deep);
+}
+
+.pd-critical {
+  background: var(--pd-warning-bg);
+  border: 1px solid var(--pd-warning-border);
+  border-left-width: 4px;
+  padding: 20px 24px;
+  margin: 20px 0;
+  font-family: 'Gentium Plus', 'Noto Serif KR', serif;
+  font-size: 15px;
+  line-height: 1.75;
+  color: var(--ink);
+  position: relative;
+}
+
+.pd-critical-label {
+  display: inline-block;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: var(--rust);
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.pd-critical-label::before {
+  content: '⚠ ';
+  font-style: normal;
+}
+
+.pd-critical table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 12px 0 4px;
+  font-size: 14px;
+}
+
+.pd-critical th {
+  text-align: left;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 600;
+  font-size: 12px;
+  color: var(--rust);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 6px 10px;
+  border-bottom: 1px solid var(--pd-warning-border);
+}
+
+.pd-critical td {
+  padding: 8px 10px;
+  vertical-align: top;
+  border-bottom: 1px solid rgba(156, 74, 42, 0.15);
+  font-size: 14px;
+}
+
+.pd-critical td:first-child {
+  font-family: 'Gentium Plus', serif;
+  font-style: italic;
+  color: var(--gold-deep);
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.pd-critical code, .pd-critical em {
+  font-family: 'Gentium Plus', serif;
+  font-style: normal;
+  color: var(--gold-deep);
+  font-size: 14px;
+}
+
+/* Develop-and-fulfill phrase pattern */
+.fulfillment-pattern {
+  background: rgba(244, 237, 224, 0.6);
+  border: 1px solid var(--rule);
+  border-radius: 2px;
+  padding: 14px 20px;
+  margin: 14px 0;
+  font-family: 'Gentium Plus', 'Noto Serif KR', serif;
+  font-size: 13.5px;
+  line-height: 1.7;
+  color: var(--ink-soft);
+}
+
+.fulfillment-pattern .label {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  color: var(--gold-deep);
+  text-transform: uppercase;
+  margin-bottom: 6px;
+  display: block;
+}
+
+.fulfillment-pattern code, .fulfillment-pattern em {
+  font-family: 'Gentium Plus', serif;
+  font-style: italic;
+  color: var(--gold-deep);
+  font-size: 14px;
+}
+
+.divider {
+  text-align: center;
+  margin: 48px 0;
+  color: var(--rule);
+  font-size: 12px;
+  letter-spacing: 1em;
+}
+
+.divider::before { content: '· · ·'; }
+
+.footer {
+  margin-top: 80px;
+  padding-top: 32px;
+  border-top: 1px solid var(--rule);
+  text-align: center;
+  font-family: 'Gentium Plus', serif;
+  font-style: italic;
+  font-size: 14px;
+  color: var(--ink-faint);
+  letter-spacing: 0.05em;
+}
+
+.footer .next {
+  margin-top: 8px;
+  color: var(--gold-deep);
+  font-style: normal;
+  font-family: 'Gentium Plus', 'Noto Serif KR', serif;
+  font-size: 13px;
+}
+
+@media (max-width: 640px) {
+  .container { padding: 48px 24px 80px; }
+  .sutta-title-pali { font-size: 32px; }
+  .pali-block { padding: 18px 18px; }
+  .pali-text { font-size: 19px; line-height: 2.4; }
+  ruby > rt { font-size: 9.5px; }
+  .pd-critical table { font-size: 12px; }
+  .pd-critical th, .pd-critical td { padding: 6px 6px; }
+  .cascade-item { grid-template-columns: 36px 1fr; gap: 12px; padding: 10px 14px; }
+  .cascade-item .cascade-num { font-size: 22px; }
+  .bojjhanga-header { padding: 12px 18px; gap: 12px; }
+  .bojjhanga-header .bojjhanga-num { font-size: 28px; }
+  .bojjhanga-header .bojjhanga-text .name { font-size: 18px; }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <header class="header">
+    <div class="sutta-number">Majjhima Nikāya · 118</div>
+    <h1 class="sutta-title-pali">Ānāpānassatisutta</h1>
+    <div class="sutta-subtitle">제6부 — Ānāpānasati 제3단계 Part 1 · §29.1 ~ §36.2</div>
+  </header>
+
+  <!-- Stage banner -->
+  <div class="stage-banner">
+    <div class="stage-num">Third Stage · Part 1</div>
+    <div class="stage-title">제3단계 Part 1 — Kāya 기반 칠각지 발현</div>
+    <div class="stage-pali">Sati · Dhammavicaya · Vīriya · Pīti · Passaddhi · Samādhi · Upekkhā Sambojjhaṅga</div>
+    <div class="stage-goal">→ 사념처경지(Satipaṭṭhāna Bhūmi)에서 vipassanā 본격 진입 · 더 높은 magga phala (Sakadāgāmi 이상)으로</div>
+  </div>
+
+  <!-- Cascade overview -->
+  <div class="cascade-overview">
+    <div class="cascade-label">Causal Cascade · 인과적 발현 도식</div>
+    <div class="cascade-title">칠각지(Satta Bojjhaṅga) 발현 사슬</div>
+
+    <div class="cascade-list">
+      <div class="cascade-item">
+        <div class="cascade-num">①</div>
+        <div class="cascade-content">
+          <span class="cascade-pali">Sati</span><span class="cascade-ko">Sati 각지</span>
+          <div class="cascade-trigger">트리거: 사념처에 머물면서 abhijjhā/domanassa 제거 → upaṭṭhitā sati(확립된 sati)</div>
+        </div>
+      </div>
+      <div class="cascade-arrow"></div>
+      <div class="cascade-item">
+        <div class="cascade-num">②</div>
+        <div class="cascade-content">
+          <span class="cascade-pali">Dhammavicaya</span><span class="cascade-ko">법분별각지</span>
+          <div class="cascade-trigger">트리거: tathāsato로 머물며 paññā로 dhamma 개념 검토 (Paṭicca Samuppāda · Tilakkhaṇa)</div>
+        </div>
+      </div>
+      <div class="cascade-arrow"></div>
+      <div class="cascade-item">
+        <div class="cascade-num">③</div>
+        <div class="cascade-content">
+          <span class="cascade-pali">Vīriya</span><span class="cascade-ko">정진각지</span>
+          <div class="cascade-trigger">트리거: dhammavicaya에 의해 자연스럽게 시작되는 끊임없는 노력(<em>vīriyaṁ asallīnaṁ</em>)</div>
+        </div>
+      </div>
+      <div class="cascade-arrow"></div>
+      <div class="cascade-item">
+        <div class="cascade-num">④</div>
+        <div class="cascade-content">
+          <span class="cascade-pali">Pīti</span><span class="cascade-ko">희각지</span>
+          <div class="cascade-trigger">트리거: 끊임없는 정진으로 인한 <em>nirāmisa pīti</em>(감각적 즐거움이 아닌 정신적 환희)의 발생</div>
+        </div>
+      </div>
+      <div class="cascade-arrow"></div>
+      <div class="cascade-item">
+        <div class="cascade-num">⑤</div>
+        <div class="cascade-content">
+          <span class="cascade-pali">Passaddhi</span><span class="cascade-ko">경안각지(輕安覺支)</span>
+          <div class="cascade-trigger">트리거: 환희를 갖춘 마음 → kāya(pañcupādānakkhandha)와 citta 모두의 평온</div>
+        </div>
+      </div>
+      <div class="cascade-arrow"></div>
+      <div class="cascade-item">
+        <div class="cascade-num">⑥</div>
+        <div class="cascade-content">
+          <span class="cascade-pali">Samādhi</span><span class="cascade-ko">정각지(定覺支)</span>
+          <div class="cascade-trigger">트리거: 평온해진 kāya와 sukha → 마음의 자연스러운 집중</div>
+        </div>
+      </div>
+      <div class="cascade-arrow"></div>
+      <div class="cascade-item">
+        <div class="cascade-num">⑦</div>
+        <div class="cascade-content">
+          <span class="cascade-pali">Upekkhā</span><span class="cascade-ko">Upekkhā 각지</span>
+          <div class="cascade-trigger">트리거: 집중된 마음을 철저한 평정(sādhukaṁ ajjhupekkhitā)으로 바라봄</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="commentary" style="margin-bottom: 40px;">
+    <span class="commentary-label">제6부 안내</span>
+    제3단계 Part 1(§29~§36)은 <strong>kāya 기반 사념처에서 시작하여 칠각지가 차례로 발현되는 1회 사이클</strong>을 보여준다. 동일한 사이클이 vedanā · citta · dhamma 사념처에서도 반복되지만, 그것들은 §37~§39에서 <code>...pe...</code>로 압축 처리된다 (제7부에서 다룰 예정). 따라서 본 단원은 제3단계 전체의 <strong>골격적 원형(prototype)</strong>이다.
+    <br><br>
+    <strong>핵심 PD 통찰:</strong> 칠각지는 의지로 생성하는 것이 아니라 <strong>이전 각지를 토대로 자연스럽게 일어나는(<em>āraddho hoti</em>) 인과적 발현</strong>이다. 따라서 sati만 제대로 확립되면 나머지 6각지는 그 자체로 펼쳐진다. 이것이 §15.3의 "사념처가 칠각지를 충족시킨다(<em>paripūrenti</em>)"의 메커니즘이다.
+  </div>
+
+  <!-- §29.1 — Opening question -->
+  <section class="section">
+    <div class="section-marker">§ 29.1 · 단원 도입 질문</div>
+    <p class="korean-text">
+      bhikkhū여, 그러면 어떻게 닦고 어떻게 자주 행하면 사념처가 칠각지(satta bojjhaṅge)를 충족시키는가?
+    </p>
+    <div class="pali-block">
+      <div class="pali-text">
+        <ruby>Kathaṁ<rt>어떻게</rt></ruby>
+        <ruby>bhāvitā<rt>닦여서</rt></ruby>
+        <ruby>ca<rt>그리고</rt></ruby>,
+        <ruby>bhikkhave<rt>비구들이여</rt></ruby>,
+        <ruby>cattāro<rt>넷의</rt></ruby>
+        <ruby>satipaṭṭhānā<rt>사념처가</rt></ruby>
+        <ruby>kathaṁ<rt>어떻게</rt></ruby>
+        <ruby>bahulīkatā<rt>자주 행해져서</rt></ruby>
+        <ruby>satta<rt>일곱의</rt></ruby>
+        <ruby>bojjhaṅge<rt>각지를</rt></ruby>
+        <ruby>paripūrenti<rt>충족시키는가</rt></ruby>?
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ============ ① Sati Sambojjhaṅga ============ -->
+  <div class="bojjhanga-header">
+    <div class="bojjhanga-num">①</div>
+    <div class="bojjhanga-text">
+      <span class="name">Sati Sambojjhaṅga</span><span class="ko">Sati 각지 — 알아차림</span>
+      <div class="desc">사념처에 머물며 abhijjhā/domanassa 제거 → 확립된 sati 출현</div>
+    </div>
+  </div>
+
+  <!-- §30.1 -->
+  <section class="section">
+    <div class="section-marker">§ 30.1</div>
+    <p class="korean-text">
+      bhikkhū여, 어느 때 bhikkhū가 kāya 안에서 kāya를 따라 관찰하며(purāṇa kamma 단계), 열심히 정진하고, 분명히 알아차리고, 알아차림을 갖춘 [자로서] 머문다 — 마음에서 욕구와 싫어함을 제거하고서. — 그 때, 그에게는 알아차림이 확립되며 흐려지지 않는다.
+    </p>
+    <div class="pali-block">
+      <div class="pali-text">
+        <ruby>Yasmiṁ<rt>어떤</rt></ruby>
+        <ruby>samaye<rt>때에</rt></ruby>,
+        <ruby>bhikkhave<rt>비구들이여</rt></ruby>,
+        <ruby>bhikkhu<rt>비구가</rt></ruby>
+        <ruby>kāye<rt>kāya 안에서</rt></ruby>
+        <ruby>kāyānupassī<rt>kāya 따라 관찰하는 [자로서]</rt></ruby>
+        <ruby>viharati<rt>머문다</rt></ruby>
+        <ruby>ātāpī<rt>열심히 정진하며</rt></ruby>
+        <ruby>sampajāno<rt>분명히 알아차리며</rt></ruby>
+        <ruby>satimā<rt>알아차림 갖춘 [자로서]</rt></ruby>
+        <ruby>vineyya<rt>제거하고서</rt></ruby>
+        <ruby>loke<rt>세상에서</rt></ruby>
+        <ruby>abhijjhādomanassaṁ<rt>욕구와 싫어함을</rt></ruby>,
+        <ruby>upaṭṭhitāssa<rt>그에게 확립된</rt></ruby>
+        <ruby>tasmiṁ<rt>그</rt></ruby>
+        <ruby>samaye<rt>때에</rt></ruby>
+        <ruby>sati<rt>알아차림이</rt></ruby>
+        <ruby>hoti<rt>된다</rt></ruby>
+        <ruby>asammuṭṭhā<rt>흐려지지 않은</rt></ruby>.
+      </div>
+    </div>
+
+    <div class="commentary">
+      <span class="commentary-label">학습 메모 — Upaṭṭhitā Sati</span>
+      <code>upaṭṭhitā sati</code>("확립된 sati") + <code>asammuṭṭhā</code>("흐려지지 않은")는 <strong>제2단계의 결과로 만들어진 sati의 안정 상태</strong>를 가리킨다. 이는 §26.6에서 puthujjana의 상태로 묘사된 <em>muṭṭhassati</em>(잊혀진 sati)의 정반대다. 즉 본 §30.1은 단순히 "그가 알아차림을 가진다"가 아니라, <strong>"제2단계에서 만들어진 사념처경지의 sati가 이 순간 견고히 확립되어 있다"</strong>는 진술이다.
+    </div>
+  </section>
+
+  <!-- §30.2 -->
+  <section class="section">
+    <div class="section-marker">§ 30.2</div>
+    <p class="korean-text">
+      그 때, 그 bhikkhū에게 Sati Sambojjhaṅga(Sati 각지, 첫 번째 각지)가 시작된다. 그 bhikkhū는 그 때에 Sati Sambojjhaṅga를 닦고, Sati Sambojjhaṅga는 그 때에 그에게 닦음의 완성에 이른다. (이것이 vipassanā에 진입하는 지점이며, 그는 이제 <em>Sammā Sati</em>와 함께 나머지 6각지를 충족시켜 더 높은 magga phala — Sakadāgāmi 등 — 로 나아간다.)
+    </p>
+    <div class="pali-block">
+      <div class="pali-text">
+        <ruby>Yasmiṁ<rt>어떤</rt></ruby>
+        <ruby>samaye<rt>때에</rt></ruby>,
+        <ruby>bhikkhave<rt>비구들이여</rt></ruby>,
+        <ruby>bhikkhuno<rt>비구에게</rt></ruby>
+        <ruby>upaṭṭhitā<rt>확립된</rt></ruby>
+        <ruby>sati<rt>알아차림이</rt></ruby>
+        <ruby>hoti<rt>된다</rt></ruby>
+        <ruby>asammuṭṭhā<rt>흐려지지 않은</rt></ruby>,
+        <ruby>satisambojjhaṅgo<rt>사각지가</rt></ruby>
+        <ruby>tasmiṁ<rt>그</rt></ruby>
+        <ruby>samaye<rt>때에</rt></ruby>
+        <ruby>bhikkhuno<rt>비구에게</rt></ruby>
+        <ruby>āraddho<rt>시작된 것이</rt></ruby>
+        <ruby>hoti<rt>된다</rt></ruby>.
+        <ruby>Satisambojjhaṅgaṁ<rt>사각지를</rt></ruby>
+        <ruby>tasmiṁ<rt>그</rt></ruby>
+        <ruby>samaye<rt>때에</rt></ruby>
+        <ruby>bhikkhu<rt>비구가</rt></ruby>
+        <ruby>bhāveti<rt>닦는다</rt></ruby>,
+        <ruby>satisambojjhaṅgo<rt>사각지가</rt></ruby>
+        <ruby>tasmiṁ<rt>그</rt></ruby>
+        <ruby>samaye<rt>때에</rt></ruby>
+        <ruby>bhikkhuno<rt>비구에게</rt></ruby>
+        <ruby>bhāvanāpāripūriṁ<rt>닦음의 완성에</rt></ruby>
+        <ruby>gacchati<rt>이른다</rt></ruby>.
+      </div>
+    </div>
+
+    <div class="fulfillment-pattern">
+      <span class="label">정형구 — 각지 발현의 3단 패턴 (이하 모든 각지에 동일 적용)</span>
+      ① <code>... āraddho hoti</code> — 그 각지가 <strong>시작된다 / 일어난다</strong>
+      <br>② <code>... bhāveti</code> — bhikkhū가 그 각지를 <strong>닦는다</strong>
+      <br>③ <code>... bhāvanāpāripūriṁ gacchati</code> — 그 각지가 <strong>닦음의 완성에 이른다</strong>
+      <br><br>
+      이 3단 패턴은 §30.2부터 §36.2까지 7번 반복된다. 이후 섹션들에서는 이 패턴을 약식으로 표시하고 새로운 각지의 명칭과 발현 조건만 강조한다.
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ============ ② Dhammavicaya Sambojjhaṅga ============ -->
+  <div class="bojjhanga-header">
+    <div class="bojjhanga-num">②</div>
+    <div class="bojjhanga-text">
+      <span class="name">Dhammavicaya Sambojjhaṅga</span><span class="ko">법분별각지 — 법의 검토</span>
+      <div class="desc">tathāsato로 머물며 paññā로 Paṭicca Samuppāda·Tilakkhaṇa 검토</div>
+    </div>
+  </div>
+
+  <!-- §31.1 -->
+  <section class="section">
+    <div class="section-marker">§ 31.1</div>
+    <p class="korean-text">
+      그렇게 알아차리며 머무는 그는, 그 dhamma 개념(Paṭicca Samuppāda와 Tilakkhaṇa 등)을 지혜로 조사하고, 분별하며, 깊은 검토에 들어간다.
+    </p>
+    <div class="pali-block">
+      <div class="pali-text">
+        <ruby>So<rt>그는</rt></ruby>
+        <ruby>tathāsato<rt>그렇게 sati 갖추고</rt></ruby>
+        <ruby>viharanto<rt>머무는 [자로서]</rt></ruby>
+        <ruby>taṁ<rt>그</rt></ruby>
+        <ruby>dhammaṁ<rt>dhamma를</rt></ruby>
+        <ruby>paññāya<rt>지혜로</rt></ruby>
+        <ruby>pavicinati<rt>조사한다</rt></ruby>
+        <ruby>pavicayati<rt>분별한다</rt></ruby>
+        <ruby>parivīmaṁsaṁ<rt>깊은 검토에</rt></ruby>
+        <ruby>āpajjati<rt>들어간다</rt></ruby>.
+      </div>
+    </div>
+
+    <div class="pd-critical">
+      <div class="pd-critical-label">PD 해석 · "Taṁ Dhammaṁ"의 정확한 지시 대상</div>
+      <table>
+        <tr>
+          <th>관점</th>
+          <th><code>taṁ dhammaṁ</code>이 가리키는 것</th>
+        </tr>
+        <tr>
+          <td>통념</td>
+          <td>일반적인 "현상들"(phenomena) — 마음과 몸의 일반적 상태들</td>
+        </tr>
+        <tr>
+          <td>PD</td>
+          <td><strong>특정한 dhamma 개념</strong> — Paṭicca Samuppāda(연기), Tilakkhaṇa(삼특상: anicca·dukkha·anatta)</td>
+        </tr>
+      </table>
+      <strong>왜 이 지시가 중요한가?</strong> Satipaṭṭhāna Bhūmi에 진입한 후 무엇을 검토하는가? PD에 따르면 일반적 "현상 관찰"이 아니라 <strong>이미 §15에서 sati로 충족된 사념처의 결과를 토대로, Paṭicca Samuppāda의 12고리 작동 메커니즘과 Tilakkhaṇa의 본성을 직접 통찰</strong>하는 것이다. 이 직접 통찰을 통해 고등 magga phala가 가능해진다.
+      <br><br>
+      세 동사 <code>pavicinati</code>(조사) · <code>pavicayati</code>(분별) · <code>parivīmaṁsaṁ āpajjati</code>(깊은 검토)는 <strong>점차 깊어지는 인지적 작업의 단계</strong>를 묘사한다 — 표면 식별 → 구분 분석 → 심화 통찰.
+    </div>
+  </section>
+
+  <!-- §31.2 -->
+  <section class="section">
+    <div class="section-marker">§ 31.2</div>
+    <p class="korean-text">
+      bhikkhū여, 어느 때 bhikkhū가 그 dhamma 개념들을 지혜로 조사하고 분별하며 깊이 검토할 때, 그 때 그에게 Dhammavicaya Sambojjhaṅga(법분별각지, 두 번째 각지)가 시작된다. 그는 그 때에 Dhammavicaya Sambojjhaṅga를 닦고, Dhammavicaya Sambojjhaṅga는 그 때에 닦음의 완성에 이른다.
+    </p>
+    <div class="refrain-marker">
+      §30.2와 동일한 3단 발현 패턴 — <em>... āraddho hoti ... bhāveti ... bhāvanāpāripūriṁ gacchati</em>. 핵심어 <code>dhammavicayasambojjhaṅgo</code>가 sati를 대체.
+    </div>
+
+    <div class="commentary">
+      <span class="commentary-label">학습 메모 — Sati에서 Dhammavicaya로의 자연스러운 전이</span>
+      §31의 핵심 통찰: Satipaṭṭhāna Bhūmi에서 sati가 확립된 자는 자연스럽게 dhamma를 검토하기 시작한다. 이것은 의지적 노력이 아니라 <strong>kāma saññā에서 자유로워진 마음의 자연스러운 작용</strong>이다. 마치 어두운 방의 등불을 켰을 때 자연스럽게 사물을 둘러보게 되는 것과 같다.
+      <br><br>
+      PDF 일차 자료는 이 점을 명시한다 — <strong><em>Dhammavicaya</em>는 마음이 <em>satipaṭṭhāna bhūmi</em>에 있을 때 (즉 <em>kāma saññā</em>의 영향에서 자유로워졌을 때) 만 효과적으로 가능하다</strong>. 따라서 §31의 <em>dhammavicaya</em>는 일반적 "법 검토"가 아니라 사념처경지에 진입한 자에게서만 일어나는 특수한 통찰 작용이다.
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ============ ③ Vīriya Sambojjhaṅga ============ -->
+  <div class="bojjhanga-header">
+    <div class="bojjhanga-num">③</div>
+    <div class="bojjhanga-text">
+      <span class="name">Vīriya Sambojjhaṅga</span><span class="ko">정진각지 — 끊임없는 노력</span>
+      <div class="desc">dhammavicaya에 의해 자연 발생하는 <em>vīriyaṁ asallīnaṁ</em></div>
+    </div>
+  </div>
+
+  <!-- §32.1 -->
+  <section class="section">
+    <div class="section-marker">§ 32.1</div>
+    <p class="korean-text">
+      그 dhamma 개념들을 지혜로 조사하고 분별하며 깊이 검토하는 그에게, 끊임없는 정진(vīriyaṁ asallīnaṁ)이 시작된다.
+    </p>
+    <div class="pali-block">
+      <div class="pali-text">
+        <ruby>Tassa<rt>그에게</rt></ruby>
+        <ruby>taṁ<rt>그</rt></ruby>
+        <ruby>dhammaṁ<rt>dhamma를</rt></ruby>
+        <ruby>paññāya<rt>지혜로</rt></ruby>
+        <ruby>pavicinato<rt>조사하는 [자]</rt></ruby>
+        <ruby>pavicayato<rt>분별하는 [자]</rt></ruby>
+        <ruby>parivīmaṁsaṁ<rt>깊은 검토에</rt></ruby>
+        <ruby>āpajjato<rt>들어가는 [자에게]</rt></ruby>
+        <ruby>āraddhaṁ<rt>시작된 것이</rt></ruby>
+        <ruby>hoti<rt>된다</rt></ruby>
+        <ruby>vīriyaṁ<rt>정진이</rt></ruby>
+        <ruby>asallīnaṁ<rt>위축되지 않은</rt></ruby>.
+      </div>
+    </div>
+
+    <div class="commentary">
+      <span class="commentary-label">학습 메모 — Asallīna Vīriya</span>
+      <code>asallīna</code> = <em>a-</em>(부정) + <em>sallīna</em>(움츠러든, 위축된). 즉 "위축되지 않은", "끊임없는", "흔들림 없는" 정진. 세 현재분사 속격 (<em>pavicinato pavicayato āpajjato</em>)이 연속하며 "조사하고 분별하며 검토에 들어가는 자에게"라는 지속적 작용을 표현한다. 이 <strong>지속성 자체가 정진의 자연 발생 조건</strong>이다 — dhammavicaya가 깊어질수록 정진은 자동으로 흔들리지 않는 상태가 된다.
+    </div>
+  </section>
+
+  <!-- §32.2 -->
+  <section class="section">
+    <div class="section-marker">§ 32.2</div>
+    <p class="korean-text">
+      bhikkhū여, 어느 때 dhamma 개념들을 지혜로 조사하는 bhikkhū에게 끊임없는 정진이 시작될 때, 그 때 그에게 Vīriya Sambojjhaṅga(정진각지, 세 번째 각지)가 시작된다. 그는 그 때에 Vīriya Sambojjhaṅga를 닦고, Vīriya Sambojjhaṅga는 그 때에 닦음의 완성에 이른다.
+    </p>
+    <div class="refrain-marker">
+      §30.2와 동일한 3단 발현 패턴. 핵심어 <code>vīriyasambojjhaṅgo</code>.
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ============ ④ Pīti Sambojjhaṅga ============ -->
+  <div class="bojjhanga-header">
+    <div class="bojjhanga-num">④</div>
+    <div class="bojjhanga-text">
+      <span class="name">Pīti Sambojjhaṅga</span><span class="ko">희각지 — 정신적 환희</span>
+      <div class="desc">끊임없는 정진으로 인한 <em>nirāmisa pīti</em> 발생</div>
+    </div>
+  </div>
+
+  <!-- §33.1 -->
+  <section class="section">
+    <div class="section-marker">§ 33.1 · 핵심</div>
+    <p class="korean-text">
+      정진을 시작한 그에게 nirāmisa pīti(비물질적 희 — 감각적 즐거움에 기반하지 않은 정신적 환희)가 일어난다.
+    </p>
+    <div class="pali-block">
+      <div class="pali-text">
+        <ruby>Āraddhavīriyassa<rt>정진을 시작한 [자에게]</rt></ruby>
+        <ruby>uppajjati<rt>일어난다</rt></ruby>
+        <ruby>pīti<rt>희가</rt></ruby>
+        <ruby>nirāmisā<rt>비물질적인</rt></ruby>.
+      </div>
+    </div>
+
+    <div class="pd-critical">
+      <div class="pd-critical-label">Principle Zero · Nirāmisa Pīti의 PD 해석</div>
+      <table>
+        <tr>
+          <th>관점</th>
+          <th><code>nirāmisa pīti</code>의 의미</th>
+          <th>발생 메커니즘</th>
+        </tr>
+        <tr>
+          <td>통념</td>
+          <td>"세속적이지 않은 기쁨" — 명상 깊은 단계에서 일어나는 정신적 만족</td>
+          <td>집중(samādhi)이 깊어짐에 따라 자연 발생</td>
+        </tr>
+        <tr>
+          <td>PD</td>
+          <td><strong>"살(āmisa, 육체적·감각적)이 아닌 [기쁨]"</strong> — kāma saññā(감각적 지각)에서 자유로워진 마음의 본질적 환희</td>
+          <td>Satipaṭṭhāna Bhūmi에서 dhammavicaya로 dhamma를 통찰함으로써 kāma saññā가 해체될 때 자연 발생</td>
+        </tr>
+      </table>
+      <strong>핵심 구분:</strong> 일반적 pīti는 외부 자극(맛있는 음식, 기쁜 소식)에서 비롯될 수 있지만, <em>nirāmisa pīti</em>는 <strong>kāma saññā에서 풀려난 그 자체로부터 일어나는 본질적 환희</strong>이다. 이 환희는 외부 조건이 사라져도 유지되며, 따라서 <strong>magga phala로 가는 안정적 동력원</strong>이 된다. 이것이 §22.1과 §28.1의 "큰 결실(mahapphalā)"의 실제 내용 중 하나다.
+    </div>
+  </section>
+
+  <!-- §33.2 -->
+  <section class="section">
+    <div class="section-marker">§ 33.2</div>
+    <p class="korean-text">
+      bhikkhū여, 어느 때 정진을 시작한 bhikkhū에게 nirāmisa pīti가 일어날 때, 그 때 그에게 Pīti Sambojjhaṅga(희각지, 네 번째 각지)가 시작된다. 그는 그 때에 Pīti Sambojjhaṅga를 닦고, Pīti Sambojjhaṅga는 그 때에 닦음의 완성에 이른다.
+    </p>
+    <div class="refrain-marker">
+      §30.2와 동일한 3단 발현 패턴. 핵심어 <code>pītisambojjhaṅgo</code>.
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ============ ⑤ Passaddhi Sambojjhaṅga ============ -->
+  <div class="bojjhanga-header">
+    <div class="bojjhanga-num">⑤</div>
+    <div class="bojjhanga-text">
+      <span class="name">Passaddhi Sambojjhaṅga</span><span class="ko">경안각지(輕安) — 평온</span>
+      <div class="desc">기뻐하는 마음 → kāya와 citta 모두의 평온</div>
+    </div>
+  </div>
+
+  <!-- §34.1 -->
+  <section class="section">
+    <div class="section-marker">§ 34.1 · 핵심</div>
+    <p class="korean-text">
+      기뻐하는 마음을 가진 [자]에게 kāya(pañcupādānakkhandha kāya)도 평온해지고 citta도 평온해진다.
+    </p>
+    <div class="pali-block">
+      <div class="pali-text">
+        <ruby>Pītimanassa<rt>기뻐하는 마음을 가진 [자에게]</rt></ruby>
+        <ruby>kāyopi<rt>kāya도</rt></ruby>
+        <ruby>passambhati<rt>평온해진다</rt></ruby>,
+        <ruby>cittampi<rt>citta도</rt></ruby>
+        <ruby>passambhati<rt>평온해진다</rt></ruby>.
+      </div>
+    </div>
+
+    <div class="pd-critical">
+      <div class="pd-critical-label">PD 해석 · §34.1의 "Kāya"는 무엇인가?</div>
+      <table>
+        <tr>
+          <th>관점</th>
+          <th><code>kāyopi passambhati</code>의 의미</th>
+        </tr>
+        <tr>
+          <td>통념</td>
+          <td>"몸도 평온해진다" — 신체적 긴장 풀어짐, 호흡이 부드러워짐</td>
+        </tr>
+        <tr>
+          <td>PD</td>
+          <td>"kāya(<em>pañcupādānakkhandha kāya</em>)도 평온해진다" — <em>pañcupādānakkhandha</em> 안의 <em>saṅkhāra</em> 활동(특히 <em>kāya saṅkhāra</em> [§A])이 가라앉음. 신체 평온은 그 부수 효과일 뿐</td>
+        </tr>
+      </table>
+      <strong>일관성:</strong> 본 경 전체에서 <code>kāya</code>가 일관되게 <em>pañcupādānakkhandha kāya</em>를 의미한다는 PD 해석은, §18.3·§24.6에서 명시되었다. §34.1도 동일 원리를 따라야 한다 — 그렇지 않으면 동일 단어가 한 경에서 두 가지 다른 의미를 가지게 된다. <code>passambhati</code>의 주어가 <code>kāya</code>임에 주목 — 외형적 신체가 갑자기 평온해지는 것이 아니라, <strong><em>pañcupādānakkhandha</em> 안의 <em>saṅkhāra</em> 활동이 자연스럽게 가라앉는다</strong>.
+    </div>
+
+    <div class="footnote-box">
+      <strong>§A</strong> &nbsp; <em>kāya saṅkhāra</em>의 PD 정의 — mental formations 또는 <em>saṅkappa</em>(의도적 사고 흐름)로 보며, <em>ajjhatta/bahiddha kāya</em> 안 <em>purāṇa kamma</em> 단계의 형성 활동에 해당한다. 본 노트는 단정적 한 가지 정의를 강요하지 않고 두 가능 표현을 병기한다 [KDC-56 (<em>saṅkhāra</em> what it really means) · KDC-72 (correct meaning of <em>vacī saṅkhāra</em>) · 메모리 #11 (F)].
+    </div>
+  </section>
+
+  <!-- §34.2 -->
+  <section class="section">
+    <div class="section-marker">§ 34.2</div>
+    <p class="korean-text">
+      bhikkhū여, 어느 때 기뻐하는 마음을 가진 bhikkhū에게 kāya도 평온해지고 citta도 평온해질 때, 그 때 그에게 Passaddhi Sambojjhaṅga(경안각지, 다섯 번째 각지)가 시작된다. 그는 그 때에 Passaddhi Sambojjhaṅga를 닦고, Passaddhi Sambojjhaṅga는 그 때에 닦음의 완성에 이른다.
+    </p>
+    <div class="refrain-marker">
+      §30.2와 동일한 3단 발현 패턴. 핵심어 <code>passaddhisambojjhaṅgo</code>.
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ============ ⑥ Samādhi Sambojjhaṅga ============ -->
+  <div class="bojjhanga-header">
+    <div class="bojjhanga-num">⑥</div>
+    <div class="bojjhanga-text">
+      <span class="name">Samādhi Sambojjhaṅga</span><span class="ko">정각지 — 집중</span>
+      <div class="desc">평온해진 kāya와 sukha → 마음의 자연스러운 집중</div>
+    </div>
+  </div>
+
+  <!-- §35.1 -->
+  <section class="section">
+    <div class="section-marker">§ 35.1</div>
+    <p class="korean-text">
+      kāya가 평온해지고 행복한(sukhī) [자]에게 마음(citta)이 집중된다(samādhiyati).
+    </p>
+    <div class="pali-block">
+      <div class="pali-text">
+        <ruby>Passaddhakāyassa<rt>kāya가 평온해진 [자에게]</rt></ruby>
+        <ruby>sukhino<rt>행복한 [자에게]</rt></ruby>
+        <ruby>cittaṁ<rt>마음이</rt></ruby>
+        <ruby>samādhiyati<rt>집중된다</rt></ruby>.
+      </div>
+    </div>
+
+    <div class="commentary">
+      <span class="commentary-label">학습 메모 — Sukha와 Samādhi의 관계</span>
+      <code>passaddhakāyassa sukhino</code>("평온한 kāya와 행복한 [자]") — 여기서 등장하는 sukha는 §19.2의 <code>sukhapaṭisaṁvedī</code>와 연결되는 nirāmisa sukha다. 이는 통념적 samatha 명상에서 강제된 집중이 아니라 <strong>오취온의 평온과 자연스러운 행복으로부터 마음이 저절로 집중되는 것</strong>이다.
+      <br><br>
+      <code>samādhiyati</code>는 수동/자발적 동사형 — "[그가] 집중하다"가 아니라 "[마음이] 집중된다". 이는 의지로 강제하는 것이 아니라 자연 발생적 현상임을 시사한다.
+      <br><br>
+      <strong>인과 사슬 명시:</strong> §33의 <em>nirāmisa pīti</em> → §34의 <em>passaddhi</em>(<em>kāya</em>·<em>citta</em> 평온) → §35의 <em>nirāmisa sukha</em> → §35의 <em>samādhi</em>라는 <strong>자연 발생적 인과 사슬</strong>이 본 sutta에 명시되어 있다. 통념적 samatha 명상에서는 sukha와 samādhi가 분리되어 별도의 단계로 다뤄질 수 있지만, 본 sutta의 칠각지 시퀀스에서는 <strong>passaddhi가 충족된 결과로서의 sukha</strong>가 samādhi의 자연 조건이 된다 — 이것이 의지로 만든 jhāna가 아닌 ariya samādhi의 발생 메커니즘이다.
+    </div>
+  </section>
+
+  <!-- §35.2 -->
+  <section class="section">
+    <div class="section-marker">§ 35.2</div>
+    <p class="korean-text">
+      bhikkhū여, 어느 때 kāya가 평온해지고 행복한 bhikkhū에게 마음이 집중될 때, 그 때 그에게 Samādhi Sambojjhaṅga(정각지, 여섯 번째 각지)가 시작된다. 그는 그 때에 Samādhi Sambojjhaṅga를 닦고, Samādhi Sambojjhaṅga는 그 때에 닦음의 완성에 이른다.
+    </p>
+    <div class="refrain-marker">
+      §30.2와 동일한 3단 발현 패턴. 핵심어 <code>samādhisambojjhaṅgo</code>.
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ============ ⑦ Upekkhā Sambojjhaṅga ============ -->
+  <div class="bojjhanga-header">
+    <div class="bojjhanga-num">⑦</div>
+    <div class="bojjhanga-text">
+      <span class="name">Upekkhā Sambojjhaṅga</span><span class="ko">Upekkhā 각지 — 평정</span>
+      <div class="desc">집중된 마음을 철저한 평정으로 바라봄 — 자연 발생적 평정</div>
+    </div>
+  </div>
+
+  <!-- §36.1 -->
+  <section class="section">
+    <div class="section-marker">§ 36.1</div>
+    <p class="korean-text">
+      그는 그렇게 집중된 마음을 철저하게 평정(sādhukaṁ ajjhupekkhitā)으로 바라보는 자가 된다.
+    </p>
+    <div class="pali-block">
+      <div class="pali-text">
+        <ruby>So<rt>그는</rt></ruby>
+        <ruby>tathāsamāhitaṁ<rt>그렇게 집중된</rt></ruby>
+        <ruby>cittaṁ<rt>마음을</rt></ruby>
+        <ruby>sādhukaṁ<rt>철저하게</rt></ruby>
+        <ruby>ajjhupekkhitā<rt>평정으로 바라보는 자가</rt></ruby>
+        <ruby>hoti<rt>된다</rt></ruby>.
+      </div>
+    </div>
+
+    <div class="commentary">
+      <span class="commentary-label">학습 메모 — Ajjhupekkhitā의 어원</span>
+      <code>ajjhupekkhitā</code> = <em>ajjhu-</em>(향해, 도달한) + <em>upekkhā</em>(평정) + 행위자 명사. PD 해석에 따르면 이는 "마음이 진정한 upekkhā 상태에 도달함" — 즉 <strong>upekkhā sambojjhaṅga가 닦여졌음</strong>을 의미한다. 이 구절은 §27.6에 이미 dhammānupassanā 단계에서 등장했으며, 이제 칠각지의 정점에서 다시 등장하여 <strong>두 단계가 같은 목적을 향한다</strong>는 통일성을 보여준다.
+      <br><br>
+      <strong>핵심 PD 구분: ariya upekkhā vs ana-ariya upekkhā [§B]</strong> — 통념적 명상에서 말하는 평정심(<em>ana-ariya upekkhā</em>)은 의지로 만든 일시적 무관심 상태에 가까우나, 칠각지의 일곱 번째인 <em>upekkhā sambojjhaṅga</em>는 <strong>ariya upekkhā</strong> — Tilakkhaṇa(<em>anicca</em>·<em>dukkha</em>·<em>anatta</em>의 PD 본성)를 통찰함으로써 자연 발생하는 평정으로, 더 이상 마음이 <em>saññā vipallāsa</em>(전도된 인식)에 휘둘리지 않는 상태다. 이것이 본 §36의 <em>ajjhupekkhitā</em>가 단순 평정이 아닌 <em>magga phala</em>의 결실인 까닭이다.
+    </div>
+
+    <div class="footnote-box">
+      <strong>§B</strong> &nbsp; <em>ariya upekkhā</em>는 <em>satta bojjhaṅga</em>의 <em>lokuttara</em>(노블 패스) 버전 — 즉 노블 패스의 일부로서 닦이는 평정이다. 반면 <em>ana-ariya upekkhā</em>는 <em>lokiya</em>(통념적) 버전으로, 통념적 jhāna 등에서 형성되는 평정이지만 <em>saññā vipallāsa</em>를 끊지 못한다. 37 enlightenment 요소는 모두 이 두 버전을 가진다 [KDC-19 (two versions of 37 factors of enlightenment) · BD-58 (power of the human mind — ariya jhāna)].
+    </div>
+  </section>
+
+  <!-- §36.2 -->
+  <section class="section">
+    <div class="section-marker">§ 36.2 · 칠각지 완성</div>
+    <p class="korean-text">
+      bhikkhū여, 어느 때 bhikkhū가 그렇게 집중된 마음을 철저하게 평정으로 바라볼 때, 그 때 그에게 Upekkhā Sambojjhaṅga(Upekkhā 각지, 일곱 번째 각지)가 시작된다. 그는 그 때에 Upekkhā Sambojjhaṅga를 닦고, Upekkhā Sambojjhaṅga는 그 때에 닦음의 완성에 이른다.
+    </p>
+    <div class="refrain-marker">
+      §30.2와 동일한 3단 발현 패턴. 핵심어 <code>upekkhāsambojjhaṅgo</code>. 이로써 <strong>kāya 기반 칠각지 1회 사이클이 완성</strong>되었다.
+    </div>
+
+    <div class="commentary">
+      <span class="commentary-label">제3단계 Part 1 종합</span>
+      <strong>핵심 통찰:</strong> §30~§36은 사념처경지(Satipaṭṭhāna Bhūmi)에서 일어나는 <strong>자연 발생적 인과 사슬</strong>을 명시한다. 의지적 노력은 <code>sati</code> 확립에까지만 필요하며, 그 이후의 6각지(<em>dhammavicaya → vīriya → pīti → passaddhi → samādhi → upekkhā</em>)는 <strong>이전 각지가 충족되면 자연스럽게 다음 각지가 일어난다</strong>.
+      <br><br>
+      <strong>각지 발현 동사 분석:</strong>
+      <br>① <code>upaṭṭhitā</code>(확립된) — sati에만 적용
+      <br>② <code>tathāsato viharanto</code>(그렇게 sati를 갖추고 머물며) — dhammavicaya의 조건
+      <br>③ <code>āraddhaṁ hoti</code>(시작된다) — vīriya
+      <br>④ <code>uppajjati</code>(일어난다) — pīti
+      <br>⑤ <code>passambhati</code>(평온해진다) — passaddhi
+      <br>⑥ <code>samādhiyati</code>(집중된다) — samādhi
+      <br>⑦ <code>ajjhupekkhitā hoti</code>(평정으로 바라보는 자가 된다) — upekkhā
+      <br><br>
+      이 일곱 동사 모두가 <strong>자동사 · 수동성 · 자발성</strong>을 띤다는 것이 PD의 핵심 통찰이다 — 칠각지는 강제로 만드는 것이 아니라 <strong>조건이 충족되면 일어나는</strong> 것이다.
+      <br><br>
+      <strong>다음 단계:</strong> §37~§40에서 동일한 사이클이 vedanā · citta · dhamma 사념처에서 반복되며, §41~§43에서 이 칠각지가 <em>vivekanissita · virāganissita · nirodhanissita · vossaggapariṇāmi</em>의 4가지 의지를 통해 <strong>vijjāvimutti</strong>로 이어진다.
+    </div>
+  </section>
+
+  <footer class="footer">
+    제6부 마침 — Majjhima Nikāya 118 · §29.1 ~ §36.2 · 제3단계 Ānāpānasati Part 1
+    <div class="next">다음 (제7부 · 최종): §37.1 ~ §43.4 — 제3단계 Part 2 · Vedanā/Citta/Dhamma 기반 칠각지 발현 + Satta Bojjhaṅga → Vijjāvimutti + 결어</div>
+  </footer>
+
+</div>
+
+</body>
+</html>
