@@ -1,0 +1,1310 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MN 118 — Ānāpānassatisutta (제5부)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Gentium+Plus:ital,wght@0,400;0,700;1,400;1,700&family=Noto+Serif+KR:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #1a1611;
+  --ink-soft: #4a4238;
+  --ink-faint: #8a8073;
+  --paper: #f4ede0;
+  --paper-warm: #ede4d0;
+  --gold: #8b6f3a;
+  --gold-deep: #6b5328;
+  --rust: #9c4a2a;
+  --rule: #c9bda3;
+  --pali-bg: #e8dcc1;
+  --commentary-bg: #f9f3e3;
+  --commentary-border: #b89a5e;
+  --refrain-bg: #ede4d0;
+  --pd-warning-bg: #f4e4d4;
+  --pd-warning-border: #9c4a2a;
+  --foundation-bg: #f0e6d0;
+  --foundation-border: #6b5328;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--paper);
+  background-image:
+    radial-gradient(ellipse at top, rgba(139, 111, 58, 0.06) 0%, transparent 50%),
+    radial-gradient(ellipse at bottom, rgba(156, 74, 42, 0.04) 0%, transparent 50%);
+  color: var(--ink);
+  font-family: 'Gentium Plus', 'Noto Serif KR', serif;
+  line-height: 1.75;
+  font-size: 17px;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      transparent 0,
+      transparent 2px,
+      rgba(74, 66, 56, 0.015) 2px,
+      rgba(74, 66, 56, 0.015) 3px
+    );
+  z-index: 0;
+}
+
+.container {
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 80px 48px 120px;
+  position: relative;
+  z-index: 1;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 60px;
+  padding-bottom: 48px;
+  border-bottom: 1px solid var(--rule);
+  position: relative;
+}
+
+.header::after {
+  content: '❋';
+  position: absolute;
+  bottom: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--paper);
+  padding: 0 16px;
+  color: var(--gold);
+  font-size: 14px;
+}
+
+.sutta-number {
+  font-family: 'Gentium Plus', serif;
+  font-style: italic;
+  font-size: 14px;
+  letter-spacing: 0.3em;
+  color: var(--gold-deep);
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.sutta-title-pali {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 44px;
+  font-weight: 500;
+  font-style: italic;
+  color: var(--ink);
+  margin: 0 0 8px;
+  letter-spacing: -0.01em;
+}
+
+.sutta-title-ko {
+  font-family: 'Gentium Plus', 'Noto Serif KR', serif;
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--ink-soft);
+  letter-spacing: 0.15em;
+  margin-bottom: 24px;
+}
+
+.sutta-subtitle {
+  font-family: 'Gentium Plus', serif;
+  font-style: italic;
+  font-size: 15px;
+  color: var(--ink-faint);
+  letter-spacing: 0.05em;
+}
+
+.stage-banner {
+  background: linear-gradient(135deg, var(--gold) 0%, var(--gold-deep) 100%);
+  color: var(--paper);
+  padding: 24px 32px;
+  margin: 32px 0 48px;
+  border-radius: 2px;
+  position: relative;
+  box-shadow: 0 2px 8px rgba(107, 83, 40, 0.15);
+}
+
+.stage-banner .stage-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 13px;
+  letter-spacing: 0.3em;
+  opacity: 0.85;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.stage-banner .stage-title {
+  font-family: 'Gentium Plus', 'Noto Serif KR', serif;
+  font-size: 22px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  margin-bottom: 6px;
+}
+
+.stage-banner .stage-pali {
+  font-family: 'Gentium Plus', serif;
+  font-style: italic;
+  font-size: 16px;
+  opacity: 0.9;
+}
+
+.stage-banner .stage-goal {
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(244, 237, 224, 0.25);
+  font-family: 'Gentium Plus', 'Noto Serif KR', serif;
+  font-size: 13px;
+  letter-spacing: 0.02em;
+  opacity: 0.95;
+}
+
+.chapter-heading {
+  text-align: center;
+  margin: 60px 0 48px;
+  padding: 16px 0;
+  border-top: 2px double var(--gold);
+  border-bottom: 2px double var(--gold);
+}
+
+.chapter-heading .label {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 13px;
+  letter-spacing: 0.3em;
+  color: var(--gold-deep);
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.chapter-heading .title {
+  font-family: 'Gentium Plus', 'Noto Serif KR', serif;
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--ink);
+  letter-spacing: 0.05em;
+}
+
+.chapter-heading .subtitle {
+  font-family: 'Gentium Plus', serif;
+  font-style: italic;
+  font-size: 14px;
+  color: var(--ink-faint);
+  margin-top: 4px;
+}
+
+.section {
+  margin-bottom: 48px;
+  position: relative;
+}
+
+.section-marker {
+  display: inline-block;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  color: var(--gold-deep);
+  background: var(--paper-warm);
+  padding: 4px 14px;
+  border: 1px solid var(--rule);
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+
+.korean-text {
+  font-family: 'Gentium Plus', 'Noto Serif KR', serif;
+  font-size: 17.5px;
+  font-weight: 400;
+  color: var(--ink);
+  line-height: 1.85;
+  margin: 0 0 20px;
+  letter-spacing: -0.005em;
+}
+
+.pali-block {
+  background: linear-gradient(
+    to right,
+    var(--pali-bg) 0%,
+    rgba(232, 220, 193, 0.5) 100%
+  );
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  padding: 22px 32px;
+  margin: 16px 0 12px;
+  position: relative;
+  font-family: 'Gentium Plus', serif;
+}
+
+
+.pali-text {
+  font-size: 21px;
+  line-height: 2.6;
+  color: var(--ink);
+  font-style: italic;
+  word-spacing: 0.15em;
+}
+
+.refrain-marker {
+  background: var(--refrain-bg);
+  border-left: 3px dashed var(--gold-deep);
+  padding: 14px 22px;
+  margin: 16px 0;
+  font-family: 'Gentium Plus', 'Noto Serif KR', serif;
+  font-size: 14px;
+  color: var(--ink-soft);
+  font-style: italic;
+}
+
+.refrain-marker::before {
+  content: '↻ ';
+  font-style: normal;
+  color: var(--gold-deep);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+}
+
+.refrain-marker code, .refrain-marker em {
+  font-family: 'Gentium Plus', serif;
+  font-style: italic;
+  color: var(--gold-deep);
+  font-size: 14px;
+}
+
+ruby {
+  ruby-position: over;
+  display: inline-flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  vertical-align: baseline;
+  line-height: 1;
+  margin: 0 1px;
+  text-align: center;
+}
+
+ruby > rt {
+  font-family: 'Gentium Plus', 'Noto Serif KR', serif;
+  font-style: normal;
+  font-size: 10.5px;
+  font-weight: 400;
+  color: var(--gold-deep);
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+  margin-bottom: 4px;
+  white-space: nowrap;
+  opacity: 0.92;
+  display: block;
+  text-align: center;
+}
+
+ruby:hover > rt {
+  color: var(--rust);
+  opacity: 1;
+}
+
+.commentary {
+  background: var(--commentary-bg);
+  border: 1px solid var(--commentary-border);
+  border-left-width: 3px;
+  padding: 18px 24px;
+  margin: 18px 0;
+  font-family: 'Gentium Plus', 'Noto Serif KR', serif;
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--ink-soft);
+  position: relative;
+}
+
+.commentary-label {
+  display: inline-block;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  color: var(--rust);
+  text-transform: uppercase;
+  margin-right: 8px;
+}
+
+.commentary-label::before {
+  content: '❖ ';
+}
+
+.commentary code, .commentary em {
+  font-family: 'Gentium Plus', serif;
+  font-style: normal;
+  color: var(--gold-deep);
+  font-size: 15px;
+}
+
+.pd-critical {
+  background: var(--pd-warning-bg);
+  border: 1px solid var(--pd-warning-border);
+  border-left-width: 4px;
+  padding: 20px 24px;
+  margin: 20px 0;
+  font-family: 'Gentium Plus', 'Noto Serif KR', serif;
+  font-size: 15px;
+  line-height: 1.75;
+  color: var(--ink);
+  position: relative;
+}
+
+.pd-critical-label {
+  display: inline-block;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: var(--rust);
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.pd-critical-label::before {
+  content: '⚠ ';
+  font-style: normal;
+}
+
+.pd-critical table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 12px 0 4px;
+  font-size: 14px;
+}
+
+.pd-critical th {
+  text-align: left;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 600;
+  font-size: 12px;
+  color: var(--rust);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 6px 10px;
+  border-bottom: 1px solid var(--pd-warning-border);
+}
+
+.pd-critical td {
+  padding: 8px 10px;
+  vertical-align: top;
+  border-bottom: 1px solid rgba(156, 74, 42, 0.15);
+  font-size: 14px;
+}
+
+.pd-critical td:first-child {
+  font-family: 'Gentium Plus', serif;
+  font-style: italic;
+  color: var(--gold-deep);
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.pd-critical code, .pd-critical em {
+  font-family: 'Gentium Plus', serif;
+  font-style: normal;
+  color: var(--gold-deep);
+  font-size: 14px;
+}
+
+.foundation {
+  background: var(--foundation-bg);
+  border: 2px solid var(--foundation-border);
+  padding: 28px 32px;
+  margin: 28px 0;
+  position: relative;
+  border-radius: 2px;
+}
+
+.foundation::before {
+  content: '◆ FOUNDATION ◆';
+  position: absolute;
+  top: -11px;
+  left: 32px;
+  background: var(--paper);
+  padding: 0 12px;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 11px;
+  letter-spacing: 0.3em;
+  color: var(--foundation-border);
+  font-weight: 700;
+}
+
+.foundation .foundation-content {
+  font-family: 'Gentium Plus', 'Noto Serif KR', serif;
+  font-size: 15px;
+  line-height: 1.8;
+  color: var(--ink);
+}
+
+.foundation table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 14px 0;
+  font-size: 14px;
+  background: rgba(244, 237, 224, 0.5);
+}
+
+.foundation th {
+  text-align: left;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 600;
+  font-size: 12px;
+  color: var(--gold-deep);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 8px 12px;
+  border-bottom: 1.5px solid var(--gold-deep);
+  background: var(--paper-warm);
+}
+
+.foundation td {
+  padding: 10px 12px;
+  vertical-align: top;
+  border-bottom: 1px solid rgba(107, 83, 40, 0.2);
+  font-size: 14px;
+}
+
+.foundation td:first-child {
+  font-family: 'Gentium Plus', serif;
+  font-style: italic;
+  color: var(--gold-deep);
+  font-weight: 600;
+  white-space: nowrap;
+  width: 28%;
+}
+
+.foundation code, .foundation em {
+  font-family: 'Gentium Plus', serif;
+  font-style: italic;
+  color: var(--gold-deep);
+}
+
+/* Stage transition note */
+.transition-note {
+  background: linear-gradient(135deg, rgba(232, 220, 193, 0.6) 0%, rgba(244, 237, 224, 0.6) 100%);
+  border: 1px solid var(--gold);
+  border-radius: 4px;
+  padding: 20px 28px;
+  margin: 24px 0 40px;
+  font-family: 'Gentium Plus', 'Noto Serif KR', serif;
+  font-size: 15px;
+  line-height: 1.75;
+  color: var(--ink);
+  position: relative;
+}
+
+.transition-note .transition-label {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  color: var(--gold-deep);
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  display: block;
+}
+
+.transition-note .transition-label::before {
+  content: '⟶ ';
+  font-style: normal;
+}
+
+.transition-note table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 12px;
+  font-size: 14px;
+}
+
+.transition-note th {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 12px;
+  color: var(--gold-deep);
+  text-align: left;
+  padding: 6px 10px;
+  border-bottom: 1px solid var(--gold);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.transition-note td {
+  padding: 8px 10px;
+  vertical-align: top;
+  border-bottom: 1px solid rgba(139, 111, 58, 0.2);
+  font-size: 14px;
+}
+
+.transition-note code, .transition-note em {
+  font-family: 'Gentium Plus', serif;
+  font-style: italic;
+  color: var(--gold-deep);
+  font-size: 14px;
+}
+
+/* Sub-pattern marker (showing same structure repeats) */
+.sub-pattern {
+  font-family: 'Gentium Plus', 'Noto Serif KR', serif;
+  font-size: 13px;
+  color: var(--ink-faint);
+  font-style: italic;
+  padding: 8px 16px;
+  background: rgba(232, 220, 193, 0.3);
+  border-left: 2px solid var(--rule);
+  margin: 12px 0;
+}
+
+.sub-pattern code, .sub-pattern em {
+  font-family: 'Gentium Plus', serif;
+  font-style: italic;
+  color: var(--gold-deep);
+}
+
+.divider {
+  text-align: center;
+  margin: 48px 0;
+  color: var(--rule);
+  font-size: 12px;
+  letter-spacing: 1em;
+}
+
+.divider::before {
+  content: '· · ·';
+}
+
+.footer {
+  margin-top: 80px;
+  padding-top: 32px;
+  border-top: 1px solid var(--rule);
+  text-align: center;
+  font-family: 'Gentium Plus', serif;
+  font-style: italic;
+  font-size: 14px;
+  color: var(--ink-faint);
+  letter-spacing: 0.05em;
+}
+
+.footer .next {
+  margin-top: 8px;
+  color: var(--gold-deep);
+  font-style: normal;
+  font-family: 'Gentium Plus', 'Noto Serif KR', serif;
+  font-size: 13px;
+}
+
+@media (max-width: 640px) {
+  .container { padding: 48px 24px 80px; }
+  .sutta-title-pali { font-size: 32px; }
+  .pali-block { padding: 18px 18px; }
+  .pali-text { font-size: 19px; line-height: 2.4; }
+  ruby > rt { font-size: 9.5px; }
+  .pd-critical table, .foundation table, .transition-note table { font-size: 12px; }
+  .pd-critical th, .pd-critical td,
+  .foundation th, .foundation td,
+  .transition-note th, .transition-note td { padding: 6px 6px; }
+  .foundation td:first-child { width: auto; }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <header class="header">
+    <div class="sutta-number">Majjhima Nikāya · 118</div>
+    <h1 class="sutta-title-pali">Ānāpānassatisutta</h1>
+    <div class="sutta-subtitle">제5부 — Ānāpānasati 제2단계 · §23.1 ~ §28.1</div>
+  </header>
+
+  <!-- Stage banner -->
+  <div class="stage-banner">
+    <div class="stage-num">Second Stage</div>
+    <div class="stage-title">제2단계 — Satipaṭṭhāna Bhūmi 확립</div>
+    <div class="stage-pali">Kāye Kāyānupassanā · Vedanāsu Vedanānupassanā · Citte Cittānupassanā · Dhammesu Dhammānupassanā</div>
+    <div class="stage-goal">→ 사념처 확립 · 사념처경지(Satipaṭṭhāna Bhūmi)에 자유롭게 머묾</div>
+  </div>
+
+  <!-- Stage 1 → Stage 2 transition -->
+  <div class="transition-note">
+    <span class="transition-label">제1단계 → 제2단계 전환점</span>
+    제1단계와 제2단계의 정구는 표면상 유사해 보이지만, 결정적 문법적·교학적 차이가 있다.
+    <table>
+      <tr>
+        <th>구분</th>
+        <th>제1단계 (§15-§22)</th>
+        <th>제2단계 (§23-§28)</th>
+      </tr>
+      <tr>
+        <td>도입구</td>
+        <td><em>... assasissāmī'ti sikkhati</em><br>(받아들이리라'고 닦는다)</td>
+        <td><em>Yasmiṁ samaye ... pajānāti / sikkhati</em><br>(어느 때 ... 깊이 알거나 닦거나 하면)</td>
+      </tr>
+      <tr>
+        <td>핵심 동사</td>
+        <td><em>sikkhati</em>(자신을 훈련함) — 지향 단계</td>
+        <td><em>viharati</em>(머묾) — 확립 단계</td>
+      </tr>
+      <tr>
+        <td>대상격</td>
+        <td><em>kāya</em>(주격적 관찰)</td>
+        <td><em>kāye kāyānupassī</em>(처격: kāya 안에서 kāya를 따라 관찰)</td>
+      </tr>
+      <tr>
+        <td>핵심 종결</td>
+        <td><em>mahapphalā mahānisaṁsā</em>(큰 결실)</td>
+        <td><em>vineyya loke abhijjhādomanassaṁ</em>(세상에서 욕구·싫어함 제거)</td>
+      </tr>
+      <tr>
+        <td>수행자 지위</td>
+        <td>puthujjana → Sotāpanna anugāmi</td>
+        <td>Sotāpanna 이상 (§26.6 명시)</td>
+      </tr>
+    </table>
+    <strong style="display:block;margin-top:12px;color:var(--gold-deep);">PD 핵심 통찰:</strong> 제2단계는 <em>Satipaṭṭhāna Bhūmi</em>(사념처경지) — kāma saññā에서 자유로운 마음의 상태 — 에 자유롭게 진입하고 머무르는 능력이다. 이 경지에 한 번이라도 진입해본 자(즉 Sotāpanna phala 순간을 경험한 자)만이 §23 이후의 정구를 닦을 수 있다.
+  </div>
+
+  <!-- §23.1 -->
+  <section class="section">
+    <div class="section-marker">§ 23.1 · 단원 도입 질문</div>
+    <p class="korean-text">
+      bhikkhū여, 그러면 어떻게 닦고 어떻게 자주 행하면 ānāpānasati가 사념처를 충족시키는가?
+    </p>
+    <div class="pali-block">
+      <div class="pali-text">
+        <ruby>Kathaṁ<rt>어떻게</rt></ruby>
+        <ruby>bhāvitā<rt>닦여서</rt></ruby>
+        <ruby>ca<rt>그리고</rt></ruby>,
+        <ruby>bhikkhave<rt>비구들이여</rt></ruby>,
+        <ruby>ānāpānassati<rt>아나빠나사띠가</rt></ruby>
+        <ruby>kathaṁ<rt>어떻게</rt></ruby>
+        <ruby>bahulīkatā<rt>자주 행해져서</rt></ruby>
+        <ruby>cattāro<rt>넷의</rt></ruby>
+        <ruby>satipaṭṭhāne<rt>사념처를</rt></ruby>
+        <ruby>paripūreti<rt>충족시키는가</rt></ruby>?
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ============ Kāye Kāyānupassanā §24 ============ -->
+  <div class="chapter-heading">
+    <div class="label">Locative · 1st Foundation Established</div>
+    <div class="title">Kāye Kāyānupassanā — kāya 안에서 kāya 관찰</div>
+    <div class="subtitle">§24.1 ~ §24.7</div>
+  </div>
+
+  <div class="foundation">
+    <div class="foundation-content">
+      <strong style="font-size: 16px;">처격(Locative)의 의의</strong>
+      <br><br>
+      제2단계에서 사념처는 더 이상 외부에서 관찰하는 대상이 아니라, 수행자가 그 안에 머무르는 <strong>경지(bhūmi)</strong>가 된다. 빨리어 처격 변화가 이 전환을 명시한다:
+      <table>
+        <tr>
+          <th>제1단계 (sikkhati)</th>
+          <th>제2단계 (viharati)</th>
+          <th>전환의 의미</th>
+        </tr>
+        <tr>
+          <td><code>kāya</code>(주격)</td>
+          <td><code>kāye kāyānupassī</code></td>
+          <td>"kāya 안에서 kāya를 따라 관찰"</td>
+        </tr>
+        <tr>
+          <td><code>vedanā</code></td>
+          <td><code>vedanāsu vedanānupassī</code></td>
+          <td>"vedanā들 안에서 vedanā를 따라 관찰"</td>
+        </tr>
+        <tr>
+          <td><code>citta</code></td>
+          <td><code>citte cittānupassī</code></td>
+          <td>"citta 안에서 citta를 따라 관찰"</td>
+        </tr>
+        <tr>
+          <td><code>dhamma</code></td>
+          <td><code>dhammesu dhammānupassī</code></td>
+          <td>"dhamma들 안에서 dhamma를 따라 관찰"</td>
+        </tr>
+      </table>
+      이 처격은 단순한 문법 형식이 아니라 <strong>관찰자가 관찰 대상에 내재해 있다</strong>는 PD 해석의 근거다. Satipaṭṭhāna Bhūmi에 진입한 수행자는 kāya를 외부에서 보는 것이 아니라 그 안에서 그 본성을 직접 통찰한다.
+    </div>
+  </div>
+
+  <!-- §24.1 -->
+  <section class="section">
+    <div class="section-marker">§ 24.1</div>
+    <p class="korean-text">
+      bhikkhū여, 어느 때 bhikkhū가 '긴(광범위한) [것을]' 받아들이며 '내가 긴 것을 받아들인다'고 깊이 알고, '긴 [것을]' 지혜로 보면서 '내가 긴 것을 지혜로 본다'고 깊이 알며—
+    </p>
+    <div class="pali-block">
+      <div class="pali-text">
+        <ruby>Yasmiṁ<rt>어떤</rt></ruby>
+        <ruby>samaye<rt>때에</rt></ruby>,
+        <ruby>bhikkhave<rt>비구들이여</rt></ruby>,
+        <ruby>bhikkhu<rt>비구가</rt></ruby>
+        <ruby>dīghaṁ<rt>긴/광범위한 것을</rt></ruby>
+        <ruby>vā<rt>또는</rt></ruby>
+        <ruby>assasanto<rt>받아들이며</rt></ruby>
+        '<ruby>dīghaṁ<rt>긴 것을</rt></ruby>
+        <ruby>assasāmī<rt>나는 받아들인다</rt></ruby>'<ruby>ti<rt>~라고</rt></ruby>
+        <ruby>pajānāti<rt>깊이 안다</rt></ruby>,
+        <ruby>dīghaṁ<rt>긴 것을</rt></ruby>
+        <ruby>vā<rt>또는</rt></ruby>
+        <ruby>passasanto<rt>지혜로 보며</rt></ruby>
+        '<ruby>dīghaṁ<rt>긴 것을</rt></ruby>
+        <ruby>passasāmī<rt>나는 지혜로 본다</rt></ruby>'<ruby>ti<rt>~라고</rt></ruby>
+        <ruby>pajānāti<rt>깊이 안다</rt></ruby>;
+      </div>
+    </div>
+
+    <div class="commentary">
+      <span class="commentary-label">학습 메모 — Yasmiṁ samaye 구조</span>
+      §24.1~§24.4는 §18.1~§18.4의 4단계 정구를 그대로 반복하지만, 도입부가 <code>Yasmiṁ samaye</code>("어느 때")로 바뀌었다. 이는 §24.5의 <code>tasmiṁ samaye</code>("그 때")와 짝을 이루어 <strong>"~할 때마다, 그 때 bhikkhū는 ... 머문다"</strong>의 조건-결과 구조를 형성한다. 즉 이 4단계 수행을 하는 매순간이 곧 Satipaṭṭhāna Bhūmi에 머무는 순간이다.
+    </div>
+  </section>
+
+  <!-- §24.2 -->
+  <section class="section">
+    <div class="section-marker">§ 24.2</div>
+    <p class="korean-text">
+      또는 '짧은(미세한) [것을]' 받아들이며 '내가 짧은 것을 받아들인다'고 깊이 알고, '짧은 [것을]' 지혜로 보면서 '내가 짧은 것을 지혜로 본다'고 깊이 알며—
+    </p>
+    <div class="refrain-marker">§18.2 정구를 <code>Yasmiṁ samaye</code> 도입부 아래 동일하게 반복 — <em>rassaṁ vā assasanto … pajānāti</em>.</div>
+  </section>
+
+  <!-- §24.3 -->
+  <section class="section">
+    <div class="section-marker">§ 24.3</div>
+    <p class="korean-text">
+      그는 [자신을] 닦는다: '나는 전체 pañcupādānakkhandha kāya(sabbakāya)를 체험하면서(paṭisaṁvedī) 가르침을 받아들이리라'; 그는 [자신을] 닦는다: '나는 전체 pañcupādānakkhandha kāya를 체험하면서 지혜로 통찰하리라.'
+    </p>
+    <div class="refrain-marker">§18.3 정구 동일 — <em>'sabbakāyapaṭisaṁvedī assasissāmī'ti sikkhati ...</em></div>
+  </section>
+
+  <!-- §24.4 -->
+  <section class="section">
+    <div class="section-marker">§ 24.4</div>
+    <p class="korean-text">
+      그는 [자신을] 닦는다: '나는 두 종류의 kāya saṅkhāra를 (ajjhatta와 bahiddha의 두 kāya를, purāṇa kamma와 nava kamma 단계에서) 보면서 가르침을 받아들이리라'; 그는 [자신을] 닦는다: '나는 두 종류의 kāya saṅkhāra를 보면서 지혜로 통찰하리라'—
+    </p>
+    <div class="pali-block">
+      <div class="pali-text">
+        '<ruby>passambhayaṁ<rt>가라앉히며/[두 가지를] 보면서</rt></ruby>
+        <ruby>kāyasaṅkhāraṁ<rt>kāya saṅkhāra</rt></ruby>
+        <ruby>assasissāmī<rt>받아들이리라</rt></ruby>'<ruby>ti<rt>~라고</rt></ruby>
+        <ruby>sikkhati<rt>닦는다</rt></ruby>,
+        '<ruby>passambhayaṁ<rt>가라앉히며/[두 가지를] 보면서</rt></ruby>
+        <ruby>kāyasaṅkhāraṁ<rt>kāya saṅkhāra</rt></ruby>
+        <ruby>passasissāmī<rt>지혜로 통찰하리라</rt></ruby>'<ruby>ti<rt>~라고</rt></ruby>
+        <ruby>sikkhati<rt>닦는다</rt></ruby>;
+      </div>
+    </div>
+
+    <div class="commentary">
+      <span class="commentary-label">PD 메모 — Ajjhatta · Bahiddha 두 단계</span>
+      제2단계에서는 <code>kāya saṅkhāra</code>가 <strong>한 마음 내 두 순차적 단계</strong>로 분석된다 [BD-43 §12·BM-32 §12-13·SI-33 §13·KDC-98 §4]:
+      <br>① <em>bahiddha kāya</em> — 외부 감각 입력으로 인해 자기 마음에 먼저 확립되는 단계 (<em>bāhira</em> "외부" + <em>iddha</em> "확립됨"). bahiddha <em>rūpa → vedanā → saññā → saṅkhāra → viññāṇa</em>의 다섯 entity가 자동 발생.
+      <br>② <em>ajjhatta kāya</em> — bahiddha 단계의 saññā가 "자기에게 유익하다"고 자동 집착되어 발전된 단계 (<em>ajjha</em> "자기" + <em>atta</em> "유익한"). ajjhatta <em>rūpa → … → viññāṇa</em>의 다섯 entity가 다시 발생.
+      <br>※ 두 단계 모두 <strong>한 사람의 한 감각 사건 내</strong>에서 순차적으로 일어남 — <strong>"자기 vs 타인"이 아니다</strong>.
+      <br><br>
+      시간 축(별개 축)으로:
+      <br>① <em>purāṇa kamma</em> 단계 — <em>saṅkappa</em> 수준의 미약한 saṅkhāra가 자동 발생. bahiddha·ajjhatta kāya는 이 단계 내에 위치.
+      <br>② <em>nava kamma</em> 단계 — <em>taṇhā paccayā upādāna</em> 이후 의식적 kāya·vacī·mano kamma로 확장.
+      <br><br>
+      제1단계 §18.4에서는 전체 pañcupādānakkhandha kāya(<em>sabbakāya</em>)를 다뤘으나, 제2단계에서는 그 내부 구조 — 특히 bahiddha → ajjhatta 순차 — 를 통찰한다.
+      <br><br>
+      <span style="font-size: 13px; color: var(--ink-faint); font-style: italic;">[각주 §A · 해석적 긴장] HTML의 "4상한(ajjhatta/bahiddha × purāṇa/nava) 통합 시각"은 PDF §24.4 본문이 "두 종류의 kāya saṅkhāra"와 "<em>purāṇa/nava kamma</em> 단계"를 병기한 데 따른 제시 도식이다. 그러나 SI-33 §13은 ajjhatta/bahiddha kāya를 <em>purāṇa kamma 단계 내부에 한정</em>한다 — nava kamma 단계에는 두 kāya 구분이 별도로 적용되지 않는다. 따라서 엄밀한 PD 관점에서는 두 축이 직교(cross-product)하지 않고, ajjhatta/bahiddha 축이 purāṇa kamma 한정 내에 위치한다.</span>
+    </div>
+  </section>
+
+  <!-- §24.5 -->
+  <section class="section">
+    <div class="section-marker">§ 24.5 · 핵심</div>
+    <p class="korean-text">
+      bhikkhū여, 그 때에 bhikkhū는 kāya 안에서 kāya를 따라 관찰하며(purāṇa kamma 단계), 열심히 정진하고, 분명히 알아차리고, 알아차림을 갖춘 [자로서] 머문다 — 마음에서 욕구(abhijjhā)와 싫어함(domanassa)을 제거하고서.
+    </p>
+    <div class="pali-block">
+      <div class="pali-text">
+        <ruby>kāye<rt>kāya 안에서</rt></ruby>
+        <ruby>kāyānupassī<rt>kāya를 따라 관찰하는 [자]</rt></ruby>,
+        <ruby>bhikkhave<rt>비구들이여</rt></ruby>,
+        <ruby>tasmiṁ<rt>그</rt></ruby>
+        <ruby>samaye<rt>때에</rt></ruby>
+        <ruby>bhikkhu<rt>비구는</rt></ruby>
+        <ruby>viharati<rt>머문다</rt></ruby>
+        <ruby>ātāpī<rt>열심히 정진하는</rt></ruby>
+        <ruby>sampajāno<rt>분명히 알아차리며</rt></ruby>
+        <ruby>satimā<rt>알아차림 갖춘</rt></ruby>
+        <ruby>vineyya<rt>제거하고서</rt></ruby>
+        <ruby>loke<rt>세상에서</rt></ruby>
+        <ruby>abhijjhādomanassaṁ<rt>욕구와 싫어함을</rt></ruby>.
+      </div>
+    </div>
+
+    <div class="pd-critical">
+      <div class="pd-critical-label">PD 해석 · Abhijjhādomanassaṁ 제거의 의의</div>
+      <code>abhijjhādomanassaṁ</code>의 제거(<em>vineyya</em>)는 <strong>Satipaṭṭhāna Bhūmi 진입의 정의 자체</strong>다.
+      <br><br>
+      <strong>통념 해석:</strong> 단순히 좋아하는 것에 대한 욕구와 싫어하는 것에 대한 거부감을 잠시 내려놓고 평정한 관찰 자세를 유지함.
+      <br><br>
+      <strong>PD 해석 [SI-27 §11·SI-23 §9]:</strong> <em>abhijjhā</em>(<em>abhi</em> + <em>icchā</em>, 강한 끌림)와 <em>domanassa</em>(원하는 것이 충족되지 않아 일어나는 우울·반감)는 <strong>kāma saññā 자체가 아니라, kāma saññā에 대한 자동 집착이 일으키는 결과</strong>다. 인과 순서는: <em>kāma dhātu</em> → <em>kāma saññā</em> 자동 발생 → 마음의 자동 집착(<em>kāma rāga</em>와 <em>paṭigha</em>) → abhijjhā · domanassa 발현. 이를 제거(<em>vineyya</em>)함은 곧 kāma saññā에 대한 집착이 일시적·자발적으로 끊어진 상태에 머무는 것 — 이 상태가 곧 Satipaṭṭhāna Bhūmi다. 따라서 §24.5는 단순한 자세 묘사가 아니라 <strong>"이 4단계 수행을 하면서 bhikkhū는 매순간 Satipaṭṭhāna Bhūmi에 머문다"</strong>는 결정적 진술이다.
+    </div>
+  </section>
+
+  <!-- §24.6 - PD CRITICAL: Buddha's self-definition -->
+  <section class="section">
+    <div class="section-marker">§ 24.6 · 붓다의 자기 정의</div>
+    <p class="korean-text">
+      bhikkhū여, 나는 kāya들 중에서 어느 한 kāya(즉 <em>purāṇa kamma</em> 단계 내의 ajjhatta·bahiddha kāya)를 [이해·통찰하라]고 이렇게 말한다 — 즉 [그 이해·통찰의 행위가] '받아들임-통찰'(assāsapassāsa)이다.
+    </p>
+    <div class="pali-block">
+      <div class="pali-text">
+        <ruby>Kāyesu<rt>kāya들 가운데서</rt></ruby>
+        <ruby>kāyaññatarāhaṁ<rt>어느 한 kāya라고 나는</rt></ruby>,
+        <ruby>bhikkhave<rt>비구들이여</rt></ruby>,
+        <ruby>evaṁ<rt>이렇게</rt></ruby>
+        <ruby>vadāmi<rt>말한다</rt></ruby>
+        <ruby>yadidaṁ<rt>즉</rt></ruby>—
+        <ruby>assāsapassāsā<rt>받아들임-통찰을</rt></ruby>.
+      </div>
+    </div>
+
+    <div class="pd-critical">
+      <div class="pd-critical-label">Principle Zero · Kāyaññatarāhaṁ — 어느 한 kāya를 이해·통찰하는 행위</div>
+      이 구절은 호흡 명상 해석의 결정적 반증이다. SI-27 §10은 <code>kāyesu kāyaññatarāhaṁ</code>를 다음과 같이 분해한다 — <em>kāya aññatara ahaṁ</em> = "여러 kāya들 중에서 어느 한 [특정] kāya[을], 나는 [말한다]". 이때 <em>aññatara kāya</em>는 직전 §24.4에서 다룬 <strong>ajjhatta·bahiddha kāya</strong>(<em>purāṇa kamma</em> 단계 내의 두 단계)를 지시한다.
+      <table>
+        <tr>
+          <th>관점</th>
+          <th>이 구절의 의미</th>
+        </tr>
+        <tr>
+          <td>통념</td>
+          <td>"호흡(들숨/날숨)을 나는 kāya[즉 신체]들 중 한 kāya[즉 <em>vāyo dhātu</em>]로 말한다." — 호흡을 신체의 일부로 분류</td>
+        </tr>
+        <tr>
+          <td>PD<br>[SI-27 §10]</td>
+          <td>"여러 kāya들 중에서 <strong>어느 한 kāya[즉 ajjhatta·bahiddha kāya]를 이해(<em>assāsa</em>)하고 지혜로 통찰(<em>passāsa</em>)하라고 나는 말한다</strong> — 그 <strong>이해·통찰의 행위 자체가</strong> <em>assāsapassāsa</em>다." 즉 <em>assāsapassāsa</em>는 kāya가 아니라 <strong>kāya를 통찰하는 수행 행위</strong>다.</td>
+        </tr>
+      </table>
+      <strong>구조적 논증:</strong> 만약 <em>assāsapassāsa</em>가 단순히 "들숨/날숨"이라면, "이 호흡은 신체라는 kāya 중 한 종류"라는 동어반복적 진술이 된다. SI-27 §10의 분해(<em>kāya aññatara ahaṁ</em>)를 따르면, 이 구절은 "<strong>여러 kāya 중 §24.4의 ajjhatta/bahiddha kāya를 이해·통찰하라 — 그것이 assāsapassāsa다</strong>"라는 명령적 정의가 된다. <code>kāyesu</code>(처격 복수)는 여러 kāya가 존재함을 전제하며, §24.4가 다룬 ajjhatta/bahiddha kāya를 직시한다. 따라서 <em>assāsapassāsa</em>는 호흡이 아니라 <strong>ajjhatta·bahiddha kāya를 받아들이고 통찰하는 수행 행위</strong>다.
+      <br><br>
+      <span style="font-size: 13px; color: var(--ink-faint); font-style: italic;">[각주 §B · 해석적 긴장] PDF §24.6의 영문 본문 번역은 "<em>I say that this 'receiving and grasping' (assāsapassāsā) is a certain kāya among the kāyas</em>"로 읽혀 assāsapassāsa 자체가 한 kāya인 것처럼 보인다. 그러나 동 PDF의 Technical Clarification 박스("<em>refers to understanding the ajjhatta (internal) and bahiddha (external) kāyas</em>")와 SI-27 §10의 분해(<em>kāya aññatara ahaṁ</em>)는 이 어구를 "<strong>assāsapassāsa는 ajjhatta/bahiddha kāya를 이해하는 행위</strong>"로 명확히 한다. 위 PD 해석은 후자를 채택한다. 이전 HTML 판본에서 "<em>assāsapassāsa 자체가 한 종류의 kāya</em>"로 재구성한 부분은 SI-27의 분해에 미치지 못한 부분 해석이었다.</span>
+    </div>
+  </section>
+
+  <!-- §24.7 -->
+  <section class="section">
+    <div class="section-marker">§ 24.7</div>
+    <p class="korean-text">
+      그러므로 bhikkhū여, 그 때에 bhikkhū는 kāya 안에서 kāya를 따라 관찰하며, 열심히 정진하고, 분명히 알아차리고, 알아차림을 갖춘 [자로서] 머문다 — 마음에서 욕구와 싫어함을 제거하고서.
+    </p>
+    <div class="refrain-marker">§24.5 정구 동일 (도입어 <code>Tasmātiha</code>로 시작) — <em>Tasmātiha, bhikkhave, kāye kāyānupassī ... vineyya loke abhijjhādomanassaṁ</em>.</div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ============ Vedanāsu Vedanānupassanā §25 ============ -->
+  <div class="chapter-heading">
+    <div class="label">Locative · 2nd Foundation Established</div>
+    <div class="title">Vedanāsu Vedanānupassanā — vedanā들 안에서 vedanā 관찰</div>
+    <div class="subtitle">§25.1 ~ §25.7</div>
+  </div>
+
+  <!-- §25.1 -->
+  <section class="section">
+    <div class="section-marker">§ 25.1</div>
+    <p class="korean-text">
+      bhikkhū여, 어느 때 bhikkhū가 [자신을] 닦기를: '나는 pīti(희)를 경험하면서 가르침을 받아들이리라'; '나는 pīti를 경험하면서 지혜로 통찰하리라'—
+    </p>
+    <div class="refrain-marker">§19.1 정구 동일, <code>Yasmiṁ samaye</code> 도입 — <em>Yasmiṁ samaye, bhikkhave, bhikkhu 'pītipaṭisaṁvedī assasissāmī'ti sikkhati ...</em></div>
+  </section>
+
+  <!-- §25.2 -->
+  <section class="section">
+    <div class="section-marker">§ 25.2</div>
+    <p class="korean-text">
+      '나는 sukha(락)을 경험하면서 받아들이리라'; '나는 sukha를 경험하면서 지혜로 통찰하리라'—
+    </p>
+    <div class="refrain-marker">§19.2 정구 동일.</div>
+  </section>
+
+  <!-- §25.3 -->
+  <section class="section">
+    <div class="section-marker">§ 25.3</div>
+    <p class="korean-text">
+      '나는 (bahiddha viññāṇa 단계에서 일어나는) citta saṅkhāra를 경험하면서 받아들이리라'; '나는 citta saṅkhāra를 경험하면서 지혜로 통찰하리라'—
+    </p>
+    <div class="refrain-marker">§19.3 정구 동일.</div>
+  </section>
+
+  <!-- §25.4 — PD CRITICAL: passam ubhayaṁ -->
+  <section class="section">
+    <div class="section-marker">§ 25.4 · 핵심 재분석</div>
+    <p class="korean-text">
+      '나는 (bahiddha와 ajjhatta 단계에서) 두 종류의 citta saṅkhāra를 보면서 받아들이리라'; '나는 두 종류의 citta saṅkhāra를 보면서 지혜로 통찰하리라.'
+    </p>
+    <div class="pali-block">
+      <div class="pali-text">
+        '<ruby>passambhayaṁ<rt>두 가지를 보면서</rt></ruby>
+        <ruby>cittasaṅkhāraṁ<rt>citta saṅkhāra</rt></ruby>
+        <ruby>assasissāmī<rt>받아들이리라</rt></ruby>'<ruby>ti<rt>~라고</rt></ruby>
+        <ruby>sikkhati<rt>닦는다</rt></ruby>,
+        '<ruby>passambhayaṁ<rt>두 가지를 보면서</rt></ruby>
+        <ruby>cittasaṅkhāraṁ<rt>citta saṅkhāra</rt></ruby>
+        <ruby>passasissāmī<rt>지혜로 통찰하리라</rt></ruby>'<ruby>ti<rt>~라고</rt></ruby>
+        <ruby>sikkhati<rt>닦는다</rt></ruby>;
+      </div>
+    </div>
+
+    <div class="pd-critical">
+      <div class="pd-critical-label">Principle Zero · Passambhayaṁ의 PD 재분석 — passam + ubhayaṁ</div>
+      <table>
+        <tr>
+          <th>관점</th>
+          <th><code>passambhayaṁ</code>의 어휘 분석</th>
+          <th>의미</th>
+        </tr>
+        <tr>
+          <td>통념</td>
+          <td><em>passambh-</em>(가라앉히다) + 현재분사 어미</td>
+          <td>"가라앉히면서" — citta saṅkhāra를 잠재움</td>
+        </tr>
+        <tr>
+          <td>PD</td>
+          <td><em>passam</em>(보면서) + <em>ubhayaṁ</em>(둘 다, 양쪽을)</td>
+          <td>"두 가지를 보면서" — ajjhatta(내적)와 bahiddha(외적) 두 종류의 citta saṅkhāra를 동시에 통찰</td>
+        </tr>
+      </table>
+      <strong>왜 이 재분석이 중요한가?</strong> 통념적 "가라앉힘" 해석은 §25.3에서 단지 cittasaṅkhāra를 경험(<em>paṭisaṁvedī</em>)하다가 §25.4에서 갑자기 그것을 가라앉힌다는 갑작스런 전환을 만든다. 그러나 PD 재분석에 따르면 §25.3은 한 측면의 cittasaṅkhāra를 인지하는 단계이고 §25.4는 <strong>그 양 측면(ajjhatta/bahiddha)을 통합적으로 통찰</strong>하는 단계로, 자연스러운 진행을 이룬다.
+      <br><br>
+      이 재분석은 §18.4(kāya 단계)와 §24.4(이중 kāya)의 PD 해석과도 정합한다 — 즉 모든 사념처 단계에서 ajjhatta/bahiddha 이중 구조가 일관되게 적용된다.
+    </div>
+  </section>
+
+  <!-- §25.5 -->
+  <section class="section">
+    <div class="section-marker">§ 25.5</div>
+    <p class="korean-text">
+      bhikkhū여, 그 때에 bhikkhū는 vedanā들 안에서 vedanā를 따라 관찰하며, 열심히 정진하고, 분명히 알아차리고, 알아차림을 갖춘 [자로서] 머문다 — 마음에서 욕구와 싫어함을 제거하고서.
+    </p>
+    <div class="pali-block">
+      <div class="pali-text">
+        <ruby>vedanāsu<rt>vedanā들 안에서</rt></ruby>
+        <ruby>vedanānupassī<rt>vedanā를 따라 관찰하는 [자]</rt></ruby>,
+        <ruby>bhikkhave<rt>비구들이여</rt></ruby>,
+        <ruby>tasmiṁ<rt>그</rt></ruby>
+        <ruby>samaye<rt>때에</rt></ruby>
+        <ruby>bhikkhu<rt>비구는</rt></ruby>
+        <ruby>viharati<rt>머문다</rt></ruby>
+        <ruby>ātāpī<rt>열심히 정진하며</rt></ruby>
+        <ruby>sampajāno<rt>분명히 알아차리며</rt></ruby>
+        <ruby>satimā<rt>알아차림 갖춘 [자로서]</rt></ruby>
+        <ruby>vineyya<rt>제거하고서</rt></ruby>
+        <ruby>loke<rt>세상에서</rt></ruby>
+        <ruby>abhijjhādomanassaṁ<rt>욕구와 싫어함을</rt></ruby>.
+      </div>
+    </div>
+  </section>
+
+  <!-- §25.6 -->
+  <section class="section">
+    <div class="section-marker">§ 25.6 · 붓다의 자기 정의 (vedanā 차원)</div>
+    <p class="korean-text">
+      bhikkhū여, 이 'vedanā들 안의 어느 한 vedanā'(vedanāsu vedanāññatara)에 대한 통찰을 — 즉 '받아들임-통찰'(assāsapassāsa)에 대한 <strong>철저한 작의(sādhukaṁ manasikāra)</strong>를, 나는 이렇게 말한다.
+    </p>
+    <div class="pali-block">
+      <div class="pali-text">
+        <ruby>Vedanāsu<rt>vedanā들 가운데서</rt></ruby>
+        <ruby>vedanāññatarāhaṁ<rt>어느 한 vedanā라고 나는</rt></ruby>,
+        <ruby>bhikkhave<rt>비구들이여</rt></ruby>,
+        <ruby>evaṁ<rt>이렇게</rt></ruby>
+        <ruby>vadāmi<rt>말한다</rt></ruby>
+        <ruby>yadidaṁ<rt>즉</rt></ruby>—
+        <ruby>assāsapassāsānaṁ<rt>받아들임-통찰의</rt></ruby>
+        <ruby>sādhukaṁ<rt>철저한</rt></ruby>
+        <ruby>manasikāraṁ<rt>작의(作意)를</rt></ruby>.
+      </div>
+    </div>
+
+    <div class="commentary">
+      <span class="commentary-label">PD 메모 — Sādhukaṁ Manasikāra</span>
+      §24.6에서 <em>assāsapassāsa</em>가 "kāya들 중 한 kāya"로 정의된 것에 이어, §25.6에서는 <strong>그것에 대한 철저한 작의(<em>sādhukaṁ manasikāraṁ</em>)</strong>가 vedanā 영역에서 일어나는 한 종류의 vedanā로 정의된다. 즉 가르침을 받아들이고 통찰하는 작용은 그 자체가 <strong>특수한 종류의 정신적 경험(vedanā)</strong>으로, 이를 통해 오염(kāma saññā 등)이 제거된다. 이 단계는 <em>nirāmisa vedanā</em>(감각적 즐거움에 기반하지 않은 느낌)에 해당한다.
+    </div>
+  </section>
+
+  <!-- §25.7 -->
+  <section class="section">
+    <div class="section-marker">§ 25.7</div>
+    <p class="korean-text">
+      그러므로 bhikkhū여, 그 때에 bhikkhū는 vedanā들 안에서 vedanā를 따라 관찰하며 ... 머문다 — 마음에서 욕구와 싫어함을 제거하고서.
+    </p>
+    <div class="refrain-marker">§25.5 정구 동일 (<code>Tasmātiha</code>로 시작).</div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ============ Citte Cittānupassanā §26 ============ -->
+  <div class="chapter-heading">
+    <div class="label">Locative · 3rd Foundation Established</div>
+    <div class="title">Citte Cittānupassanā — citta 안에서 citta 관찰</div>
+    <div class="subtitle">§26.1 ~ §26.7</div>
+  </div>
+
+  <!-- §26.1-4 -->
+  <section class="section">
+    <div class="section-marker">§ 26.1 ~ § 26.4</div>
+    <p class="korean-text">
+      bhikkhū여, 어느 때 bhikkhū가 [자신을] 닦기를:
+      <br>① '나는 마음을 경험하면서 받아들이리라 / 지혜로 통찰하리라';
+      <br>② '나는 마음을 매우 기쁘게 하면서 받아들이리라 / 지혜로 통찰하리라';
+      <br>③ '나는 마음을 집중시키면서 받아들이리라 / 지혜로 통찰하리라';
+      <br>④ '나는 마음을 해탈시키면서 받아들이리라 / 지혜로 통찰하리라'—
+    </p>
+    <div class="refrain-marker">
+      §20.1 ~ §20.4의 4단계 정구를 <code>Yasmiṁ samaye</code> 도입 아래 동일하게 반복:
+      <br><em>cittapaṭisaṁvedī</em> · <em>abhippamodayaṁ cittaṁ</em> · <em>samādahaṁ cittaṁ</em> · <em>vimocayaṁ cittaṁ</em>.
+    </div>
+  </section>
+
+  <!-- §26.5 -->
+  <section class="section">
+    <div class="section-marker">§ 26.5</div>
+    <p class="korean-text">
+      bhikkhū여, 그 때에 bhikkhū는 citta 안에서 citta를 따라 관찰하며, 열심히 정진하고, 분명히 알아차리고, 알아차림을 갖춘 [자로서] 머문다 — 마음에서 욕구와 싫어함을 제거하고서.
+    </p>
+    <div class="pali-block">
+      <div class="pali-text">
+        <ruby>citte<rt>citta 안에서</rt></ruby>
+        <ruby>cittānupassī<rt>citta를 따라 관찰하는 [자]</rt></ruby>,
+        <ruby>bhikkhave<rt>비구들이여</rt></ruby>,
+        <ruby>tasmiṁ<rt>그</rt></ruby>
+        <ruby>samaye<rt>때에</rt></ruby>
+        <ruby>bhikkhu<rt>비구는</rt></ruby>
+        <ruby>viharati<rt>머문다</rt></ruby>
+        <ruby>ātāpī<rt>열심히 정진하며</rt></ruby>
+        <ruby>sampajāno<rt>분명히 알아차리며</rt></ruby>
+        <ruby>satimā<rt>알아차림 갖춘 [자로서]</rt></ruby>
+        <ruby>vineyya<rt>제거하고서</rt></ruby>
+        <ruby>loke<rt>세상에서</rt></ruby>
+        <ruby>abhijjhādomanassaṁ<rt>욕구와 싫어함을</rt></ruby>.
+      </div>
+    </div>
+  </section>
+
+  <!-- §26.6 — PD CRITICAL: muṭṭhassati = puthujjana -->
+  <section class="section">
+    <div class="section-marker">§ 26.6 · 결정적 진술</div>
+    <p class="korean-text">
+      bhikkhū여, <strong>나는 알아차림을 잃은 자(muṭṭhassati)에게, 분명히 알지 못하는 자(asampajāna)에게 ānāpānasati를 [닦으라고] 말하지 않는다.</strong> [즉, Satipaṭṭhāna Bhūmi에 들지 못한 자는 muṭṭhassati 상태이다. Sammā Sati는 Satipaṭṭhāna Bhūmi에서만 존재한다.]
+    </p>
+    <div class="pali-block">
+      <div class="pali-text">
+        <ruby>Nāhaṁ<rt>나는 ~않는다</rt></ruby>,
+        <ruby>bhikkhave<rt>비구들이여</rt></ruby>,
+        <ruby>muṭṭhassatissa<rt>알아차림을 잃은 자에게</rt></ruby>
+        <ruby>asampajānassa<rt>분명히 알지 못하는 자에게</rt></ruby>
+        <ruby>ānāpānassatiṁ<rt>아나빠나사띠를</rt></ruby>
+        <ruby>vadāmi<rt>말한다</rt></ruby>.
+      </div>
+    </div>
+
+    <div class="pd-critical">
+      <div class="pd-critical-label">Principle Zero · Ānāpānasati는 누가 닦을 수 있는가?</div>
+      이 한 문장은 통념적 호흡 명상 해석을 결정적으로 무너뜨린다.
+      <br><br>
+      <strong>통념적 곤란:</strong> 호흡 명상을 ānāpānasati라고 본다면, 누구나 호흡을 알아차리는 기초 수련은 가능한데 왜 붓다가 "muṭṭhassati에게는 가르치지 않는다"고 단언하는가? 호흡 명상은 입문자도 가능한 보편 수련이지 않은가?
+      <br><br>
+      <strong>PD 해석:</strong> <em>muṭṭhassati</em>는 <strong>puthujjana(범부) 그 자체에 대한 정의</strong>다. <em>sammā sati</em>는 Satipaṭṭhāna Bhūmi에서만 작동하며, 그 경지에는 Sotāpanna 이상만 진입할 수 있다. 따라서:
+      <table>
+        <tr>
+          <th>지위</th>
+          <th>Sati 상태</th>
+          <th>제2단계 Ānāpānasati 가능 여부</th>
+        </tr>
+        <tr>
+          <td>puthujjana</td>
+          <td><em>muṭṭhassati</em> (sati 부재)</td>
+          <td>불가능</td>
+        </tr>
+        <tr>
+          <td>Sotāpanna anugāmi</td>
+          <td>Sotāpanna phala 순간에 일시적 sati</td>
+          <td>제1단계 가능, 제2단계 진입 시작</td>
+        </tr>
+        <tr>
+          <td>Sotāpanna 이상</td>
+          <td><em>sammā sati</em> 자유롭게 가능</td>
+          <td>제2단계 자유롭게 가능</td>
+        </tr>
+      </table>
+      <div style="background: rgba(232, 220, 193, 0.4); border-left: 3px solid var(--gold-deep); padding: 14px 20px; margin: 14px 0; font-size: 13.5px; line-height: 1.7; color: var(--ink-soft);">
+        <strong style="color: var(--gold-deep); font-style: italic;">[병기 — SI-27 §13-14 시각]</strong>
+        <br>SI-27은 자격 경계를 약간 다르게 그린다:
+        <br>① "최소한의 sati"는 이미 <em>Sotāpanna Anugāmi 수준</em>에서 시작된다 (puthujjana는 <em>muṭṭhassati</em>로 ānāpānasati 자체가 불가).
+        <br>② Sotāpanna Anugāmi는 <strong>제1단계 ānāpānasati를 통해 Satipaṭṭhāna Bhūmi에 처음 진입</strong>한다.
+        <br>③ <strong>의지대로 자유로이 진입</strong>하려면 (정식) Sotāpanna가 되어 <em>제2단계</em>를 닦아야 한다.
+        <br>즉 위 표가 Sotāpanna Anugāmi의 sati를 "Sotāpanna phala 순간에 일시적"으로 한정한 데 비해, SI-27은 Anugāmi 수준에서 이미 제1단계 ānāpānasati가 가능하다고 본다 — Anugāmi의 sati 경계를 더 너그럽게 설정한다.
+      </div>
+      <strong>결론:</strong> 본 §26.6은 <strong>제2단계 ānāpānasati는 Sotāpanna 이상만 닦을 수 있다</strong>는 결정적 선언이다. 그리고 (제6부에서 다룰) 제3단계는 <strong>제2단계를 자유롭게 닦을 수 있는 자만이 진입 가능</strong>하다.
+    </div>
+  </section>
+
+  <!-- §26.7 -->
+  <section class="section">
+    <div class="section-marker">§ 26.7</div>
+    <p class="korean-text">
+      그러므로 bhikkhū여, 그 때에 (적어도 Sotāpanna 수준의 sati를 갖춘) bhikkhū는 citta 안에서 citta를 따라 관찰하며 ... 머문다 — 마음에서 욕구와 싫어함을 제거하고서. [즉, 제3단계 ānāpānasati는 Sotāpanna 이상만 닦을 수 있다.]
+    </p>
+    <div class="refrain-marker">§26.5 정구 동일 (<code>Tasmātiha</code>로 시작).</div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ============ Dhammesu Dhammānupassanā §27 ============ -->
+  <div class="chapter-heading">
+    <div class="label">Locative · 4th Foundation Established</div>
+    <div class="title">Dhammesu Dhammānupassanā — dhamma들 안에서 dhamma 관찰</div>
+    <div class="subtitle">§27.1 ~ §27.7</div>
+  </div>
+
+  <!-- §27.1-4 -->
+  <section class="section">
+    <div class="section-marker">§ 27.1 ~ § 27.4</div>
+    <p class="korean-text">
+      bhikkhū여, 어느 때 bhikkhū가 [자신을] 닦기를:
+      <br>① '나는 anicca(원하는 대로 유지할 수 없음)를 따라 관찰하면서 받아들이리라 / 지혜로 통찰하리라';
+      <br>② '나는 virāga(이탐)을 따라 관찰하면서 받아들이리라 / 지혜로 통찰하리라';
+      <br>③ '나는 nirodha(멸)을 따라 관찰하면서 받아들이리라 / 지혜로 통찰하리라';
+      <br>④ '나는 paṭinissagga(방사)를 따라 관찰하면서 받아들이리라 / 지혜로 통찰하리라'—
+    </p>
+    <div class="refrain-marker">
+      §21.1 ~ §21.4의 4법 정구를 <code>Yasmiṁ samaye</code> 도입 아래 동일하게 반복:
+      <br><em>aniccānupassī</em> · <em>virāgānupassī</em> · <em>nirodhānupassī</em> · <em>paṭinissaggānupassī</em>.
+    </div>
+  </section>
+
+  <!-- §27.5 -->
+  <section class="section">
+    <div class="section-marker">§ 27.5</div>
+    <p class="korean-text">
+      bhikkhū여, 그 때에 bhikkhū는 dhamma들 안에서 dhamma를 따라 관찰하며, 열심히 정진하고, 분명히 알아차리고, 알아차림을 갖춘 [자로서] 머문다 — 마음에서 욕구(abhijjhā)와 싫어함(domanassa)을 제거하고서.
+    </p>
+    <div class="pali-block">
+      <div class="pali-text">
+        <ruby>dhammesu<rt>dhamma들 안에서</rt></ruby>
+        <ruby>dhammānupassī<rt>dhamma를 따라 관찰하는 [자]</rt></ruby>,
+        <ruby>bhikkhave<rt>비구들이여</rt></ruby>,
+        <ruby>tasmiṁ<rt>그</rt></ruby>
+        <ruby>samaye<rt>때에</rt></ruby>
+        <ruby>bhikkhu<rt>비구는</rt></ruby>
+        <ruby>viharati<rt>머문다</rt></ruby>
+        <ruby>ātāpī<rt>열심히 정진하며</rt></ruby>
+        <ruby>sampajāno<rt>분명히 알아차리며</rt></ruby>
+        <ruby>satimā<rt>알아차림 갖춘 [자로서]</rt></ruby>
+        <ruby>vineyya<rt>제거하고서</rt></ruby>
+        <ruby>loke<rt>세상에서</rt></ruby>
+        <ruby>abhijjhādomanassaṁ<rt>욕구와 싫어함을</rt></ruby>.
+      </div>
+    </div>
+  </section>
+
+  <!-- §27.6 - new -->
+  <section class="section">
+    <div class="section-marker">§ 27.6 · 평정의 출현</div>
+    <p class="korean-text">
+      그 욕구와 싫어함의 제거를 지혜로 본 그는, 철저한 평정(sādhukaṁ ajjhupekkhitā)으로 바라보는 자가 된다.
+    </p>
+    <div class="pali-block">
+      <div class="pali-text">
+        <ruby>So<rt>그는</rt></ruby>
+        <ruby>yaṁ<rt>그</rt></ruby>
+        <ruby>taṁ<rt>그것을</rt></ruby>
+        <ruby>abhijjhādomanassānaṁ<rt>욕구와 싫어함의</rt></ruby>
+        <ruby>pahānaṁ<rt>제거를</rt></ruby>
+        <ruby>taṁ<rt>그것을</rt></ruby>
+        <ruby>paññāya<rt>지혜로</rt></ruby>
+        <ruby>disvā<rt>본 후</rt></ruby>
+        <ruby>sādhukaṁ<rt>철저하게</rt></ruby>
+        <ruby>ajjhupekkhitā<rt>평정으로 바라보는 자가</rt></ruby>
+        <ruby>hoti<rt>된다</rt></ruby>.
+      </div>
+    </div>
+
+    <div class="commentary">
+      <span class="commentary-label">학습 메모 — Ajjhupekkhitā의 의의</span>
+      <code>ajjhupekkhitā</code> = <em>ajjhu</em>(향해) + <em>upekkhā</em>(평정) + 행위자 명사. 즉 "평정의 상태에 도달한 자". 이 평정은 §39의 <em>upekkhā sambojjhaṅga</em>(사각지)와 직결된다. dhammānupassanā 단계에서 abhijjhā/domanassa의 제거를 지혜로 확인한 bhikkhū는 자연스럽게 평정에 도달하는데, 이는 강제된 무관심이 아니라 <strong>tilakkhaṇa 통찰의 결과로 나타나는 자연스러운 평정</strong>이다.
+      <br><br>
+      §27.6은 dhammānupassanā 단계에만 추가되는 정구다 (다른 세 사념처에는 없음). 이는 dhammānupassanā가 사념처의 정점이며 <strong>제3단계 칠각지 발현으로 직접 연결되는 다리</strong>임을 시사한다.
+    </div>
+  </section>
+
+  <!-- §27.7 -->
+  <section class="section">
+    <div class="section-marker">§ 27.7</div>
+    <p class="korean-text">
+      그러므로 bhikkhū여, 그 때에 bhikkhū는 dhamma들 안에서 dhamma를 따라 관찰하며 ... 머문다 — 마음에서 욕구와 싫어함을 제거하고서.
+    </p>
+    <div class="refrain-marker">§27.5 정구 동일 (<code>Tasmātiha</code>로 시작).</div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- §28.1 — Stage 2 Conclusion -->
+  <section class="section">
+    <div class="section-marker">§ 28.1 · 제2단계 결어</div>
+    <p class="korean-text">
+      bhikkhū여, 이와 같이 ānāpānasati(가르침의 받아들임과 통찰의 알아차림)를 닦고 자주 행하면 사념처를 충족시킨다.
+    </p>
+    <div class="pali-block">
+      <div class="pali-text">
+        <ruby>Evaṁ<rt>이와 같이</rt></ruby>
+        <ruby>bhāvitā<rt>닦여서</rt></ruby>
+        <ruby>kho<rt>실로</rt></ruby>,
+        <ruby>bhikkhave<rt>비구들이여</rt></ruby>,
+        <ruby>ānāpānassati<rt>아나빠나사띠가</rt></ruby>
+        <ruby>evaṁ<rt>이와 같이</rt></ruby>
+        <ruby>bahulīkatā<rt>자주 행해져서</rt></ruby>
+        <ruby>cattāro<rt>넷의</rt></ruby>
+        <ruby>satipaṭṭhāne<rt>사념처를</rt></ruby>
+        <ruby>paripūreti<rt>충족시킨다</rt></ruby>.
+      </div>
+    </div>
+
+    <div class="commentary">
+      <span class="commentary-label">제2단계 종합</span>
+      §23~§28에서 제시된 4사념처 처격 정구는 <strong>ānāpānasati → 사념처 충족</strong>의 메커니즘을 단계별로 펼쳐 보였다. 핵심은:
+      <br>① <strong>처격(loc)의 의의</strong>: kāye/vedanāsu/citte/dhammesu — 수행자는 사념처를 외부에서 보는 것이 아니라 그 안에 머무른다.
+      <br>② <strong>Abhijjhādomanassa 제거</strong>: 매 사념처마다 반복되는 <em>vineyya loke abhijjhādomanassaṁ</em>은 Satipaṭṭhāna Bhūmi 진입의 표지.
+      <br>③ <strong>Sotāpanna 이상의 자격 요건</strong>: §26.6의 명시.
+      <br>④ <strong>Dhammānupassanā에서의 평정 출현</strong>: §27.6은 제3단계로의 자연스러운 다리.
+      <br><br>
+      이제 bhikkhū는 사념처에 자유롭게 머무를 수 있게 되었다. 다음 단계(§29~)에서는 이 사념처경지를 토대로 <strong>칠각지(Satta Bojjhaṅga)를 발현시키고 vijjāvimutti에 이르는 길</strong>이 펼쳐진다.
+    </div>
+  </section>
+
+  <footer class="footer">
+    제5부 마침 — Majjhima Nikāya 118 · §23.1 ~ §28.1 · 제2단계 Ānāpānasati
+    <div class="next">다음 (제6부): §29.1 ~ §36.2 — 제3단계 Part 1 · Kāya 기반 칠각지(Satta Bojjhaṅga) 발현 (sati → dhammavicaya → vīriya → pīti → passaddhi → samādhi → upekkhā)</div>
+  </footer>
+
+</div>
+
+</body>
+</html>
