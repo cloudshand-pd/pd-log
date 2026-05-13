@@ -1,0 +1,6 @@
+title: "pd-log"
+description: "개인 블로그 pd 포스트 html 저장용"
+baseurl: "/pd-log"
+url: "https://cloudshand-pd.github.io"
+
+theme: minima
