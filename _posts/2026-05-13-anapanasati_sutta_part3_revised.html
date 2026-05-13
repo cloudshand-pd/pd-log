@@ -1,0 +1,1040 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MN 118 — Ānāpānassatisutta (제3부)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Gentium+Plus:ital,wght@0,400;0,700;1,400;1,700&family=Noto+Serif+KR:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #1a1611;
+  --ink-soft: #4a4238;
+  --ink-faint: #8a8073;
+  --paper: #f4ede0;
+  --paper-warm: #ede4d0;
+  --gold: #8b6f3a;
+  --gold-deep: #6b5328;
+  --rust: #9c4a2a;
+  --rule: #c9bda3;
+  --pali-bg: #e8dcc1;
+  --commentary-bg: #f9f3e3;
+  --commentary-border: #b89a5e;
+  --refrain-bg: #ede4d0;
+  --pd-warning-bg: #f4e4d4;
+  --pd-warning-border: #9c4a2a;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--paper);
+  background-image:
+    radial-gradient(ellipse at top, rgba(139, 111, 58, 0.06) 0%, transparent 50%),
+    radial-gradient(ellipse at bottom, rgba(156, 74, 42, 0.04) 0%, transparent 50%);
+  color: var(--ink);
+  font-family: 'Gentium Plus', 'Noto Serif KR', serif;
+  line-height: 1.75;
+  font-size: 17px;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      transparent 0,
+      transparent 2px,
+      rgba(74, 66, 56, 0.015) 2px,
+      rgba(74, 66, 56, 0.015) 3px
+    );
+  z-index: 0;
+}
+
+.container {
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 80px 48px 120px;
+  position: relative;
+  z-index: 1;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 80px;
+  padding-bottom: 48px;
+  border-bottom: 1px solid var(--rule);
+  position: relative;
+}
+
+.header::after {
+  content: '❋';
+  position: absolute;
+  bottom: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--paper);
+  padding: 0 16px;
+  color: var(--gold);
+  font-size: 14px;
+}
+
+.sutta-number {
+  font-family: 'Gentium Plus', serif;
+  font-style: italic;
+  font-size: 14px;
+  letter-spacing: 0.3em;
+  color: var(--gold-deep);
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.sutta-title-pali {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 44px;
+  font-weight: 500;
+  font-style: italic;
+  color: var(--ink);
+  margin: 0 0 8px;
+  letter-spacing: -0.01em;
+}
+
+.sutta-title-ko {
+  font-family: 'Gentium Plus', 'Noto Serif KR', serif;
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--ink-soft);
+  letter-spacing: 0.15em;
+  margin-bottom: 24px;
+}
+
+.sutta-subtitle {
+  font-family: 'Gentium Plus', serif;
+  font-style: italic;
+  font-size: 15px;
+  color: var(--ink-faint);
+  letter-spacing: 0.05em;
+}
+
+.chapter-heading {
+  text-align: center;
+  margin: 60px 0 48px;
+  padding: 16px 0;
+  border-top: 2px double var(--gold);
+  border-bottom: 2px double var(--gold);
+}
+
+.chapter-heading .label {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 13px;
+  letter-spacing: 0.3em;
+  color: var(--gold-deep);
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.chapter-heading .title {
+  font-family: 'Gentium Plus', 'Noto Serif KR', serif;
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--ink);
+  letter-spacing: 0.05em;
+}
+
+/* === Ariya level card === */
+.ariya-card {
+  background: linear-gradient(135deg, rgba(139, 111, 58, 0.04) 0%, rgba(232, 220, 193, 0.3) 100%);
+  border: 1px solid var(--rule);
+  border-left: 4px solid var(--gold);
+  padding: 8px 24px 4px;
+  margin: 32px 0 16px;
+  position: relative;
+}
+
+.ariya-card .ariya-label {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 12px;
+  letter-spacing: 0.25em;
+  color: var(--gold-deep);
+  text-transform: uppercase;
+}
+
+.ariya-card .ariya-name {
+  font-family: 'Gentium Plus', serif;
+  font-style: italic;
+  font-size: 22px;
+  color: var(--ink);
+  margin: 4px 0 4px;
+}
+
+.ariya-card .ariya-name .ko {
+  font-family: 'Gentium Plus', 'Noto Serif KR', serif;
+  font-style: normal;
+  font-size: 16px;
+  color: var(--ink-soft);
+  margin-left: 12px;
+}
+
+.ariya-card .ariya-criterion {
+  font-family: 'Gentium Plus', 'Noto Serif KR', serif;
+  font-size: 13px;
+  color: var(--ink-faint);
+  margin-bottom: 6px;
+  letter-spacing: -0.005em;
+}
+
+.section {
+  margin-bottom: 56px;
+  position: relative;
+}
+
+.section-marker {
+  display: inline-block;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  color: var(--gold-deep);
+  background: var(--paper-warm);
+  padding: 4px 14px;
+  border: 1px solid var(--rule);
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+
+.korean-text {
+  font-family: 'Gentium Plus', 'Noto Serif KR', serif;
+  font-size: 17.5px;
+  font-weight: 400;
+  color: var(--ink);
+  line-height: 1.85;
+  margin: 0 0 20px;
+  letter-spacing: -0.005em;
+}
+
+.pali-block {
+  background: linear-gradient(
+    to right,
+    var(--pali-bg) 0%,
+    rgba(232, 220, 193, 0.5) 100%
+  );
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  padding: 22px 32px;
+  margin: 16px 0 12px;
+  position: relative;
+  font-family: 'Gentium Plus', serif;
+}
+
+
+.pali-text {
+  font-size: 21px;
+  line-height: 2.6;
+  color: var(--ink);
+  font-style: italic;
+  word-spacing: 0.15em;
+}
+
+.refrain-marker {
+  background: var(--refrain-bg);
+  border-left: 3px dashed var(--gold-deep);
+  padding: 14px 22px;
+  margin: 16px 0;
+  font-family: 'Gentium Plus', 'Noto Serif KR', serif;
+  font-size: 14px;
+  color: var(--ink-soft);
+  font-style: italic;
+}
+
+.refrain-marker::before {
+  content: '↻ ';
+  font-style: normal;
+  color: var(--gold-deep);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+}
+
+ruby {
+  ruby-position: over;
+  display: inline-flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  vertical-align: baseline;
+  line-height: 1;
+  margin: 0 1px;
+  text-align: center;
+}
+
+ruby > rt {
+  font-family: 'Gentium Plus', 'Noto Serif KR', serif;
+  font-style: normal;
+  font-size: 10.5px;
+  font-weight: 400;
+  color: var(--gold-deep);
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+  margin-bottom: 4px;
+  white-space: nowrap;
+  opacity: 0.92;
+  display: block;
+  text-align: center;
+}
+
+ruby:hover > rt {
+  color: var(--rust);
+  opacity: 1;
+}
+
+.commentary {
+  background: var(--commentary-bg);
+  border: 1px solid var(--commentary-border);
+  border-left-width: 3px;
+  padding: 18px 24px;
+  margin: 18px 0;
+  font-family: 'Gentium Plus', 'Noto Serif KR', serif;
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--ink-soft);
+  position: relative;
+}
+
+.commentary-label {
+  display: inline-block;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  color: var(--rust);
+  text-transform: uppercase;
+  margin-right: 8px;
+}
+
+.commentary-label::before {
+  content: '❖ ';
+}
+
+.commentary code, .commentary em {
+  font-family: 'Gentium Plus', serif;
+  font-style: normal;
+  color: var(--gold-deep);
+  font-size: 15px;
+}
+
+.pd-critical code, .pd-critical em {
+  font-family: 'Gentium Plus', serif;
+  font-style: normal;
+  color: var(--pd-warning-text, var(--rust));
+}
+
+/* === PD critical commentary (Principle Zero) === */
+.pd-critical {
+  background: var(--pd-warning-bg);
+  border: 1px solid var(--pd-warning-border);
+  border-left-width: 4px;
+  padding: 20px 24px;
+  margin: 20px 0;
+  font-family: 'Gentium Plus', 'Noto Serif KR', serif;
+  font-size: 15px;
+  line-height: 1.75;
+  color: var(--ink);
+  position: relative;
+}
+
+.pd-critical-label {
+  display: inline-block;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: var(--rust);
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.pd-critical-label::before {
+  content: '⚠ ';
+  font-style: normal;
+}
+
+.pd-critical table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 12px 0 4px;
+  font-size: 14px;
+}
+
+.pd-critical th {
+  text-align: left;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 600;
+  font-size: 12px;
+  color: var(--rust);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 6px 10px;
+  border-bottom: 1px solid var(--pd-warning-border);
+}
+
+.pd-critical td {
+  padding: 8px 10px;
+  vertical-align: top;
+  border-bottom: 1px solid rgba(156, 74, 42, 0.15);
+  font-size: 14px;
+}
+
+.pd-critical td:first-child {
+  font-family: 'Gentium Plus', serif;
+  font-style: italic;
+  color: var(--gold-deep);
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.divider {
+  text-align: center;
+  margin: 48px 0;
+  color: var(--rule);
+  font-size: 12px;
+  letter-spacing: 1em;
+}
+
+.divider::before {
+  content: '· · ·';
+}
+
+.footer {
+  margin-top: 80px;
+  padding-top: 32px;
+  border-top: 1px solid var(--rule);
+  text-align: center;
+  font-family: 'Gentium Plus', serif;
+  font-style: italic;
+  font-size: 14px;
+  color: var(--ink-faint);
+  letter-spacing: 0.05em;
+}
+
+.footer .next {
+  margin-top: 8px;
+  color: var(--gold-deep);
+  font-style: normal;
+  font-family: 'Gentium Plus', 'Noto Serif KR', serif;
+  font-size: 13px;
+}
+
+@media (max-width: 640px) {
+  .container { padding: 48px 24px 80px; }
+  .sutta-title-pali { font-size: 32px; }
+  .pali-block { padding: 18px 18px; }
+  .pali-text { font-size: 19px; line-height: 2.4; }
+  ruby > rt { font-size: 9.5px; }
+  .pd-critical table { font-size: 12px; }
+  .pd-critical th, .pd-critical td { padding: 6px 6px; }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <header class="header">
+    <div class="sutta-number">Majjhima Nikāya · 118</div>
+    <h1 class="sutta-title-pali">Ānāpānassatisutta</h1>
+    <div class="sutta-subtitle">제3부 — 회중에 머무는 수행자 유형 · §9.1 ~ §14.15</div>
+  </header>
+
+  <!-- ============ 사쌍팔배 — 사성위 ============ -->
+  <div class="chapter-heading">
+    <div class="label">Four Ariya Levels — 사쌍팔배</div>
+    <div class="title">네 단계의 성자(聖者)</div>
+  </div>
+
+  <!-- ===== Arahant ===== -->
+  <div class="ariya-card">
+    <div class="ariya-label">Stage IV · Final</div>
+    <div class="ariya-name">Arahant <span class="ko">아라한 — 모든 saṁyojana 소멸</span></div>
+    <div class="ariya-criterion">10 saṁyojana(결박) 모두 끊어짐 · āsava(번뇌) 다함 · 더 이상 윤회하지 않음</div>
+  </div>
+
+  <!-- §9.1 -->
+  <section class="section">
+    <div class="section-marker">§ 9.1</div>
+    <p class="korean-text">
+      "bhikkhū여, 이 bhikkhu Saṅgha에는 āsava(번뇌)가 다하고, 청정행을 살아내고, 해야 할 바를 다하고, 짐을 내려놓고, 자신의 참된 목적을 성취하고, 존재(bhava)의 saṁyojana(결박)를 완전히 끊어내고, 바른 구경지(sammadaññā)로 해탈한 arahant들이 있으니—
+    </p>
+    <div class="pali-block">
+      <div class="pali-text">
+        <ruby>Santi<rt>있다</rt></ruby>,
+        <ruby>bhikkhave<rt>비구들이여</rt></ruby>,
+        <ruby>bhikkhū<rt>비구들이</rt></ruby>
+        <ruby>imasmiṁ<rt>이</rt></ruby>
+        <ruby>bhikkhusaṅghe<rt>비구 승가에</rt></ruby>
+        <ruby>arahanto<rt>아라한들로서</rt></ruby>
+        <ruby>khīṇāsavā<rt>번뇌가 다한</rt></ruby>
+        <ruby>vusitavanto<rt>청정행을 살아낸</rt></ruby>
+        <ruby>katakaraṇīyā<rt>할 바를 다한</rt></ruby>
+        <ruby>ohitabhārā<rt>짐을 내려놓은</rt></ruby>
+        <ruby>anuppattasadatthā<rt>참된 목적을 성취한</rt></ruby>
+        <ruby>parikkhīṇabhavasaṁyojanā<rt>존재의 결박을 완전히 끊은</rt></ruby>
+        <ruby>sammadaññāvimuttā<rt>바른 구경지로 해탈한</rt></ruby>—
+      </div>
+    </div>
+
+    <div class="commentary">
+      <span class="commentary-label">학습 메모 — 아라한 7대 칭호</span>
+      이 일곱 형용사구는 Pāli 경전 전체에 걸쳐 정형화된 arahant 칭송이다.
+      <code>khīṇāsava</code> = 4가지 누(漏: kāma·bhava·diṭṭhi·avijjā)가 다함.
+      <code>vusitavant</code> = <code>vasi</code>(살다) + 과거분사 → "[성스러운 삶을] 살아낸".
+      <code>katakaraṇīya</code> = "해야 할 바(<code>karaṇīya</code>)를 다한(<code>kata</code>)" → 더 닦을 도가 없음.
+      <code>ohitabhāra</code> = pañcupādānakkhandha라는 짐을 내려놓음.
+      <code>anuppattasadattha</code> = 자신의 참된 목적(즉 nibbāna)을 성취.
+      <code>parikkhīṇabhavasaṁyojana</code> = 존재(bhava)의 결박이 완전히 끊어짐.
+      <code>sammadaññāvimutta</code> = <code>sammā</code>(바른) + <code>aññā</code>(구경지) + <code>vimutta</code>(해탈한).
+    </div>
+  </section>
+
+  <!-- §9.2 -->
+  <section class="section">
+    <div class="section-marker">§ 9.2</div>
+    <p class="korean-text">
+      bhikkhū여, 이러한 [모습의] bhikkhū들이 이 bhikkhu Saṅgha에 있다.
+    </p>
+    <div class="pali-block">
+      <div class="pali-text">
+        <ruby>evarūpāpi<rt>이러한 [모습의 자]도</rt></ruby>,
+        <ruby>bhikkhave<rt>비구들이여</rt></ruby>,
+        <ruby>santi<rt>있다</rt></ruby>
+        <ruby>bhikkhū<rt>비구들이</rt></ruby>
+        <ruby>imasmiṁ<rt>이</rt></ruby>
+        <ruby>bhikkhusaṅghe<rt>비구 승가에</rt></ruby>.
+      </div>
+    </div>
+
+    <div class="commentary">
+      <span class="commentary-label">정형구 안내</span>
+      이 닫힘 정형구 <code>evarūpāpi, bhikkhave, santi bhikkhū imasmiṁ bhikkhusaṅghe</code>는 §9.2 ~ §14.14까지 각 수행자 유형의 끝에서 반복된다. 이후로는 별도 주석 없이 표시만 한다.
+    </div>
+  </section>
+
+  <!-- ===== Anāgāmī ===== -->
+  <div class="ariya-card">
+    <div class="ariya-label">Stage III</div>
+    <div class="ariya-name">Anāgāmī <span class="ko">불환자 — 정거천에서 반열반</span></div>
+    <div class="ariya-criterion">5가지 낮은 결박(orambhāgiyāni saṁyojanāni) 끊어짐 · 정거천에서 화생하여 그곳에서 반열반</div>
+  </div>
+
+  <!-- §10.1 -->
+  <section class="section">
+    <div class="section-marker">§ 10.1</div>
+    <p class="korean-text">
+      bhikkhū여, 이 bhikkhu Saṅgha에는 다섯 가지 낮은 saṁyojana(orambhāgiyāni saṁyojanāni)를 완전히 끊어, 화생(opapātika)하여 그곳[정거천]에서 반열반(parinibbāyino)에 들어 그 세상에서 다시 돌아오지 않는 자들(anāgāmī)이 있으니—
+    </p>
+    <div class="pali-block">
+      <div class="pali-text">
+        <ruby>Santi<rt>있다</rt></ruby>,
+        <ruby>bhikkhave<rt>비구들이여</rt></ruby>,
+        <ruby>bhikkhū<rt>비구들이</rt></ruby>
+        <ruby>imasmiṁ<rt>이</rt></ruby>
+        <ruby>bhikkhusaṅghe<rt>비구 승가에</rt></ruby>
+        <ruby>pañcannaṁ<rt>다섯의</rt></ruby>
+        <ruby>orambhāgiyānaṁ<rt>낮은 부분에 속하는</rt></ruby>
+        <ruby>saṁyojanānaṁ<rt>결박들의</rt></ruby>
+        <ruby>parikkhayā<rt>완전한 소멸로</rt></ruby>
+        <ruby>opapātikā<rt>화생한 자들로서</rt></ruby>
+        <ruby>tattha<rt>그곳에서</rt></ruby>
+        <ruby>parinibbāyino<rt>반열반에 드는 자들</rt></ruby>
+        <ruby>anāvattidhammā<rt>돌아오지 않는 본성의</rt></ruby>
+        <ruby>tasmā<rt>그</rt></ruby>
+        <ruby>lokā<rt>세상에서</rt></ruby>—
+      </div>
+    </div>
+
+    <div class="commentary">
+      <span class="commentary-label">학습 메모 — 5가지 낮은 결박</span>
+      <code>orambhāgiyāni saṁyojanāni</code> = ① <em>sakkāyadiṭṭhi</em>(유신견), ② <em>vicikicchā</em>(의심), ③ <em>sīlabbataparāmāsa</em>(계금취), ④ <em>kāmarāga</em>(욕탐), ⑤ <em>byāpāda</em>(진에). Sotāpanna가 ①②③을, Sakadāgāmī가 ④⑤를 약화시키고, Anāgāmī가 ④⑤를 완전 제거한다. 5가지 높은 saṁyojana(<code>uddhambhāgiya</code>)는 arahant phala에서 끊어진다.
+    </div>
+  </section>
+
+  <!-- §10.2 -->
+  <section class="section">
+    <div class="section-marker">§ 10.2</div>
+    <p class="korean-text">bhikkhū여, 이러한 [모습의] bhikkhū들이 이 bhikkhu Saṅgha에 있다.</p>
+    <div class="refrain-marker">§9.2 닫힘 정형구 동일 — <code style="font-family:'Gentium Plus',serif;font-style:italic;color:var(--gold-deep);">evarūpāpi, bhikkhave, santi bhikkhū imasmiṁ bhikkhusaṅghe</code>.</div>
+  </section>
+
+  <!-- ===== Sakadāgāmī ===== -->
+  <div class="ariya-card">
+    <div class="ariya-label">Stage II</div>
+    <div class="ariya-name">Sakadāgāmī <span class="ko">일래자 — 한 번 돌아오는 자</span></div>
+    <div class="ariya-criterion">3가지 결박 끊어짐 + rāga·dosa·moha 약화 · 이 세상에 단 한 번 돌아와 고를 종식</div>
+  </div>
+
+  <!-- §11.1 -->
+  <section class="section">
+    <div class="section-marker">§ 11.1</div>
+    <p class="korean-text">
+      bhikkhū여, 이 bhikkhu Saṅgha에는 세 가지 saṁyojana를 완전히 끊고, rāga(탐)·dosa(진)·moha(치)가 옅어진 sakadāgāmī(일래자)들이 있으니, 그들은 이 세상에 단 한 번만 돌아와 dukkha(괴로움)의 끝을 만들 것이다—
+    </p>
+    <div class="pali-block">
+      <div class="pali-text">
+        <ruby>Santi<rt>있다</rt></ruby>,
+        <ruby>bhikkhave<rt>비구들이여</rt></ruby>,
+        <ruby>bhikkhū<rt>비구들이</rt></ruby>
+        <ruby>imasmiṁ<rt>이</rt></ruby>
+        <ruby>bhikkhusaṅghe<rt>비구 승가에</rt></ruby>
+        <ruby>tiṇṇaṁ<rt>셋의</rt></ruby>
+        <ruby>saṁyojanānaṁ<rt>결박들의</rt></ruby>
+        <ruby>parikkhayā<rt>완전한 소멸로</rt></ruby>
+        <ruby>rāgadosamohānaṁ<rt>탐·진·치의</rt></ruby>
+        <ruby>tanuttā<rt>옅어짐으로 인해</rt></ruby>
+        <ruby>sakadāgāmino<rt>한 번 돌아오는 자들</rt></ruby>
+        <ruby>sakideva<rt>단 한 번만</rt></ruby>
+        <ruby>imaṁ<rt>이</rt></ruby>
+        <ruby>lokaṁ<rt>세상에</rt></ruby>
+        <ruby>āgantvā<rt>돌아와서</rt></ruby>
+        <ruby>dukkhassantaṁ<rt>괴로움의 끝을</rt></ruby>
+        <ruby>karissanti<rt>만들 것이다</rt></ruby>—
+      </div>
+    </div>
+
+    <div class="commentary">
+      <span class="commentary-label">학습 메모</span>
+      <code>tanuttā</code>는 <code>tanu</code>(엷은) + <code>-ttā</code>(추상명사 어미, 탈격) → "옅어짐으로 인해". Sakadāgāmī는 <em>kāmarāga</em>와 <em>byāpāda</em>를 완전히 제거하지 못했지만 <strong>현저히 약화</strong>시킨 단계다. <code>sakid + eva</code> = "단 한 번만" — kāma loka의 인간 또는 deva로 한 번 더 태어나 그 생에서 arahant가 됨.
+    </div>
+  </section>
+
+  <!-- §11.2 -->
+  <section class="section">
+    <div class="section-marker">§ 11.2</div>
+    <p class="korean-text">bhikkhū여, 이러한 [모습의] bhikkhū들이 이 bhikkhu Saṅgha에 있다.</p>
+    <div class="refrain-marker">§9.2 닫힘 정형구 동일.</div>
+  </section>
+
+  <!-- ===== Sotāpanna ===== -->
+  <div class="ariya-card">
+    <div class="ariya-label">Stage I · Entry</div>
+    <div class="ariya-name">Sotāpanna <span class="ko">예류자 — 흐름에 든 자</span></div>
+    <div class="ariya-criterion">3가지 결박(sakkāyadiṭṭhi·vicikicchā·sīlabbataparāmāsa) 끊어짐 · 악도 미생 · 정등각으로 향함</div>
+  </div>
+
+  <!-- §12.1 -->
+  <section class="section">
+    <div class="section-marker">§ 12.1</div>
+    <p class="korean-text">
+      bhikkhū여, 이 bhikkhu Saṅgha에는 세 가지 saṁyojana를 완전히 끊고, 악도에 떨어지지 않는 본성(avinipātadhamma)을 가진, [해탈에] 결정된(niyata), 정등각(sambodhi)을 향해 가는 sotāpanna(예류자)들이 있으니—
+    </p>
+    <div class="pali-block">
+      <div class="pali-text">
+        <ruby>Santi<rt>있다</rt></ruby>,
+        <ruby>bhikkhave<rt>비구들이여</rt></ruby>,
+        <ruby>bhikkhū<rt>비구들이</rt></ruby>
+        <ruby>imasmiṁ<rt>이</rt></ruby>
+        <ruby>bhikkhusaṅghe<rt>비구 승가에</rt></ruby>
+        <ruby>tiṇṇaṁ<rt>셋의</rt></ruby>
+        <ruby>saṁyojanānaṁ<rt>결박들의</rt></ruby>
+        <ruby>parikkhayā<rt>완전한 소멸로</rt></ruby>
+        <ruby>sotāpannā<rt>흐름에 든 자들</rt></ruby>
+        <ruby>avinipātadhammā<rt>악도에 떨어지지 않는 본성의</rt></ruby>
+        <ruby>niyatā<rt>결정된</rt></ruby>
+        <ruby>sambodhiparāyanā<rt>정등각을 향해 가는</rt></ruby>—
+      </div>
+    </div>
+
+    <div class="commentary">
+      <span class="commentary-label">학습 메모 — 예류자 4 특성</span>
+      <code>sotāpanna</code> = <code>sota</code>(흐름, 즉 ariya magga의 흐름) + <code>āpanna</code>(들어선). 한 번 들어서면 7생 이내에 반드시 arahant가 되며, 결코 puthujjana로 돌아가지 않는다.
+      <code>avinipātadhamma</code> = <code>a-</code>(부정) + <code>vinipāta</code>(악도 추락) + <code>dhamma</code>(본성).
+      <code>niyata</code> = "[해탈에] 결정된". 
+      <code>sambodhiparāyana</code> = <code>sambodhi</code>(정등각) + <code>parāyana</code>(궁극의 의지처/목적지).
+    </div>
+  </section>
+
+  <!-- §12.2 -->
+  <section class="section">
+    <div class="section-marker">§ 12.2</div>
+    <p class="korean-text">bhikkhū여, 이러한 [모습의] bhikkhū들이 이 bhikkhu Saṅgha에 있다.</p>
+    <div class="refrain-marker">§9.2 닫힘 정형구 동일.</div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ============ 37 보리분법 ============ -->
+  <div class="chapter-heading">
+    <div class="label">Bodhipakkhiya Dhammā · 37 Wings to Awakening</div>
+    <div class="title">37 보리분법(菩提分法) 수행자들</div>
+  </div>
+
+  <div class="commentary" style="margin-bottom: 32px;">
+    <span class="commentary-label">단원 안내</span>
+    §13 ~ §14.7은 37조도품(助道品)의 일곱 그룹을 차례로 열거한다 — ① 사념처(4) ② 사정근(4) ③ 사여의족(4) ④ 오근(5) ⑤ 오력(5) ⑥ 칠각지(7) ⑦ 팔정도(8) = 총 37. 각 그룹마다 동일한 정형구 <code>catunnaṁ/pañcannaṁ/sattannaṁ … bhāvanānuyogamanuyuttā viharanti</code>가 적용된다.
+  </div>
+
+  <!-- §13.1 -->
+  <section class="section">
+    <div class="section-marker">§ 13.1</div>
+    <p class="korean-text">
+      bhikkhū여, 이 bhikkhu Saṅgha에는 네 가지 satipaṭṭhāna(사념처)의 bhāvanā에 매진하며 머무는 bhikkhū들이 있으니—
+    </p>
+    <div class="pali-block">
+      <div class="pali-text">
+        <ruby>Santi<rt>있다</rt></ruby>,
+        <ruby>bhikkhave<rt>비구들이여</rt></ruby>,
+        <ruby>bhikkhū<rt>비구들이</rt></ruby>
+        <ruby>imasmiṁ<rt>이</rt></ruby>
+        <ruby>bhikkhusaṅghe<rt>비구 승가에</rt></ruby>
+        <ruby>catunnaṁ<rt>넷의</rt></ruby>
+        <ruby>satipaṭṭhānānaṁ<rt>사념처의</rt></ruby>
+        <ruby>bhāvanānuyogamanuyuttā<rt>닦음에 매진하며</rt></ruby>
+        <ruby>viharanti<rt>머문다</rt></ruby>—
+      </div>
+    </div>
+
+    <div class="commentary">
+      <span class="commentary-label">학습 메모</span>
+      <code>bhāvanānuyogam-anuyuttā</code> = <code>bhāvanā</code>(닦음) + <code>anuyoga</code>(매진) + <code>anuyutta</code>(전념하는). "닦음의 매진에 전념하는"이라는 강조 표현. <code>satipaṭṭhāna</code> = <code>sati</code>(samma sati) + <code>upaṭṭhāna</code>(확립) → "sati의 확립". 사념처: kāya·vedanā·citta·dhamma. 본 경 §15 이후의 핵심 주제.
+    </div>
+  </section>
+
+  <!-- §13.2 -->
+  <section class="section">
+    <div class="section-marker">§ 13.2</div>
+    <p class="korean-text">bhikkhū여, 이러한 [모습의] bhikkhū들이 이 bhikkhu Saṅgha에 있다.</p>
+    <div class="refrain-marker">§9.2 닫힘 정형구 동일.</div>
+  </section>
+
+  <!-- §14.1 -->
+  <section class="section">
+    <div class="section-marker">§ 14.1</div>
+    <p class="korean-text">
+      bhikkhū여, 이 bhikkhu Saṅgha에는 네 가지 sammappadhāna(사정근)의 bhāvanā에 매진하며 머무는 bhikkhū들이 있다 …
+    </p>
+    <div class="pali-block">
+      <div class="pali-text">
+        <ruby>Santi<rt>있다</rt></ruby>,
+        <ruby>bhikkhave<rt>비구들이여</rt></ruby>,
+        <ruby>bhikkhū<rt>비구들이</rt></ruby>
+        <ruby>imasmiṁ<rt>이</rt></ruby>
+        <ruby>bhikkhusaṅghe<rt>비구 승가에</rt></ruby>
+        <ruby>catunnaṁ<rt>넷의</rt></ruby>
+        <ruby>sammappadhānānaṁ<rt>사정근의</rt></ruby>
+        <ruby>bhāvanānuyogamanuyuttā<rt>닦음에 매진하며</rt></ruby>
+        <ruby>viharanti<rt>머문다</rt></ruby> …<ruby>pe<rt>[정형구 생략]</rt></ruby>…
+      </div>
+    </div>
+
+    <div class="commentary">
+      <span class="commentary-label">학습 메모 — Peyyāla</span>
+      <code>…pe…</code>는 <em>peyyāla</em>(반복 생략 표시)로, 빨리 성전 편집 관행의 핵심 장치다. "동일한 정형구가 여기에 들어가야 한다"는 의미. 본 §13.1과 동일한 닫힘 정형구가 §14.7까지 묵시적으로 따라붙는다.
+      <br><br>
+      <code>sammappadhāna</code> = <code>sammā</code>(바른) + <code>padhāna</code>(노력) → 사정근: ① 미생악 불생, ② 기생악 단멸, ③ 미생선 생기, ④ 기생선 증장.
+    </div>
+  </section>
+
+  <!-- §14.2 -->
+  <section class="section">
+    <div class="section-marker">§ 14.2</div>
+    <p class="korean-text">… 네 가지 여의족(iddhipāda) …</p>
+    <div class="pali-block">
+      <div class="pali-text">
+        <ruby>catunnaṁ<rt>넷의</rt></ruby>
+        <ruby>iddhipādānaṁ<rt>여의족의</rt></ruby> …
+      </div>
+    </div>
+    <div class="commentary">
+      <span class="commentary-label">학습 메모</span>
+      <code>iddhi</code>(신통/성취) + <code>pāda</code>(발/기반) → 사여의족: ① <em>chanda</em>(욕), ② <em>viriya</em>(정진), ③ <em>citta</em>(심), ④ <em>vīmaṁsā</em>(관찰)을 기반으로 한 삼매(samādhi).
+    </div>
+  </section>
+
+  <!-- §14.3 -->
+  <section class="section">
+    <div class="section-marker">§ 14.3</div>
+    <p class="korean-text">… 다섯 가지 근(indriya) …</p>
+    <div class="pali-block">
+      <div class="pali-text">
+        <ruby>pañcannaṁ<rt>다섯의</rt></ruby>
+        <ruby>indriyānaṁ<rt>근의</rt></ruby> …
+      </div>
+    </div>
+    <div class="commentary">
+      <span class="commentary-label">학습 메모</span>
+      오근(五根): <em>saddhā</em>(신) · <em>viriya</em>(정진) · <em>sati</em>(념) · <em>samādhi</em>(정) · <em>paññā</em>(혜). 영적 능력의 다섯 뿌리.
+    </div>
+  </section>
+
+  <!-- §14.4 -->
+  <section class="section">
+    <div class="section-marker">§ 14.4</div>
+    <p class="korean-text">… 다섯 가지 력(bala) …</p>
+    <div class="pali-block">
+      <div class="pali-text">
+        <ruby>pañcannaṁ<rt>다섯의</rt></ruby>
+        <ruby>balānaṁ<rt>력의</rt></ruby> …
+      </div>
+    </div>
+    <div class="commentary">
+      <span class="commentary-label">학습 메모</span>
+      오력(五力)은 오근과 동일한 다섯 요소이지만, 흔들리지 않는 <strong>강고한 힘</strong>으로 작용하는 단계 — 즉 그 반대(불신·게으름·실념·산란·무명)에 의해 동요되지 않는 상태.
+    </div>
+  </section>
+
+  <!-- §14.5 -->
+  <section class="section">
+    <div class="section-marker">§ 14.5</div>
+    <p class="korean-text">… 일곱 가지 각지(bojjhaṅga) …</p>
+    <div class="pali-block">
+      <div class="pali-text">
+        <ruby>sattannaṁ<rt>일곱의</rt></ruby>
+        <ruby>bojjhaṅgānaṁ<rt>각지의</rt></ruby> …
+      </div>
+    </div>
+    <div class="commentary">
+      <span class="commentary-label">학습 메모 · §29 이후의 주제</span>
+      <code>bojjhaṅga</code> = <code>bodhi</code>(samma sambodhi) + <code>aṅga</code>(요소) → 칠각지: ① sati ② dhammavicaya ③ viriya ④ pīti ⑤ passaddhi ⑥ samādhi ⑦ upekkhā. <strong>본 경 §29~§43에서 ānāpānasati 제3단계의 핵심 골격</strong>으로 다시 등장한다.
+    </div>
+  </section>
+
+  <!-- §14.6 -->
+  <section class="section">
+    <div class="section-marker">§ 14.6</div>
+    <p class="korean-text">… ariya aṭṭhaṅgika magga(성스러운 팔정도)의 bhāvanā에 매진하며 머무는 bhikkhū들이 있다—</p>
+    <div class="pali-block">
+      <div class="pali-text">
+        <ruby>ariyassa<rt>성스러운</rt></ruby>
+        <ruby>aṭṭhaṅgikassa<rt>팔지(八支)의</rt></ruby>
+        <ruby>maggassa<rt>도(道)의</rt></ruby>
+        <ruby>bhāvanānuyogamanuyuttā<rt>닦음에 매진하며</rt></ruby>
+        <ruby>viharanti<rt>머문다</rt></ruby>—
+      </div>
+    </div>
+    <div class="commentary">
+      <span class="commentary-label">학습 메모</span>
+      팔정도: ① sammā diṭṭhi ② sammā saṅkappa ③ sammā vācā ④ sammā kammanta ⑤ sammā ājīva ⑥ sammā vāyāma ⑦ sammā sati ⑧ sammā samādhi. 37조도품의 마지막 그룹이자 가장 포괄적인 정의.
+    </div>
+  </section>
+
+  <!-- §14.7 -->
+  <section class="section">
+    <div class="section-marker">§ 14.7</div>
+    <p class="korean-text">bhikkhū여, 이러한 [모습의] bhikkhū들이 이 bhikkhu Saṅgha에 있다.</p>
+    <div class="refrain-marker">§9.2 닫힘 정형구 동일 — 37조도품 단원의 종결.</div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ============ 사무량심 + 부수 수행 ============ -->
+  <div class="chapter-heading">
+    <div class="label">Brahma-vihāra & Other Practices</div>
+    <div class="title">사무량심(四無量心) 및 보조 수행</div>
+  </div>
+
+  <!-- §14.8 -->
+  <section class="section">
+    <div class="section-marker">§ 14.8</div>
+    <p class="korean-text">
+      bhikkhū여, 이 bhikkhu Saṅgha에는 mettā(자, 慈) bhāvanā에 매진하며 머무는 bhikkhū들이 있다 …
+    </p>
+    <div class="pali-block">
+      <div class="pali-text">
+        <ruby>Santi<rt>있다</rt></ruby>,
+        <ruby>bhikkhave<rt>비구들이여</rt></ruby>,
+        <ruby>bhikkhū<rt>비구들이</rt></ruby>
+        <ruby>imasmiṁ<rt>이</rt></ruby>
+        <ruby>bhikkhusaṅghe<rt>비구 승가에</rt></ruby>
+        <ruby>mettābhāvanānuyogamanuyuttā<rt>자 닦음에 매진하며</rt></ruby>
+        <ruby>viharanti<rt>머문다</rt></ruby> …
+      </div>
+    </div>
+  </section>
+
+  <!-- §14.9 -->
+  <section class="section">
+    <div class="section-marker">§ 14.9</div>
+    <p class="korean-text">… 비(悲, karuṇā) 닦음에 매진하며 머무는 자들이 …</p>
+    <div class="pali-block">
+      <div class="pali-text">
+        <ruby>karuṇābhāvanānuyogamanuyuttā<rt>비 닦음에 매진하며</rt></ruby>
+        <ruby>viharanti<rt>머문다</rt></ruby> …
+      </div>
+    </div>
+  </section>
+
+  <!-- §14.10 -->
+  <section class="section">
+    <div class="section-marker">§ 14.10</div>
+    <p class="korean-text">… 희(喜, muditā) 닦음에 매진하며 머무는 자들이 …</p>
+    <div class="pali-block">
+      <div class="pali-text">
+        <ruby>muditābhāvanānuyogamanuyuttā<rt>희 닦음에 매진하며</rt></ruby>
+        <ruby>viharanti<rt>머문다</rt></ruby> …
+      </div>
+    </div>
+  </section>
+
+  <!-- §14.11 -->
+  <section class="section">
+    <div class="section-marker">§ 14.11</div>
+    <p class="korean-text">… 사(捨, upekkhā) 닦음에 매진하며 머무는 자들이 …</p>
+    <div class="pali-block">
+      <div class="pali-text">
+        <ruby>upekkhābhāvanānuyogamanuyuttā<rt>사 닦음에 매진하며</rt></ruby>
+        <ruby>viharanti<rt>머문다</rt></ruby> …
+      </div>
+    </div>
+    <div class="commentary">
+      <span class="commentary-label">학습 메모 — 사무량심(Brahma-vihāra)</span>
+      네 가지 무량(無量)한 마음의 머묾: <code>mettā</code>(모든 존재의 안락 기원) · <code>karuṇā</code>(고통받는 존재에 대한 연민) · <code>muditā</code>(타인의 행복에 대한 함께 기뻐함) · <code>upekkhā</code>(평정한 마음). PD에서 upekkhā는 단순한 무관심이 아닌 <strong>tilakkhaṇa의 통찰을 통해 자연스럽게 도달한 평정</strong>을 의미한다 — Brahma-vihāra의 upekkhā가 아닌 ariya upekkhā (cf. §36, §39의 upekkhā-sambojjhaṅga 참조).
+    </div>
+  </section>
+
+  <!-- §14.12 — asubha -->
+  <section class="section">
+    <div class="section-marker">§ 14.12</div>
+    <p class="korean-text">
+      … asubha(무익함) 인식의 bhāvanā에 매진하며 머무는 자들이 …
+    </p>
+    <div class="pali-block">
+      <div class="pali-text">
+        <ruby>asubhabhāvanānuyogamanuyuttā<rt>아수바 닦음에 매진하며</rt></ruby>
+        <ruby>viharanti<rt>머문다</rt></ruby> …
+      </div>
+    </div>
+
+    <div class="pd-critical">
+      <div class="pd-critical-label">PD 해석 vs 통념 — Asubha</div>
+      <table>
+        <tr>
+          <th>관점</th>
+          <th><code>asubha</code>의 의미</th>
+          <th>실천 형태</th>
+        </tr>
+        <tr>
+          <td>통념</td>
+          <td>몸의 부정(不淨)함 · 추함 · 혐오스러움</td>
+          <td>32부분 관찰, 묘지에서 시체 9단계 관찰</td>
+        </tr>
+        <tr>
+          <td>PD</td>
+          <td><code>a-</code>(부정) + <code>subha</code>(이익·길상) → "유익하지 않음", "최종적 안녕에 도움 안 됨"</td>
+          <td>감각적 즐거움이 nibbāna에 이로움이 없음을 통찰</td>
+        </tr>
+      </table>
+      본 번역의 영문 "<em>unfruitful or not beneficial</em>"은 PD 해석 노선을 따른다. 즉 외적 대상이 그 자체로 "더럽다"는 것이 아니라, 그것에 대한 추구가 <strong>최종적 안녕(parama-subha = nibbāna)을 가져오지 못한다</strong>는 통찰이다.
+    </div>
+  </section>
+
+  <!-- §14.13 — aniccasaññā : CRITICAL PD POINT -->
+  <section class="section">
+    <div class="section-marker">§ 14.13</div>
+    <p class="korean-text">
+      … aniccasaññā(원하는 대로 유지할 수 없음의 인식) bhāvanā에 매진하며 머무는 자들이 [있으니]—
+    </p>
+    <div class="pali-block">
+      <div class="pali-text">
+        <ruby>aniccasaññābhāvanānuyogamanuyuttā<rt>아닛짜 인식 닦음에 매진하며</rt></ruby>
+        <ruby>viharanti<rt>머문다</rt></ruby>—
+      </div>
+    </div>
+
+    <div class="pd-critical">
+      <div class="pd-critical-label">Principle Zero · Anicca의 PD 해석</div>
+      <table>
+        <tr>
+          <th>관점</th>
+          <th><code>anicca</code>의 어원·의미</th>
+          <th>실천적 함의</th>
+        </tr>
+        <tr>
+          <td>통념</td>
+          <td><code>a-</code> + <code>nicca</code>(영원함) = <strong>impermanence(무상)</strong></td>
+          <td>모든 것이 변한다는 사실을 관찰</td>
+        </tr>
+        <tr>
+          <td>PD</td>
+          <td><code>icca</code>(원하는) → <code>nicca</code>(원하는 대로 유지하는) → <code>anicca</code>: <strong>원하는 대로 유지할 수 없음</strong></td>
+          <td>pañcupādānakkhandha의 어떤 것도 자기 뜻대로 유지할 수 없음을 통찰 → tilakkhaṇa의 첫 번째</td>
+        </tr>
+      </table>
+      본 번역이 <em>aniccasaññā</em>를 단순히 "perception of impermanence"가 아닌 "<strong>perception of not getting what one's desires</strong>"로 옮긴 것은 PD 해석을 명시적으로 채택한 것이다. <code>anicca</code>는 변화 자체가 문제인 것이 아니라, <strong>그 변화를 자기 뜻대로 통제할 수 없음</strong>이 dukkha의 뿌리라는 통찰이다. 이것이 <code>anattā</code>(무력함, helplessness)와 자연스럽게 연결되는 지점이다.
+    </div>
+  </section>
+
+  <!-- §14.14 -->
+  <section class="section">
+    <div class="section-marker">§ 14.14</div>
+    <p class="korean-text">bhikkhū여, 이러한 [모습의] bhikkhū들이 이 bhikkhu Saṅgha에 있다.</p>
+    <div class="refrain-marker">§9.2 닫힘 정형구 동일.</div>
+  </section>
+
+  <!-- §14.15 — TRANSITION TO MAIN TEACHING -->
+  <section class="section">
+    <div class="section-marker">§ 14.15</div>
+    <p class="korean-text">
+      bhikkhū여, 이 bhikkhu Saṅgha에는 <strong>ānāpānassati bhāvanā에 매진하며 머무는 bhikkhū들이 있다.</strong>
+    </p>
+    <div class="pali-block">
+      <div class="pali-text">
+        <ruby>Santi<rt>있다</rt></ruby>,
+        <ruby>bhikkhave<rt>비구들이여</rt></ruby>,
+        <ruby>bhikkhū<rt>비구들이</rt></ruby>
+        <ruby>imasmiṁ<rt>이</rt></ruby>
+        <ruby>bhikkhusaṅghe<rt>비구 승가에</rt></ruby>
+        <ruby>ānāpānassatibhāvanānuyogamanuyuttā<rt>아나빠나사띠 닦음에 매진하며</rt></ruby>
+        <ruby>viharanti<rt>머문다</rt></ruby>.
+      </div>
+    </div>
+
+    <div class="pd-critical">
+      <div class="pd-critical-label">Principle Zero · Ānāpānasati의 PD 해석</div>
+      <table>
+        <tr>
+          <th>관점</th>
+          <th><code>ānāpānasati</code>의 의미</th>
+          <th>실천 / 대상</th>
+        </tr>
+        <tr>
+          <td>통념</td>
+          <td>"breath meditation" — 호흡에 대한 알아차림</td>
+          <td>들숨/날숨의 물리적 호흡</td>
+        </tr>
+        <tr>
+          <td>PD — PDF §17.2 (일차 자료)<sup>§A</sup></td>
+          <td>sammā sati로 [이해해야 할 가르침을] <strong>받아들이고(assasati)</strong> 같은 sammā sati로 <strong>지혜로 보거나 검증하는(passasati)</strong> 수행</td>
+          <td><code>assasati</code> = receives or takes in (what is to be understood) · <code>passasati</code> = see or grasp it with wisdom, verify</td>
+        </tr>
+        <tr>
+          <td>PD — 어원 노선 (보조)<sup>§B</sup></td>
+          <td>어원 분석: <code>āna</code>(받아들임) + <code>apāna</code>(버림) + <code>sati</code>(samma sati) → 마음에 <strong>kusala dhamma 수용 · akusala dhamma 제거</strong>의 알아차림</td>
+          <td>마음의 흐름 안에서 kusala(유익한 dhamma)는 받아들이고 akusala(해로운 dhamma)는 놓아버리는 작용</td>
+        </tr>
+      </table>
+      <p style="margin: 12px 0 0; font-size: 14px; color: var(--ink-soft);">
+        이 §14.15는 본 경의 핵심 주제로 진입하는 마지막 항목이다. 다음 §15.1부터 본격적으로 ānāpānasati의 3단계 수행이 펼쳐진다 — <strong>제1단계</strong>(사념처 입문, §15.1~22.1) → <strong>제2단계</strong>(사념처 확립, §23.1~28.1) → <strong>제3단계</strong>(칠각지 발현 및 vijjāvimutti, §29.1~43). PD 해석상 ānāpānasati는 호흡 명상이 아니라 <strong>가르침을 올바르게 받아들이고(assasati) 지혜로 통찰하는(passasati)</strong> 수행 전체를 가리킨다. 위 두 PD 노선은 상호 보완적이며, 본 경 §17.2에서 일차 자료가 본격적으로 채택하는 해석은 첫 번째 노선(assasati = take in, passasati = grasp with wisdom)이다 — 어원 노선은 그 작용의 결과적 함의(kusala/akusala의 분별)를 설명한다.
+      </p>
+      <div style="background: rgba(232, 220, 193, 0.4); border-left: 3px solid var(--gold-deep); padding: 12px 16px; margin-top: 14px; font-size: 13.5px;">
+        <strong>§A</strong> &nbsp; 일차 자료 PDF §17.2 (Part 4 §17.2에서 본문 등장 예정) — "He, with Sammā Sati (right mindfulness that comes with comprehension of the Four Noble Truths) [sotava = sati + eva], receives or takes in (what is to be understood) [assasati] and with that same Sammā Sati, to 'see or grasp it with wisdom' or verify. [passasati]" 본 노선은 assāsa/passāsa를 호흡 그 자체가 아닌 <em>kāya를 이해·통찰하는 행위</em>로 본다 [SI-27 §10].<br><br>
+        <strong>§B</strong> &nbsp; 보조 PD 노선 — <code>ānāpāna</code>의 어원적 분석을 통해 kusala 수용·akusala 방출의 의미를 부각 [ER-22 (Ānāpānasati not about breath — Icchānaṅgala Sutta)·BM-13 (What is Ānāpāna)·ER-23 (Ānāpānasati overview)]. 호흡 명상이 ānāpānasati 본래 의미가 아니라는 점을 강조하는 노선이다.
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    제3부 마침 — Majjhima Nikāya 118 · §9.1 ~ §14.15
+    <div class="next">다음 (제4부): §15.1 ~ §22.1 — Ānāpānasati 제1단계 (Kāya·Vedanā·Citta·Dhamma 사념처 입문 → Sotāpanna 도달)</div>
+  </footer>
+
+</div>
+
+</body>
+</html>
