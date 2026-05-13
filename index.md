@@ -3,7 +3,7 @@ layout: home
 title: "pd-log"
 ---
 
-product design, 일상, 공부 로그를 정리하는 개인 블로그입니다.
+product design, 일상, 공부 로그를 정리하는 개인 블로그입니다. 
 
 - 실험용 포스트
 - 배운 것 기록
