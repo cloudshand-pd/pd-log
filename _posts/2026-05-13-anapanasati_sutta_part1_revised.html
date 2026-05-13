@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MN 118 — Ānāpānassatisutta (제1부)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Gentium+Plus:ital,wght@0,400;0,700;1,400;1,700&family=Noto+Serif+KR:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #1a1611;
+  --ink-soft: #4a4238;
+  --ink-faint: #8a8073;
+  --paper: #f4ede0;
+  --paper-warm: #ede4d0;
+  --gold: #8b6f3a;
+  --gold-deep: #6b5328;
+  --rust: #9c4a2a;
+  --rule: #c9bda3;
+  --pali-bg: #e8dcc1;
+  --commentary-bg: #f9f3e3;
+  --commentary-border: #b89a5e;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--paper);
+  background-image:
+    radial-gradient(ellipse at top, rgba(139, 111, 58, 0.06) 0%, transparent 50%),
+    radial-gradient(ellipse at bottom, rgba(156, 74, 42, 0.04) 0%, transparent 50%);
+  color: var(--ink);
+  font-family: 'Gentium Plus', 'Noto Serif KR', serif;
+  line-height: 1.75;
+  font-size: 17px;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      transparent 0,
+      transparent 2px,
+      rgba(74, 66, 56, 0.015) 2px,
+      rgba(74, 66, 56, 0.015) 3px
+    );
+  z-index: 0;
+}
+
+.container {
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 80px 48px 120px;
+  position: relative;
+  z-index: 1;
+}
+
+/* === Header === */
+.header {
+  text-align: center;
+  margin-bottom: 80px;
+  padding-bottom: 48px;
+  border-bottom: 1px solid var(--rule);
+  position: relative;
+}
+
+.header::after {
+  content: '❋';
+  position: absolute;
+  bottom: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--paper);
+  padding: 0 16px;
+  color: var(--gold);
+  font-size: 14px;
+}
+
+.sutta-number {
+  font-family: 'Gentium Plus', serif;
+  font-style: normal;
+  font-size: 14px;
+  letter-spacing: 0.3em;
+  color: var(--gold-deep);
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.sutta-title-pali {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 44px;
+  font-weight: 500;
+  font-style: italic;
+  color: var(--ink);
+  margin: 0 0 8px;
+  letter-spacing: -0.01em;
+}
+
+.sutta-title-ko {
+  font-family: 'Gentium Plus', 'Noto Serif KR', serif;
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--ink-soft);
+  letter-spacing: 0.15em;
+  margin-bottom: 24px;
+}
+
+.sutta-subtitle {
+  font-family: 'Gentium Plus', serif;
+  font-style: normal;
+  font-size: 15px;
+  color: var(--ink-faint);
+  letter-spacing: 0.05em;
+}
+
+/* === Section markers === */
+.section {
+  margin-bottom: 56px;
+  position: relative;
+}
+
+.section-marker {
+  display: inline-block;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  color: var(--gold-deep);
+  background: var(--paper-warm);
+  padding: 4px 14px;
+  border: 1px solid var(--rule);
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+
+.korean-text {
+  font-family: 'Gentium Plus', 'Noto Serif KR', serif;
+  font-size: 17.5px;
+  font-weight: 400;
+  color: var(--ink);
+  line-height: 1.85;
+  margin: 0 0 20px;
+  letter-spacing: -0.005em;
+}
+
+/* === Pāli passage block === */
+.pali-block {
+  background: linear-gradient(
+    to right,
+    var(--pali-bg) 0%,
+    rgba(232, 220, 193, 0.5) 100%
+  );
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  padding: 22px 32px;
+  margin: 16px 0 12px;
+  position: relative;
+  font-family: 'Gentium Plus', serif;
+}
+
+
+.pali-text {
+  font-size: 21px;
+  line-height: 2.6;
+  color: var(--ink);
+  font-style: italic;
+  word-spacing: 0.15em;
+}
+
+/* === Ruby annotation styling === */
+ruby {
+  ruby-position: over;
+  display: inline-flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  vertical-align: baseline;
+  line-height: 1;
+  margin: 0 1px;
+  text-align: center;
+}
+
+ruby > rt {
+  font-family: 'Gentium Plus', 'Noto Serif KR', serif;
+  font-style: normal;
+  font-size: 10.5px;
+  font-weight: 400;
+  color: var(--gold-deep);
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+  margin-bottom: 4px;
+  white-space: nowrap;
+  opacity: 0.92;
+  display: block;
+  text-align: center;
+}
+
+ruby:hover > rt {
+  color: var(--rust);
+  opacity: 1;
+}
+
+ruby > rb,
+ruby:not(:has(rb)) {
+  font-style: italic;
+  font-family: 'Gentium Plus', serif;
+}
+
+/* === Commentary box === */
+.commentary {
+  background: var(--commentary-bg);
+  border: 1px solid var(--commentary-border);
+  border-left-width: 3px;
+  padding: 18px 24px;
+  margin: 18px 0;
+  font-family: 'Gentium Plus', 'Noto Serif KR', serif;
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--ink-soft);
+  position: relative;
+}
+
+.commentary-label {
+  display: inline-block;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  color: var(--rust);
+  text-transform: uppercase;
+  margin-right: 8px;
+}
+
+.commentary-label::before {
+  content: '❖ ';
+}
+
+.commentary code, .commentary em {
+  font-family: 'Gentium Plus', serif;
+  font-style: normal;
+  color: var(--gold-deep);
+  font-size: 15px;
+}
+
+/* === Section divider === */
+.divider {
+  text-align: center;
+  margin: 48px 0;
+  color: var(--rule);
+  font-size: 12px;
+  letter-spacing: 1em;
+}
+
+.divider::before {
+  content: '· · ·';
+}
+
+/* === Footer === */
+.footer {
+  margin-top: 80px;
+  padding-top: 32px;
+  border-top: 1px solid var(--rule);
+  text-align: center;
+  font-family: 'Gentium Plus', serif;
+  font-style: normal;
+  font-size: 14px;
+  color: var(--ink-faint);
+  letter-spacing: 0.05em;
+}
+
+.footer .next {
+  margin-top: 8px;
+  color: var(--gold-deep);
+  font-style: normal;
+  font-family: 'Gentium Plus', 'Noto Serif KR', serif;
+  font-size: 13px;
+}
+
+@media (max-width: 640px) {
+  .container { padding: 48px 24px 80px; }
+  .sutta-title-pali { font-size: 32px; }
+  .pali-block { padding: 18px 18px; }
+  .pali-text { font-size: 19px; line-height: 2.4; }
+  ruby > rt { font-size: 9.5px; }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <header class="header">
+    <div class="sutta-number">Majjhima Nikāya · 118</div>
+    <h1 class="sutta-title-pali">Ānāpānassatisutta</h1>
+    <div class="sutta-subtitle">제1부 — 서론 · §1.1 ~ §2.3</div>
+  </header>
+
+  <!-- §1.1 -->
+  <section class="section">
+    <div class="section-marker">§ 1.1</div>
+    <p class="korean-text">이와 같이 나는 들었다.</p>
+    <div class="pali-block">
+      <div class="pali-text">
+        <ruby>Evaṁ<rt>이와 같이</rt></ruby>
+        <ruby>me<rt>나에게</rt></ruby>
+        <ruby>sutaṁ<rt>들렸다</rt></ruby>—
+      </div>
+    </div>
+  </section>
+
+  <!-- §1.2 -->
+  <section class="section">
+    <div class="section-marker">§ 1.2</div>
+    <p class="korean-text">
+      한때 Bhagavā께서는 Sāvatthī의 Pubbārāma — Migāramātu의 대저택(Migāramātupāsāda) — 에서 잘 알려진 많은 thera sāvaka들과 함께 머무셨으니—
+    </p>
+    <div class="pali-block">
+      <div class="pali-text">
+        <ruby>ekaṁ<rt>한</rt></ruby>
+        <ruby>samayaṁ<rt>때에</rt></ruby>
+        <ruby>bhagavā<rt>세존께서</rt></ruby>
+        <ruby>sāvatthiyaṁ<rt>사왓티에</rt></ruby>
+        <ruby>viharati<rt>머무셨다</rt></ruby>
+        <ruby>pubbārāme<rt>동쪽 정원에서</rt></ruby>
+        <ruby>migāramātupāsāde<rt>미가라마따 대저택에서</rt></ruby>
+        <ruby>sambahulehi<rt>많은</rt></ruby>
+        <ruby>abhiññātehi&nbsp;abhiññātehi<rt>매우 잘 알려진</rt></ruby>
+        <ruby>therehi<rt>장로들과</rt></ruby>
+        <ruby>sāvakehi<rt>제자들과</rt></ruby>
+        <ruby>saddhiṁ<rt>함께</rt></ruby>—
+      </div>
+    </div>
+  </section>
+
+  <!-- §1.3 -->
+  <section class="section">
+    <div class="section-marker">§ 1.3</div>
+    <p class="korean-text">
+      곧 āyasmā Sāriputta, āyasmā Mahāmoggallāna, āyasmā Mahākassapa, āyasmā Mahākaccāyana, āyasmā Mahākoṭṭhika, āyasmā Mahākappina, āyasmā Mahācunda, āyasmā Anuruddha, āyasmā Revata, āyasmā Ānanda, 그 외 잘 알려진 다른 thera sāvaka들과 함께였다.
+    </p>
+    <div class="pali-block">
+      <div class="pali-text">
+        <ruby>āyasmatā<rt>존자</rt></ruby>
+        <ruby>ca<rt>그리고</rt></ruby>
+        <ruby>sāriputtena<rt>사리뿟따와</rt></ruby>
+        <ruby>āyasmatā<rt>존자</rt></ruby>
+        <ruby>ca<rt>그리고</rt></ruby>
+        <ruby>mahāmoggallānena<rt>마하목갈라나와</rt></ruby>
+        <ruby>āyasmatā<rt>존자</rt></ruby>
+        <ruby>ca<rt>그리고</rt></ruby>
+        <ruby>mahākassapena<rt>마하깟사빠와</rt></ruby>
+        <ruby>āyasmatā<rt>존자</rt></ruby>
+        <ruby>ca<rt>그리고</rt></ruby>
+        <ruby>mahākaccāyanena<rt>마하깟짜야나와</rt></ruby>
+        <ruby>āyasmatā<rt>존자</rt></ruby>
+        <ruby>ca<rt>그리고</rt></ruby>
+        <ruby>mahākoṭṭhikena<rt>마하꼿티까와</rt></ruby>
+        <ruby>āyasmatā<rt>존자</rt></ruby>
+        <ruby>ca<rt>그리고</rt></ruby>
+        <ruby>mahākappinena<rt>마하깝삐나와</rt></ruby>
+        <ruby>āyasmatā<rt>존자</rt></ruby>
+        <ruby>ca<rt>그리고</rt></ruby>
+        <ruby>mahācundena<rt>마하쭌다와</rt></ruby>
+        <ruby>āyasmatā<rt>존자</rt></ruby>
+        <ruby>ca<rt>그리고</rt></ruby>
+        <ruby>anuruddhena<rt>아누룻다와</rt></ruby>
+        <ruby>āyasmatā<rt>존자</rt></ruby>
+        <ruby>ca<rt>그리고</rt></ruby>
+        <ruby>revatena<rt>레와따와</rt></ruby>
+        <ruby>āyasmatā<rt>존자</rt></ruby>
+        <ruby>ca<rt>그리고</rt></ruby>
+        <ruby>ānandena<rt>아난다와</rt></ruby>,
+        <ruby>aññehi<rt>다른</rt></ruby>
+        <ruby>ca<rt>그리고</rt></ruby>
+        <ruby>abhiññātehi&nbsp;abhiññātehi<rt>매우 잘 알려진</rt></ruby>
+        <ruby>therehi<rt>장로</rt></ruby>
+        <ruby>sāvakehi<rt>제자들과</rt></ruby>
+        <ruby>saddhiṁ<rt>함께</rt></ruby>.
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- §2.1 -->
+  <section class="section">
+    <div class="section-marker">§ 2.1</div>
+    <p class="korean-text">
+      그 무렵 thera bhikkhū들은 새로 출가한 bhikkhū들을 가르치고 훈도하고 있었다.
+    </p>
+    <div class="pali-block">
+      <div class="pali-text">
+        <ruby>Tena<rt>그</rt></ruby>
+        <ruby>kho<rt>실로</rt></ruby>
+        <ruby>pana<rt>또한</rt></ruby>
+        <ruby>samayena<rt>때에</rt></ruby>
+        <ruby>therā<rt>장로</rt></ruby>
+        <ruby>bhikkhū<rt>비구들은</rt></ruby>
+        <ruby>nave<rt>새로 [출가한]</rt></ruby>
+        <ruby>bhikkhū<rt>비구들을</rt></ruby>
+        <ruby>ovadanti<rt>가르치고</rt></ruby>
+        <ruby>anusāsanti<rt>훈도한다</rt></ruby>.
+      </div>
+    </div>
+  </section>
+
+  <!-- §2.2 -->
+  <section class="section">
+    <div class="section-marker">§ 2.2</div>
+    <p class="korean-text">
+      어떤 thera bhikkhū들은 열 명의 bhikkhū를 가르치고 훈도했고, 어떤 thera bhikkhū들은 스무 명의 bhikkhū를, 어떤 thera bhikkhū들은 서른 명의 bhikkhū를, 어떤 thera bhikkhū들은 마흔 명의 bhikkhū를 가르치고 훈도했다.
+    </p>
+    <div class="pali-block">
+      <div class="pali-text">
+        <ruby>Appekacce<rt>어떤 일부</rt></ruby>
+        <ruby>therā<rt>장로</rt></ruby>
+        <ruby>bhikkhū<rt>비구들은</rt></ruby>
+        <ruby>dasapi<rt>열 명까지의</rt></ruby>
+        <ruby>bhikkhū<rt>비구들을</rt></ruby>
+        <ruby>ovadanti<rt>가르치고</rt></ruby>
+        <ruby>anusāsanti<rt>훈도하고</rt></ruby>,
+        <ruby>appekacce<rt>어떤 일부</rt></ruby>
+        <ruby>therā<rt>장로</rt></ruby>
+        <ruby>bhikkhū<rt>비구들은</rt></ruby>
+        <ruby>vīsampi<rt>스무 명까지의</rt></ruby>
+        <ruby>bhikkhū<rt>비구들을</rt></ruby>
+        <ruby>ovadanti<rt>가르치고</rt></ruby>
+        <ruby>anusāsanti<rt>훈도하고</rt></ruby>,
+        <ruby>appekacce<rt>어떤 일부</rt></ruby>
+        <ruby>therā<rt>장로</rt></ruby>
+        <ruby>bhikkhū<rt>비구들은</rt></ruby>
+        <ruby>tiṁsampi<rt>서른 명까지의</rt></ruby>
+        <ruby>bhikkhū<rt>비구들을</rt></ruby>
+        <ruby>ovadanti<rt>가르치고</rt></ruby>
+        <ruby>anusāsanti<rt>훈도하고</rt></ruby>,
+        <ruby>appekacce<rt>어떤 일부</rt></ruby>
+        <ruby>therā<rt>장로</rt></ruby>
+        <ruby>bhikkhū<rt>비구들은</rt></ruby>
+        <ruby>cattārīsampi<rt>마흔 명까지의</rt></ruby>
+        <ruby>bhikkhū<rt>비구들을</rt></ruby>
+        <ruby>ovadanti<rt>가르치고</rt></ruby>
+        <ruby>anusāsanti<rt>훈도한다</rt></ruby>.
+      </div>
+    </div>
+  </section>
+
+  <!-- §2.3 -->
+  <section class="section">
+    <div class="section-marker">§ 2.3</div>
+    <p class="korean-text">
+      그리고 그 새로 출가한 bhikkhū들은 thera bhikkhū들에게 가르침과 훈도를 받으면서, 이전보다 점차 더 높은 뛰어난 경지[<em style="font-style:italic;color:var(--gold-deep);">uḷāraṁ pubbenāparaṁ visesaṁ</em>]를 알게 되었다.
+    </p>
+
+    <div class="commentary">
+      <span class="commentary-label">PD 핵심 주석</span>
+      <code>uḷāraṁ pubbenāparaṁ visesaṁ</code> 은 단순한 지적 학습이 아닌 <strong>점진적 체험적 변화(progressive experiential transformation)</strong>를 의미한다. 새 bhikkhū들은 thera bhikkhū로부터 Dhamma를 배우는 가운데<sup>§A</sup>, puthujjana 단계에서 sotāpanna anugāmī, sotāpanna phala, 그리고 그 이상의 magga phala로 점진적으로 진입하고 있었다<sup>§B</sup>.
+    </div>
+
+    <div class="footnote-box" style="background: rgba(232, 220, 193, 0.4); border-left: 3px solid var(--gold-deep); font-size: 13.5px; padding: 14px 20px; margin: 12px 0 16px; line-height: 1.65; font-family: 'Gentium Plus', 'Noto Serif KR', serif; color: var(--ink-soft);">
+      <p style="margin: 0 0 8px;"><strong style="color: var(--gold-deep);">§A</strong> Vimuttāyatana Sutta (AN 5.26)는 magga phala 성취의 다섯 가지 방식 중 첫 번째로 "Ariya인 스승(Noble teacher)으로부터 Dhamma를 배우는 동안의 성취"를 들고 있다. 새 bhikkhū들이 가르침을 받는 동안 magga phala에 도달한 본 §2.3의 정형구는 이 방식에 그대로 부합한다 [BD-35 §7].</p>
+      <p style="margin: 0;"><strong style="color: var(--gold-deep);">§B</strong> PD는 sotāpanna phala 직전에 sotāpanna anugāmī 단계를 별도로 식별한다. anugāmī는 anicca·dukkha·anatta의 본질을 일정 수준 이상 이해하여 더 이상 apāya로 갈 가능성이 사라진 단계이며, sotāpanna phala로 이행하는 직접적 발판이 된다. <em>uḷāraṁ pubbenāparaṁ visesaṁ</em>의 "progressively higher than before"는 이러한 단계적 진입을 지칭한다 [TLP-62 · TLP-63].</p>
+    </div>
+
+    <div class="pali-block">
+      <div class="pali-text">
+        <ruby>Te<rt>그</rt></ruby>
+        <ruby>ca<rt>그리고</rt></ruby>
+        <ruby>navā<rt>새로 출가한</rt></ruby>
+        <ruby>bhikkhū<rt>비구들은</rt></ruby>
+        <ruby>therehi<rt>장로</rt></ruby>
+        <ruby>bhikkhūhi<rt>비구들에 의해</rt></ruby>
+        <ruby>ovadiyamānā<rt>가르침을 받으며</rt></ruby>
+        <ruby>anusāsiyamānā<rt>훈도를 받으며</rt></ruby>
+        <ruby>uḷāraṁ<rt>고귀하고 뛰어난</rt></ruby>
+        <ruby>pubbenāparaṁ<rt>점차 더 높은</rt></ruby>
+        <ruby>visesaṁ<rt>특별한 경지를</rt></ruby>
+        <ruby>jānanti<rt>알게 되었다</rt></ruby>.
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    제1부 마침 — Majjhima Nikāya 118 · §1.1 ~ §2.3
+    <div class="next">다음: §3.1 — 보름밤 설법의 시작</div>
+  </footer>
+
+</div>
+
+</body>
+</html>
