@@ -1,0 +1,1195 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MN 118 — Ānāpānassatisutta (제7부 · 최종)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Gentium+Plus:ital,wght@0,400;0,700;1,400;1,700&family=Noto+Serif+KR:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #1a1611;
+  --ink-soft: #4a4238;
+  --ink-faint: #8a8073;
+  --paper: #f4ede0;
+  --paper-warm: #ede4d0;
+  --gold: #8b6f3a;
+  --gold-deep: #6b5328;
+  --rust: #9c4a2a;
+  --rule: #c9bda3;
+  --pali-bg: #e8dcc1;
+  --commentary-bg: #f9f3e3;
+  --commentary-border: #b89a5e;
+  --refrain-bg: #ede4d0;
+  --pd-warning-bg: #f4e4d4;
+  --pd-warning-border: #9c4a2a;
+  --foundation-bg: #f0e6d0;
+  --foundation-border: #6b5328;
+  --vimutti-bg: #f7eedb;
+  --vimutti-border: #b8924a;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--paper);
+  background-image:
+    radial-gradient(ellipse at top, rgba(139, 111, 58, 0.06) 0%, transparent 50%),
+    radial-gradient(ellipse at bottom, rgba(156, 74, 42, 0.04) 0%, transparent 50%);
+  color: var(--ink);
+  font-family: 'Gentium Plus', 'Noto Serif KR', serif;
+  line-height: 1.75;
+  font-size: 17px;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    repeating-linear-gradient(0deg, transparent 0, transparent 2px,
+      rgba(74, 66, 56, 0.015) 2px, rgba(74, 66, 56, 0.015) 3px);
+  z-index: 0;
+}
+
+.container {
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 80px 48px 120px;
+  position: relative;
+  z-index: 1;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 60px;
+  padding-bottom: 48px;
+  border-bottom: 1px solid var(--rule);
+  position: relative;
+}
+
+.header::after {
+  content: '❋';
+  position: absolute;
+  bottom: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--paper);
+  padding: 0 16px;
+  color: var(--gold);
+  font-size: 14px;
+}
+
+.sutta-number {
+  font-family: 'Gentium Plus', serif;
+  font-style: italic;
+  font-size: 14px;
+  letter-spacing: 0.3em;
+  color: var(--gold-deep);
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.sutta-title-pali {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 44px;
+  font-weight: 500;
+  font-style: italic;
+  color: var(--ink);
+  margin: 0 0 8px;
+  letter-spacing: -0.01em;
+}
+
+.sutta-title-ko {
+  font-family: 'Gentium Plus', 'Noto Serif KR', serif;
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--ink-soft);
+  letter-spacing: 0.15em;
+  margin-bottom: 24px;
+}
+
+.sutta-subtitle {
+  font-family: 'Gentium Plus', serif;
+  font-style: italic;
+  font-size: 15px;
+  color: var(--ink-faint);
+  letter-spacing: 0.05em;
+}
+
+.stage-banner {
+  background: linear-gradient(135deg, var(--gold) 0%, var(--gold-deep) 100%);
+  color: var(--paper);
+  padding: 24px 32px;
+  margin: 32px 0 48px;
+  border-radius: 2px;
+  position: relative;
+  box-shadow: 0 2px 8px rgba(107, 83, 40, 0.15);
+}
+
+.stage-banner .stage-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 13px;
+  letter-spacing: 0.3em;
+  opacity: 0.85;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.stage-banner .stage-title {
+  font-family: 'Gentium Plus', 'Noto Serif KR', serif;
+  font-size: 22px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  margin-bottom: 6px;
+}
+
+.stage-banner .stage-pali {
+  font-family: 'Gentium Plus', serif;
+  font-style: italic;
+  font-size: 16px;
+  opacity: 0.9;
+}
+
+.stage-banner .stage-goal {
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(244, 237, 224, 0.25);
+  font-family: 'Gentium Plus', 'Noto Serif KR', serif;
+  font-size: 13px;
+  letter-spacing: 0.02em;
+  opacity: 0.95;
+}
+
+.chapter-heading {
+  text-align: center;
+  margin: 60px 0 36px;
+  padding: 16px 0;
+  border-top: 2px double var(--gold);
+  border-bottom: 2px double var(--gold);
+}
+
+.chapter-heading .label {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 13px;
+  letter-spacing: 0.3em;
+  color: var(--gold-deep);
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.chapter-heading .title {
+  font-family: 'Gentium Plus', 'Noto Serif KR', serif;
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--ink);
+  letter-spacing: 0.05em;
+}
+
+.chapter-heading .subtitle {
+  font-family: 'Gentium Plus', serif;
+  font-style: italic;
+  font-size: 14px;
+  color: var(--ink-faint);
+  margin-top: 4px;
+}
+
+.section {
+  margin-bottom: 40px;
+  position: relative;
+}
+
+.section-marker {
+  display: inline-block;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  color: var(--gold-deep);
+  background: var(--paper-warm);
+  padding: 4px 14px;
+  border: 1px solid var(--rule);
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+
+.korean-text {
+  font-family: 'Gentium Plus', 'Noto Serif KR', serif;
+  font-size: 17.5px;
+  font-weight: 400;
+  color: var(--ink);
+  line-height: 1.85;
+  margin: 0 0 20px;
+  letter-spacing: -0.005em;
+}
+
+.pali-block {
+  background: linear-gradient(to right,
+    var(--pali-bg) 0%, rgba(232, 220, 193, 0.5) 100%);
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  padding: 22px 32px;
+  margin: 16px 0 12px;
+  position: relative;
+  font-family: 'Gentium Plus', serif;
+}
+
+
+.pali-text {
+  font-size: 21px;
+  line-height: 2.6;
+  color: var(--ink);
+  font-style: italic;
+  word-spacing: 0.15em;
+}
+
+.refrain-marker {
+  background: var(--refrain-bg);
+  border-left: 3px dashed var(--gold-deep);
+  padding: 14px 22px;
+  margin: 16px 0;
+  font-family: 'Gentium Plus', 'Noto Serif KR', serif;
+  font-size: 14px;
+  color: var(--ink-soft);
+  font-style: italic;
+}
+
+.refrain-marker::before {
+  content: '↻ ';
+  font-style: normal;
+  color: var(--gold-deep);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+}
+
+.refrain-marker code, .refrain-marker em {
+  font-family: 'Gentium Plus', serif;
+  font-style: italic;
+  color: var(--gold-deep);
+  font-size: 14px;
+}
+
+ruby {
+  ruby-position: over;
+  display: inline-flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  vertical-align: baseline;
+  line-height: 1;
+  margin: 0 1px;
+  text-align: center;
+}
+
+ruby > rt {
+  font-family: 'Gentium Plus', 'Noto Serif KR', serif;
+  font-style: normal;
+  font-size: 10.5px;
+  font-weight: 400;
+  color: var(--gold-deep);
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+  margin-bottom: 4px;
+  white-space: nowrap;
+  opacity: 0.92;
+  display: block;
+  text-align: center;
+}
+
+ruby:hover > rt {
+  color: var(--rust);
+  opacity: 1;
+}
+
+.commentary {
+  background: var(--commentary-bg);
+  border: 1px solid var(--commentary-border);
+  border-left-width: 3px;
+  padding: 18px 24px;
+  margin: 18px 0;
+  font-family: 'Gentium Plus', 'Noto Serif KR', serif;
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--ink-soft);
+  position: relative;
+}
+
+.commentary-label {
+  display: inline-block;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  color: var(--rust);
+  text-transform: uppercase;
+  margin-right: 8px;
+}
+
+.commentary-label::before {
+  content: '❖ ';
+}
+
+.commentary code, .commentary em {
+  font-family: 'Gentium Plus', serif;
+  font-style: normal;
+  color: var(--gold-deep);
+  font-size: 15px;
+}
+
+.footnote-box {
+  background: rgba(232, 220, 193, 0.4);
+  border-left: 3px solid var(--gold-deep);
+  padding: 14px 20px;
+  margin: 16px 0;
+  font-family: 'Gentium Plus', 'Noto Serif KR', serif;
+  font-size: 13.5px;
+  line-height: 1.7;
+  color: var(--ink-soft);
+}
+
+.footnote-box code, .footnote-box em {
+  font-family: 'Gentium Plus', serif;
+  font-style: normal;
+  color: var(--gold-deep);
+  font-size: 13.5px;
+}
+
+.footnote-box strong {
+  color: var(--gold-deep);
+}
+
+.pd-critical {
+  background: var(--pd-warning-bg);
+  border: 1px solid var(--pd-warning-border);
+  border-left-width: 4px;
+  padding: 20px 24px;
+  margin: 20px 0;
+  font-family: 'Gentium Plus', 'Noto Serif KR', serif;
+  font-size: 15px;
+  line-height: 1.75;
+  color: var(--ink);
+  position: relative;
+}
+
+.pd-critical-label {
+  display: inline-block;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: var(--rust);
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.pd-critical-label::before {
+  content: '⚠ ';
+  font-style: normal;
+}
+
+.pd-critical table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 12px 0 4px;
+  font-size: 14px;
+}
+
+.pd-critical th {
+  text-align: left;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 600;
+  font-size: 12px;
+  color: var(--rust);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 6px 10px;
+  border-bottom: 1px solid var(--pd-warning-border);
+}
+
+.pd-critical td {
+  padding: 8px 10px;
+  vertical-align: top;
+  border-bottom: 1px solid rgba(156, 74, 42, 0.15);
+  font-size: 14px;
+}
+
+.pd-critical td:first-child {
+  font-family: 'Gentium Plus', serif;
+  font-style: italic;
+  color: var(--gold-deep);
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.pd-critical code, .pd-critical em {
+  font-family: 'Gentium Plus', serif;
+  font-style: normal;
+  color: var(--gold-deep);
+  font-size: 14px;
+}
+
+/* === Vimutti card — for the four nissaya === */
+.vimutti-card {
+  background: var(--vimutti-bg);
+  border: 2px solid var(--vimutti-border);
+  border-radius: 4px;
+  padding: 28px 32px;
+  margin: 28px 0;
+  position: relative;
+}
+
+.vimutti-card::before {
+  content: '◆ FOUR FOUNDATIONS OF VIJJĀVIMUTTI ◆';
+  position: absolute;
+  top: -11px;
+  left: 32px;
+  background: var(--paper);
+  padding: 0 12px;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  color: var(--vimutti-border);
+  font-weight: 700;
+}
+
+.vimutti-card .vimutti-content {
+  font-family: 'Gentium Plus', 'Noto Serif KR', serif;
+  font-size: 15px;
+  line-height: 1.8;
+  color: var(--ink);
+}
+
+.vimutti-card table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0;
+  font-size: 14px;
+  background: rgba(244, 237, 224, 0.5);
+}
+
+.vimutti-card th {
+  text-align: left;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 600;
+  font-size: 12px;
+  color: var(--gold-deep);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 8px 12px;
+  border-bottom: 1.5px solid var(--vimutti-border);
+  background: var(--paper-warm);
+}
+
+.vimutti-card td {
+  padding: 10px 12px;
+  vertical-align: top;
+  border-bottom: 1px solid rgba(184, 146, 74, 0.25);
+  font-size: 13.5px;
+  line-height: 1.65;
+}
+
+.vimutti-card td:first-child {
+  font-family: 'Gentium Plus', serif;
+  font-style: italic;
+  color: var(--gold-deep);
+  font-weight: 600;
+  white-space: nowrap;
+  width: 25%;
+}
+
+.vimutti-card code, .vimutti-card em {
+  font-family: 'Gentium Plus', serif;
+  font-style: italic;
+  color: var(--gold-deep);
+}
+
+/* === Final overview - whole sutta === */
+.full-overview {
+  background: linear-gradient(180deg, var(--vimutti-bg) 0%, var(--paper-warm) 100%);
+  border: 2px solid var(--gold);
+  border-radius: 4px;
+  padding: 36px 36px;
+  margin: 48px 0;
+  position: relative;
+}
+
+.full-overview::before {
+  content: '◆ COMPLETE PATH OVERVIEW ◆';
+  position: absolute;
+  top: -11px;
+  left: 36px;
+  background: var(--paper);
+  padding: 0 12px;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  color: var(--gold-deep);
+  font-weight: 700;
+}
+
+.full-overview h3 {
+  font-family: 'Gentium Plus', 'Noto Serif KR', serif;
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--ink);
+  margin: 0 0 18px;
+  text-align: center;
+}
+
+.path-cascade {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin: 24px 0;
+}
+
+.path-step {
+  background: var(--paper);
+  border: 1px solid var(--gold);
+  padding: 14px 22px;
+  font-family: 'Gentium Plus', 'Noto Serif KR', serif;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--ink-soft);
+}
+
+.path-step .step-pali {
+  font-family: 'Gentium Plus', serif;
+  font-style: italic;
+  font-size: 17px;
+  color: var(--ink);
+  font-weight: 600;
+  margin-right: 10px;
+}
+
+.path-step .step-section {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 12px;
+  color: var(--gold-deep);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-left: 8px;
+}
+
+.path-arrow {
+  text-align: center;
+  color: var(--gold);
+  font-size: 16px;
+  height: 20px;
+  line-height: 20px;
+}
+
+.path-arrow::before { content: '⇩'; }
+
+/* === Final closing === */
+.sutta-closing {
+  background: linear-gradient(180deg, rgba(232, 220, 193, 0.3) 0%, rgba(244, 237, 224, 0.6) 100%);
+  border-top: 2px solid var(--gold);
+  border-bottom: 2px solid var(--gold);
+  padding: 40px 32px;
+  margin: 60px 0;
+  text-align: center;
+  position: relative;
+}
+
+.sutta-closing::before,
+.sutta-closing::after {
+  content: '❋';
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--paper);
+  padding: 0 16px;
+  color: var(--gold);
+  font-size: 16px;
+}
+
+.sutta-closing::before { top: -12px; }
+.sutta-closing::after { bottom: -12px; }
+
+.sutta-closing .closing-pali {
+  font-family: 'Gentium Plus', serif;
+  font-style: italic;
+  font-size: 22px;
+  color: var(--ink);
+  margin: 12px 0;
+}
+
+.sutta-closing .closing-ko {
+  font-family: 'Gentium Plus', 'Noto Serif KR', serif;
+  font-size: 16px;
+  color: var(--ink-soft);
+  margin: 8px 0 18px;
+}
+
+.sutta-closing .niṭṭhitaṁ {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 18px;
+  color: var(--gold-deep);
+  letter-spacing: 0.15em;
+  margin-top: 24px;
+  padding-top: 18px;
+  border-top: 1px solid var(--rule);
+}
+
+.divider {
+  text-align: center;
+  margin: 48px 0;
+  color: var(--rule);
+  font-size: 12px;
+  letter-spacing: 1em;
+}
+
+.divider::before { content: '· · ·'; }
+
+.footer {
+  margin-top: 80px;
+  padding-top: 32px;
+  border-top: 1px solid var(--rule);
+  text-align: center;
+  font-family: 'Gentium Plus', serif;
+  font-style: italic;
+  font-size: 14px;
+  color: var(--ink-faint);
+  letter-spacing: 0.05em;
+}
+
+.footer .complete {
+  margin-top: 12px;
+  color: var(--gold-deep);
+  font-style: normal;
+  font-family: 'Gentium Plus', 'Noto Serif KR', serif;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+}
+
+@media (max-width: 640px) {
+  .container { padding: 48px 24px 80px; }
+  .sutta-title-pali { font-size: 32px; }
+  .pali-block { padding: 18px 18px; }
+  .pali-text { font-size: 19px; line-height: 2.4; }
+  ruby > rt { font-size: 9.5px; }
+  .pd-critical table, .vimutti-card table { font-size: 12px; }
+  .pd-critical th, .pd-critical td,
+  .vimutti-card th, .vimutti-card td { padding: 6px 6px; }
+  .vimutti-card td:first-child { width: auto; }
+  .full-overview { padding: 28px 22px; }
+  .path-step { padding: 12px 16px; }
+  .sutta-closing .closing-pali { font-size: 18px; }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <header class="header">
+    <div class="sutta-number">Majjhima Nikāya · 118</div>
+    <h1 class="sutta-title-pali">Ānāpānassatisutta</h1>
+    <div class="sutta-subtitle">제7부 (최종) — Ānāpānasati 제3단계 Part 2 + Vijjāvimutti + 결어 · §37.1 ~ §43.4</div>
+  </header>
+
+  <!-- Stage banner -->
+  <div class="stage-banner">
+    <div class="stage-num">Third Stage · Part 2 → Conclusion</div>
+    <div class="stage-title">제3단계 Part 2 — 칠각지 → 명과 해탈(Vijjāvimutti)</div>
+    <div class="stage-pali">Vedanā · Citta · Dhamma 사이클 + Viveka·Virāga·Nirodha·Vossagga 4의지</div>
+    <div class="stage-goal">→ 본 경의 최종 목표: <em>vijjāvimutti</em>(명과 해탈) — Arahant phala</div>
+  </div>
+
+  <div class="commentary" style="margin-bottom: 40px;">
+    <span class="commentary-label">제7부 안내 · 본 경의 마지막 단원</span>
+    제7부는 두 부분으로 구성된다:
+    <br>① <strong>§37~§40</strong>: 제6부에서 본 kāya 기반 칠각지 사이클이 vedanā · citta · dhamma 세 사념처에서 동일하게 반복됨 (peyyāla로 압축). §40에서 "사념처 → 칠각지" 충족이 완성된다.
+    <br>② <strong>§41~§43</strong>: 칠각지가 <strong>viveka · virāga · nirodha · vossaggapariṇāmi</strong>의 네 가지 의지를 통해 <em>vijjāvimutti</em>(명과 해탈)로 이어지는 메커니즘. 본 경의 최종 결론.
+    <br>마지막으로 §43.2~§43.4에서 본 경이 종결된다 — Buddha의 결어, bhikkhū들의 환희, 그리고 <em>aṭṭhamaṁ niṭṭhitaṁ</em>(여덟 번째 [경] 끝남).
+  </div>
+
+  <!-- ============ §37-§39: Other three satipaṭṭhāna cycles ============ -->
+  <div class="chapter-heading">
+    <div class="label">Vedanā · Citta · Dhamma Cycles</div>
+    <div class="title">나머지 세 사념처에서의 칠각지 발현</div>
+    <div class="subtitle">§37.1 ~ §39.2 · §30~§36의 패턴 반복</div>
+  </div>
+
+  <!-- §37.1 -->
+  <section class="section">
+    <div class="section-marker">§ 37.1 · Vedanā 사이클</div>
+    <p class="korean-text">
+      bhikkhū여, 어느 때 bhikkhū가 vedanā들 안에서 vedanā를 따라 관찰하며, 열심히 정진하고, 분명히 알아차리고, 알아차림을 갖춘 [자로서] 머문다 — 마음에서 욕구와 싫어함을 제거하고서. 그 때, 그에게는 알아차림이 확립되며 흐려지지 않는다.
+    </p>
+    <div class="pali-block">
+      <div class="pali-text">
+        <ruby>Yasmiṁ<rt>어떤</rt></ruby>
+        <ruby>samaye<rt>때에</rt></ruby>,
+        <ruby>bhikkhave<rt>비구들이여</rt></ruby>,
+        <ruby>bhikkhu<rt>비구가</rt></ruby>
+        <ruby>vedanāsu<rt>vedanā들 안에서</rt></ruby>
+        …<ruby>pe<rt>[정형구 생략]</rt></ruby>…
+      </div>
+    </div>
+
+    <div class="refrain-marker">
+      <code>...pe...</code>는 §30.1과 동일한 정형구 — <em>vedanānupassī viharati ātāpī sampajāno satimā vineyya loke abhijjhādomanassaṁ, upaṭṭhitāssa tasmiṁ samaye sati hoti asammuṭṭhā</em>의 생략. 이후 §38.3~§38.13에서 칠각지 7단 발현이 차례로 일어난다.
+    </div>
+  </section>
+
+  <!-- §38.1 -->
+  <section class="section">
+    <div class="section-marker">§ 38.1 · Citta 사이클</div>
+    <p class="korean-text">
+      또는 citta 안에서 citta를 따라 관찰하며 ... 그 때, 그에게는 알아차림이 확립되며 흐려지지 않는다.
+    </p>
+    <div class="pali-block">
+      <div class="pali-text">
+        <ruby>citte<rt>citta 안에서</rt></ruby> …
+      </div>
+    </div>
+    <div class="refrain-marker">동일한 peyyāla 패턴 — kāyānupassī가 cittānupassī로만 대체.</div>
+  </section>
+
+  <!-- §38.2 -->
+  <section class="section">
+    <div class="section-marker">§ 38.2 · Dhamma 사이클</div>
+    <p class="korean-text">
+      또는 dhamma들 안에서 dhamma를 따라 관찰하며, 열심히 정진하고, 분명히 알아차리고, 알아차림을 갖춘 [자로서] 머문다 — 마음에서 욕구와 싫어함을 제거하고서. 그 때, 그에게는 알아차림이 확립되며 흐려지지 않는다.
+    </p>
+    <div class="pali-block">
+      <div class="pali-text">
+        <ruby>dhammesu<rt>dhamma들 안에서</rt></ruby>
+        <ruby>dhammānupassī<rt>dhamma 따라 관찰하는 [자]</rt></ruby>
+        <ruby>viharati<rt>머문다</rt></ruby>
+        <ruby>ātāpī<rt>열심히 정진하며</rt></ruby>
+        <ruby>sampajāno<rt>분명히 알아차리며</rt></ruby>
+        <ruby>satimā<rt>알아차림 갖춘 [자로서]</rt></ruby>
+        <ruby>vineyya<rt>제거하고서</rt></ruby>
+        <ruby>loke<rt>세상에서</rt></ruby>
+        <ruby>abhijjhādomanassaṁ<rt>욕구와 싫어함을</rt></ruby>,
+        <ruby>upaṭṭhitāssa<rt>그에게 확립된</rt></ruby>
+        <ruby>tasmiṁ<rt>그</rt></ruby>
+        <ruby>samaye<rt>때에</rt></ruby>
+        <ruby>sati<rt>알아차림이</rt></ruby>
+        <ruby>hoti<rt>된다</rt></ruby>
+        <ruby>asammuṭṭhā<rt>흐려지지 않은</rt></ruby>.
+      </div>
+    </div>
+  </section>
+
+  <!-- §38.3 - §39.2 — Full bojjhanga cascade for dhamma -->
+  <section class="section">
+    <div class="section-marker">§ 38.3 ~ § 39.2 · 칠각지 발현 사이클</div>
+    <p class="korean-text">
+      그 때, 그 bhikkhū에게 차례로 일곱 각지가 발현된다:
+      <br>① Sati 각지(<em>Satisambojjhaṅga</em>) — 확립된 sati로부터,
+      <br>② 법분별각지(<em>Dhammavicayasambojjhaṅga</em>) — paññā로 dhamma 검토로부터,
+      <br>③ 정진각지(<em>Vīriyasambojjhaṅga</em>) — <em>vīriyaṁ asallīnaṁ</em>으로부터,
+      <br>④ 희각지(<em>Pītisambojjhaṅga</em>) — <em>nirāmisa pīti</em>로부터,
+      <br>⑤ 경안각지(<em>Passaddhisambojjhaṅga</em>) — kāya·citta 평온으로부터,
+      <br>⑥ 정각지(<em>Samādhisambojjhaṅga</em>) — 자연스러운 마음의 집중으로부터,
+      <br>⑦ Upekkhā 각지(<em>Upekkhāsambojjhaṅga</em>) — 집중된 마음을 향한 철저한 평정으로부터.
+      <br><br>각 각지는 <em>āraddho hoti → bhāveti → bhāvanāpāripūriṁ gacchati</em>의 3단계로 발현된다.
+    </p>
+    <div class="refrain-marker">
+      §30.2 ~ §36.2의 칠각지 발현 정형구가 dhamma 맥락에서 동일하게 반복됨. 모든 동사와 표현 (<em>upaṭṭhitā sati ... satisambojjhaṅgo āraddho hoti ... ajjhupekkhitā hoti ... upekkhāsambojjhaṅgo</em>)이 그대로 사용된다. 자세한 어휘 분석은 제6부 §30~§36 참조.
+    </div>
+
+    <div class="commentary">
+      <span class="commentary-label">PD 메모 — Dhammānupassanā에서의 칠각지 발현이 가장 강력한 이유</span>
+      네 사념처 모두에서 동일한 칠각지가 발현되지만, <strong>dhammānupassanā 단계에서의 칠각지가 가장 직접적으로 vijjāvimutti로 이어진다</strong>. 그 이유는:
+      <br>① dhammānupassanā는 anicca·virāga·nirodha·paṭinissagga(§21, §27)를 직접 통찰한다.
+      <br>② 이 4법은 §42에서 다시 등장하는 <em>viveka·virāga·nirodha·vossaggapariṇāmi</em>과 직결된다.
+      <br>③ 따라서 dhammānupassanā 단계 자체가 이미 §42의 칠각지 닦음의 4의지(nissaya/pariṇāmi) 패턴을 예비한다.
+      <br>이것이 §27.6에서 dhammānupassanā 단계에만 추가로 등장한 <em>ajjhupekkhitā</em>의 의의다.
+    </div>
+  </section>
+
+  <!-- §40.1 — Sat → Bojjh complete -->
+  <section class="section">
+    <div class="section-marker">§ 40.1 · 사념처 → 칠각지 충족 완성</div>
+    <p class="korean-text">
+      bhikkhū여, 이와 같이 사념처(cattāro satipaṭṭhānā)를 닦고 자주 행하면 칠각지(satta sambojjhaṅge)를 충족시킨다.
+    </p>
+    <div class="pali-block">
+      <div class="pali-text">
+        <ruby>Evaṁ<rt>이와 같이</rt></ruby>
+        <ruby>bhāvitā<rt>닦여서</rt></ruby>
+        <ruby>kho<rt>실로</rt></ruby>,
+        <ruby>bhikkhave<rt>비구들이여</rt></ruby>,
+        <ruby>cattāro<rt>넷의</rt></ruby>
+        <ruby>satipaṭṭhānā<rt>사념처가</rt></ruby>
+        <ruby>evaṁ<rt>이와 같이</rt></ruby>
+        <ruby>bahulīkatā<rt>자주 행해져서</rt></ruby>
+        <ruby>satta<rt>일곱의</rt></ruby>
+        <ruby>sambojjhaṅge<rt>각지를</rt></ruby>
+        <ruby>paripūrenti<rt>충족시킨다</rt></ruby>.
+      </div>
+    </div>
+
+    <div class="commentary">
+      <span class="commentary-label">학습 메모 — 두 번째 충족 완성</span>
+      §15.3의 약속 — "사념처가 칠각지를 충족시킨다" — 이 §40.1에서 메커니즘을 통해 완성되었다. 이로써 본 경의 4단 위계 중 두 단계가 충족되었다:
+      <br>① ✓ <em>ānāpānasati → 사념처</em> (§22, §28에서 완성)
+      <br>② ✓ <em>사념처 → 칠각지</em> (본 §40에서 완성)
+      <br>③ ⏳ <em>칠각지 → vijjāvimutti</em> (§41~§43에서 완성될 마지막 단계)
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ============ §41-§43: Bojjhaṅga → Vijjāvimutti ============ -->
+  <div class="chapter-heading">
+    <div class="label">Final Stage · Bojjhaṅga → Vijjāvimutti</div>
+    <div class="title">최종 단계 — 칠각지가 명과 해탈을 충족시키는 길</div>
+    <div class="subtitle">§41.1 ~ §43.1</div>
+  </div>
+
+  <!-- §41.1 -->
+  <section class="section">
+    <div class="section-marker">§ 41.1 · 마지막 도입 질문</div>
+    <p class="korean-text">
+      bhikkhū여, 그러면 어떻게 닦고 어떻게 자주 행하면 칠각지가 명과 해탈(<em>vijjāvimutti</em>)을 충족시키는가?
+    </p>
+    <div class="pali-block">
+      <div class="pali-text">
+        <ruby>Kathaṁ<rt>어떻게</rt></ruby>
+        <ruby>bhāvitā<rt>닦여서</rt></ruby>
+        <ruby>ca<rt>그리고</rt></ruby>,
+        <ruby>bhikkhave<rt>비구들이여</rt></ruby>,
+        <ruby>satta<rt>일곱의</rt></ruby>
+        <ruby>bojjhaṅgā<rt>각지가</rt></ruby>
+        <ruby>kathaṁ<rt>어떻게</rt></ruby>
+        <ruby>bahulīkatā<rt>자주 행해져서</rt></ruby>
+        <ruby>vijjāvimuttiṁ<rt>명과 해탈을</rt></ruby>
+        <ruby>paripūrenti<rt>충족시키는가</rt></ruby>?
+      </div>
+    </div>
+
+    <div class="commentary">
+      <span class="commentary-label">Vijjāvimutti의 의미</span>
+      <code>vijjāvimutti</code> = <em>vijjā</em>(명/완전한 지혜) + <em>vimutti</em>(해탈). 즉 사성제와 paṭicca samuppāda에 대한 완전한 통찰지(明)와, 그로 인한 결박(saṁyojana)·번뇌(āsava)로부터의 완전한 해탈. 본 경의 최종 목표인 <strong>Arahant phala</strong>를 가리킨다.
+    </div>
+  </section>
+
+  <!-- §42.1 — KEY: viveka virāga nirodha vossagga -->
+  <section class="section">
+    <div class="section-marker">§ 42.1 · 핵심 정구</div>
+    <p class="korean-text">
+      bhikkhū여, 여기 bhikkhū가 <em>Satisambojjhaṅga</em>(Sati 각지)를 — <strong>viveka(원리)에 의지하고, virāga(이탐)에 의지하며, nirodha(멸)에 의지하고, vossagga(방사)로 익어가는</strong> <em>Satisambojjhaṅga</em>(Sati 각지)를 — 닦는다.
+    </p>
+    <div class="pali-block">
+      <div class="pali-text">
+        <ruby>Idha<rt>여기서</rt></ruby>,
+        <ruby>bhikkhave<rt>비구들이여</rt></ruby>,
+        <ruby>bhikkhu<rt>비구가</rt></ruby>
+        <ruby>satisambojjhaṅgaṁ<rt>Sati 각지를</rt></ruby>
+        <ruby>bhāveti<rt>닦는다</rt></ruby>
+        <ruby>vivekanissitaṁ<rt>원리에 의지한 [것을]</rt></ruby>
+        <ruby>virāganissitaṁ<rt>이탐에 의지한 [것을]</rt></ruby>
+        <ruby>nirodhanissitaṁ<rt>멸에 의지한 [것을]</rt></ruby>
+        <ruby>vossaggapariṇāmiṁ<rt>방사로 익어가는 [것을]</rt></ruby>.
+      </div>
+    </div>
+
+    <div class="vimutti-card">
+      <div class="vimutti-content">
+        <strong style="font-size: 16px;">네 가지 의지(Nissaya)와 익어감(Pariṇāmi) — Vijjāvimutti로의 길</strong>
+        <br><br>
+        칠각지 각각이 본 정구에 따라 닦여질 때 <em>vijjāvimutti</em>가 충족된다. 이 네 가지 의지·익어감은 <strong>각지를 단순히 발생시키는 것에서, 명과 해탈로 이끄는 것으로 전환</strong>시키는 결정적 요소다.
+        <table>
+          <tr>
+            <th>요소</th>
+            <th>어원</th>
+            <th>PD 해석</th>
+          </tr>
+          <tr>
+            <td><code>vivekanissita</code></td>
+            <td><em>viveka</em>(원리·분리) + <em>nissita</em>(의지한)</td>
+            <td><strong>kāma saññā로부터의 분리에 의지함</strong>. 단순한 물리적 격리(forest dwelling)가 아니라, 감각적 즐거움이 외부 대상에 내재한다는 왜곡된 지각으로부터의 마음의 분리</td>
+          </tr>
+          <tr>
+            <td><code>virāganissita</code></td>
+            <td><em>virāga</em>(이탐) + <em>nissita</em>(의지한)</td>
+            <td><strong>탐욕(rāga)의 사라짐에 의지함</strong>. 통찰을 통해 자연스럽게 일어나는 감각적 추구의 약화. §21.2의 <em>virāgānupassī</em>와 직결</td>
+          </tr>
+          <tr>
+            <td><code>nirodhanissita</code></td>
+            <td><em>nirodha</em>(멸) + <em>nissita</em>(의지한)</td>
+            <td><strong>원인 자체의 멸에 의지함</strong>. avijjā → saṅkhāra → ... 의 paṭicca samuppāda 사슬이 끊어지는 지점. §21.3의 <em>nirodhānupassī</em>와 직결</td>
+          </tr>
+          <tr>
+            <td><code>vossaggapariṇāmi</code> [§B]</td>
+            <td><em>vossagga</em>(방사) + <em>pariṇāmi</em>(익어가는)</td>
+            <td><strong>완전한 놓아버림으로 익어감</strong>. 점진적이고 자연스러운 성숙 과정. 마음이 세상(kāma loka, rūpa loka, arūpa loka 모두)을 완전히 놓아버리는 단계로 익어가는 것. §21.4의 <em>paṭinissaggānupassī</em>와 연결</td>
+          </tr>
+        </table>
+        <strong>구조적 통일성:</strong> 본 §42의 네 요소는 §21·§27의 네 dhamma 관찰 (<em>anicca → virāga → nirodha → paṭinissagga</em>)과 정확히 평행한다. 차이는 §21·§27이 dhammānupassanā 단계의 <strong>관찰 대상</strong>인 반면, §42에서는 칠각지가 닦여지는 <strong>의지·지향</strong>이 된다는 것이다 (anicca는 paññā의 토대로 이미 전제됨).
+      </div>
+    </div>
+
+    <div class="footnote-box">
+      <strong>§B</strong> &nbsp; <em>vossaggapariṇāmi</em>의 PDF 정밀 정의 — 일차자료(PDF p.20 §42.1 박스)는 <em>vossaggapariṇāmiṁ</em>를 "<em>maturing in relinquishment</em>, <strong>where the mind completely lets go of the world as a result of cultivating the awakening factors while in the Satipaṭṭhāna Bhūmi</strong>"로 정의한다. 즉 단순한 "방사로 익어감"이 아니라 ① <em>Satipaṭṭhāna Bhūmi</em> 안에서 ② 칠각지 닦음의 결과로 ③ 마음이 세상(<em>loka</em>)을 완전히 놓아버리는 과정이다. 본 vimutti-card 4행 cell의 <em>vossaggapariṇāmi</em> 해석은 이 satipaṭṭhāna 맥락을 전제한다 [§A 참조].
+    </div>
+
+    <div class="pd-critical">
+      <div class="pd-critical-label">PD 해석 · 왜 칠각지에 이 4의지가 필요한가?</div>
+      칠각지 자체는 §29~§36의 메커니즘으로 발현된다. 그러나 단순히 발현된 칠각지가 자동으로 <em>vijjāvimutti</em>로 이어지는 것은 아니다. 그것은 칠각지가 <strong>kāma saññā로부터의 분리(viveka)에 의지하고, 탐욕의 사라짐(virāga)에 의지하며, 원인의 멸(nirodha)에 의지하고, 방사(vossagga)로 익어가는</strong> 방향성을 가질 때만 가능하다.
+      <br><br>
+      <strong>핵심:</strong> 통념적 명상에서 발현되는 일시적 sati·samādhi·pīti·passaddhi 등은 본질적으로 동일한 단어이지만, 이 4의지를 결여한다면 결박을 끊지 못한다. 본 경의 칠각지는 처음부터 sammā sati에 기반한 것이어야 하며 (§26.6 참조), 그것이 §42의 4의지를 통해 비로소 magga phala로 결실맺는다.
+    </div>
+
+    <div class="footnote-box">
+      <strong>§A</strong> &nbsp; 본 sutta의 <strong>3단계 구조 명시</strong> — 일차자료(PDF p.20 §42.1 박스)는 <em>Ānāpānasati</em>가 세 단계로 구성된다고 요약한다: ① <em>Satipaṭṭhāna Bhūmi</em>에 도달 (Stage 1) → ② <em>Satipaṭṭhāna Bhūmi</em>에서 자유롭게 머묾 (Stage 2) → ③ 그 상태에서 <em>Satta Bojjhaṅga</em>를 닦아 <em>Vijjāvimutti</em>에 이름 (Stage 3). 본 7부 시리즈의 부 분할과 정확히 정합한다 — part4 = Stage 1, part5 = Stage 2, part6+part7 = Stage 3. 따라서 §42의 4의지·익어감은 추상적 도덕 항목이 아니라, <em>Satipaṭṭhāna Bhūmi</em> 안에서 닦여지는 칠각지의 구체적 방향성이다.
+    </div>
+  </section>
+
+  <!-- §42.2 -->
+  <section class="section">
+    <div class="section-marker">§ 42.2</div>
+    <p class="korean-text">
+      그는 <em>Dhammavicayasambojjhaṅga</em>(법분별각지)를 — viveka(원리)에 의지하고, virāga(이탐)에 의지하며, nirodha(멸)에 의지하고, vossagga(방사)로 익어가는 [것을] — 닦는다.
+    </p>
+    <div class="pali-block">
+      <div class="pali-text">
+        <ruby>Dhammavicayasambojjhaṅgaṁ<rt>법분별각지를</rt></ruby>
+        <ruby>bhāveti<rt>닦는다</rt></ruby>
+        …<ruby>pe<rt>[정형구 생략]</rt></ruby>…
+      </div>
+    </div>
+    <div class="refrain-marker">§42.1의 <code>vivekanissitaṁ virāganissitaṁ nirodhanissitaṁ vossaggapariṇāmiṁ</code>이 그대로 적용됨.</div>
+  </section>
+
+  <!-- §42.3 -->
+  <section class="section">
+    <div class="section-marker">§ 42.3</div>
+    <p class="korean-text"><em>Vīriyasambojjhaṅga</em>(정진각지)를 ... 닦는다.</p>
+    <div class="pali-block">
+      <div class="pali-text">
+        <ruby>vīriyasambojjhaṅgaṁ<rt>정진각지를</rt></ruby>
+        <ruby>bhāveti<rt>닦는다</rt></ruby> …
+      </div>
+    </div>
+    <div class="refrain-marker">§42.1 4의지 적용.</div>
+  </section>
+
+  <!-- §42.4 -->
+  <section class="section">
+    <div class="section-marker">§ 42.4</div>
+    <p class="korean-text"><em>Pītisambojjhaṅga</em>(희각지)를 ... 닦는다.</p>
+    <div class="pali-block">
+      <div class="pali-text">
+        <ruby>pītisambojjhaṅgaṁ<rt>희각지를</rt></ruby>
+        <ruby>bhāveti<rt>닦는다</rt></ruby> …
+      </div>
+    </div>
+    <div class="refrain-marker">§42.1 4의지 적용.</div>
+  </section>
+
+  <!-- §42.5 -->
+  <section class="section">
+    <div class="section-marker">§ 42.5</div>
+    <p class="korean-text"><em>Passaddhisambojjhaṅga</em>(경안각지)를 ... 닦는다.</p>
+    <div class="pali-block">
+      <div class="pali-text">
+        <ruby>passaddhisambojjhaṅgaṁ<rt>경안각지를</rt></ruby>
+        <ruby>bhāveti<rt>닦는다</rt></ruby> …
+      </div>
+    </div>
+    <div class="refrain-marker">§42.1 4의지 적용.</div>
+  </section>
+
+  <!-- §42.6 -->
+  <section class="section">
+    <div class="section-marker">§ 42.6</div>
+    <p class="korean-text"><em>Samādhisambojjhaṅga</em>(정각지)를 ... 닦는다.</p>
+    <div class="pali-block">
+      <div class="pali-text">
+        <ruby>samādhisambojjhaṅgaṁ<rt>정각지를</rt></ruby>
+        <ruby>bhāveti<rt>닦는다</rt></ruby> …
+      </div>
+    </div>
+    <div class="refrain-marker">§42.1 4의지 적용.</div>
+  </section>
+
+  <!-- §42.7 -->
+  <section class="section">
+    <div class="section-marker">§ 42.7</div>
+    <p class="korean-text">
+      ... 그는 <em>Upekkhāsambojjhaṅga</em>(Upekkhā 각지)를 — viveka(원리)에 의지하고, virāga(이탐)에 의지하며, nirodha(멸)에 의지하고, vossagga(방사)로 익어가는 [것을] — 닦는다.
+    </p>
+    <div class="pali-block">
+      <div class="pali-text">
+        <ruby>upekkhāsambojjhaṅgaṁ<rt>Upekkhā 각지를</rt></ruby>
+        <ruby>bhāveti<rt>닦는다</rt></ruby>
+        <ruby>vivekanissitaṁ<rt>원리에 의지한</rt></ruby>
+        <ruby>virāganissitaṁ<rt>이탐에 의지한</rt></ruby>
+        <ruby>nirodhanissitaṁ<rt>멸에 의지한</rt></ruby>
+        <ruby>vossaggapariṇāmiṁ<rt>방사로 익어가는</rt></ruby>.
+      </div>
+    </div>
+  </section>
+
+  <!-- §43.1 — completion -->
+  <section class="section">
+    <div class="section-marker">§ 43.1 · 본 경의 결론</div>
+    <p class="korean-text">
+      bhikkhū여, 이와 같이 <em>satta bojjhaṅgā</em>(칠각지)를 닦고 자주 행하면 <em>vijjāvimutti</em>(명과 해탈)를 충족시킨다.
+    </p>
+    <div class="pali-block">
+      <div class="pali-text">
+        <ruby>Evaṁ<rt>이와 같이</rt></ruby>
+        <ruby>bhāvitā<rt>닦여서</rt></ruby>
+        <ruby>kho<rt>실로</rt></ruby>,
+        <ruby>bhikkhave<rt>비구들이여</rt></ruby>,
+        <ruby>satta<rt>일곱의</rt></ruby>
+        <ruby>bojjhaṅgā<rt>각지가</rt></ruby>
+        <ruby>evaṁ<rt>이와 같이</rt></ruby>
+        <ruby>bahulīkatā<rt>자주 행해져서</rt></ruby>
+        <ruby>vijjāvimuttiṁ<rt>명과 해탈을</rt></ruby>
+        <ruby>paripūrentī<rt>충족시킨다</rt></ruby>"<ruby>ti<rt>~라고</rt></ruby>.
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Complete path overview ============ -->
+  <div class="full-overview">
+    <h3>본 경의 완성된 위계 — Ānāpānasati에서 Vijjāvimutti까지</h3>
+
+    <div class="path-cascade">
+      <div class="path-step">
+        <span class="step-pali">Ānāpānassati</span> — 가르침의 받아들임과 통찰의 알아차림
+        <span class="step-section">§15-§22 · 제1단계</span>
+      </div>
+      <div class="path-arrow"></div>
+      <div class="path-step">
+        <span class="step-pali">Cattāro Satipaṭṭhānā</span> — 사념처 충족 — Satipaṭṭhāna Bhūmi 진입
+        <span class="step-section">§23-§28 · 제2단계</span>
+      </div>
+      <div class="path-arrow"></div>
+      <div class="path-step">
+        <span class="step-pali">Satta Bojjhaṅgā</span> — 칠각지 충족 — 자연 발생적 인과 사슬
+        <span class="step-section">§29-§40 · 제3단계 Part 1</span>
+      </div>
+      <div class="path-arrow"></div>
+      <div class="path-step">
+        <span class="step-pali">Vijjāvimutti</span> — 명과 해탈 — 4의지를 통한 magga phala
+        <span class="step-section">§41-§43 · 제3단계 Part 2 · 본 경의 정점</span>
+      </div>
+    </div>
+
+    <div style="font-family: 'Gentium Plus', 'Noto Serif KR', serif; font-size: 14px; color: var(--ink-soft); line-height: 1.75; margin-top: 24px; padding-top: 18px; border-top: 1px solid var(--rule);">
+      <strong style="color: var(--gold-deep);">PD 핵심 통찰:</strong> §15.1~15.4의 4단 약속이 §43.1에서 메커니즘을 통해 완성되었다. 본 경은 단순한 호흡 명상 매뉴얼이 아니라, <strong>puthujjana에서 시작하여 Sotāpanna → Sakadāgāmī → Anāgāmī → Arahant에 이르는 전체 magga phala 도정</strong>을 ānāpānasati라는 단일 수행에 압축한 종합 경전이다. 그 핵심은 <em>assasati</em>(가르침의 받아들임)와 <em>passasati</em>(지혜로 통찰)에 있으며, 이는 §17.2의 sammā sati 정의에서 출발해 §42.7의 upekkhā sambojjhaṅga의 4의지 닦음으로 마무리된다.
+    </div>
+  </div>
+
+  <!-- ============ Sutta Closing ============ -->
+  <div class="chapter-heading">
+    <div class="label">Sutta Closing</div>
+    <div class="title">경의 마무리</div>
+    <div class="subtitle">§43.2 ~ §43.4</div>
+  </div>
+
+  <!-- §43.2 -->
+  <section class="section">
+    <div class="section-marker">§ 43.2</div>
+    <p class="korean-text">Bhagavā께서는 이것을 말씀하셨다.</p>
+    <div class="pali-block">
+      <div class="pali-text">
+        <ruby>Idamavoca<rt>이것을 말씀하셨다</rt></ruby>
+        <ruby>bhagavā<rt>세존께서</rt></ruby>.
+      </div>
+    </div>
+  </section>
+
+  <!-- §43.3 -->
+  <section class="section">
+    <div class="section-marker">§ 43.3</div>
+    <p class="korean-text">그 bhikkhū들은 Bhagavā의 말씀에 만족하고 환희했다.</p>
+    <div class="pali-block">
+      <div class="pali-text">
+        <ruby>Attamanā<rt>만족한 [자들로서]</rt></ruby>
+        <ruby>te<rt>그</rt></ruby>
+        <ruby>bhikkhū<rt>비구들이</rt></ruby>
+        <ruby>bhagavato<rt>세존의</rt></ruby>
+        <ruby>bhāsitaṁ<rt>말씀하신 것을</rt></ruby>
+        <ruby>abhinandun<rt>환희했다</rt></ruby>
+        <ruby>ti<rt>~라고</rt></ruby>.
+      </div>
+    </div>
+    <div class="commentary">
+      <span class="commentary-label">학습 메모 — Attamanā · Abhinandi</span>
+      <code>attamanā</code> = <em>atta-manā</em>("자기 마음에 [부합하여] 흡족한"). <code>abhinandun</code>은 <em>abhi-</em>(향해, 강조) + <em>nand-</em>(기뻐하다)의 aor.3pl.. Pāli 경전 결어의 정형구. 단순한 의례적 표현을 넘어, 이 자리에 모인 bhikkhū들 — §9~§14에서 열거된 Arahant부터 ānāpānasati 수행자까지 — 모두가 본 경의 가르침을 자신의 단계에 맞게 받아들이고 환희했음을 시사한다.
+    </div>
+  </section>
+
+  <!-- §43.4 -->
+  <section class="section">
+    <div class="section-marker">§ 43.4 · 종결</div>
+    <p class="korean-text">
+      <em>Ānāpānassatisutta</em>(아나빠나사띠 경), [Anupada-vagga의] 여덟 번째 [경]이 끝났다.
+    </p>
+    <div class="pali-block">
+      <div class="pali-text">
+        <ruby>Ānāpānassatisuttaṁ<rt>아나빠나사띠 경</rt></ruby>
+        <ruby>niṭṭhitaṁ<rt>끝났다 / 완성되었다</rt></ruby>
+        <ruby>aṭṭhamaṁ<rt>여덟 번째 [경]</rt></ruby>.
+      </div>
+    </div>
+    <div class="commentary">
+      <span class="commentary-label">학습 메모 — 경의 위치</span>
+      MN 118은 Majjhima Nikāya의 세 번째 50경 모음(<em>Uparipaṇṇāsa</em>) 중 <em>Anupada-vagga</em>(MN 111-120)에 속한다. 이 vagga의 여덟 번째 경 — 따라서 <em>aṭṭhamaṁ</em>. 같은 vagga에 MN 119 <em>Kāyagatāsati</em>(신념 경)와 MN 117 <em>Mahācattārīsaka</em>(대사십 경)가 있어, 본 경의 핵심 주제(사념처와 magga의 관계)와 직결된다.
+    </div>
+  </section>
+
+  <!-- Final closing block -->
+  <div class="sutta-closing">
+    <div class="closing-pali">Ānāpānassatisuttaṁ niṭṭhitaṁ aṭṭhamaṁ.</div>
+    <div class="closing-ko"><em>Ānāpānassatisutta</em>, 여덟 번째 [경] 끝남.</div>
+    <div class="niṭṭhitaṁ">— Niṭṭhitaṁ —</div>
+  </div>
+
+  <!-- Series completion note -->
+  <div class="full-overview" style="margin-top: 60px;">
+    <h3>본 시리즈 (제1부 ~ 제7부) 완간</h3>
+    <div style="font-family: 'Gentium Plus', 'Noto Serif KR', serif; font-size: 14px; color: var(--ink-soft); line-height: 1.8;">
+      MN 118 Ānāpānassatisutta 7부 시리즈가 본 출력으로 완성되었다. 시리즈 전체에서:
+      <br>
+      <br>① <strong>모든 §1.1~§43.4</strong>에 대한 한국어 번역
+      <br>② <strong>HTML <code>&lt;ruby&gt;</code> 태그</strong>를 통한 Pāli 단어별 한국어 주석
+      <br>③ <strong>PD 해석</strong>이 통념과 갈라지는 모든 결정적 지점에 비교표(<em>⚠ Principle Zero</em> 박스)
+      <br>④ <strong>구조적 단원 분석</strong> — Stage banner · Cascade · Foundation · Vimutti card 등
+      <br>⑤ 주요 PD 자료 ("Ānāpānasati Sutta – Complete Overview" 등)에 근거한 어원·문법·교학 주석
+      <br><br>
+      각 부 별 핵심 PD 해석:
+      <br>· <strong>제1~3부</strong> — Anicca, Asubha, Ānāpānasati의 PD 재해석 도입
+      <br>· <strong>제4부</strong> — Assasati/Passasati 어근, Sabbakāya = pañcupādānakkhandha kāya, Kāya saṅkhāra
+      <br>· <strong>제5부</strong> — Passam ubhayaṁ 재분석, Buddha의 자기 정의 (kāyesu kāyaññatara), Muṭṭhassati = puthujjana
+      <br>· <strong>제6부</strong> — Nirāmisa pīti, 칠각지 자연 발생적 인과 사슬
+      <br>· <strong>제7부</strong> — Viveka·Virāga·Nirodha·Vossagga 4의지 → Vijjāvimutti
+      <br><br>
+      이 시리즈가 puredhamma.netlify.app의 PD 해석에 기반한 MN 118 학습에 도움이 되기를 바란다.
+    </div>
+  </div>
+
+  <footer class="footer">
+    제7부 (최종) 마침 — Majjhima Nikāya 118 · §37.1 ~ §43.4
+    <div class="complete">시리즈 완간 · MN 118 Ānāpānassatisutta 전체 §1.1 ~ §43.4 완료</div>
+  </footer>
+
+</div>
+
+</body>
+</html>
