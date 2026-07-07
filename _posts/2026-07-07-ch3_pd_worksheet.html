@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>주격 곡용 워크시트 · PD판 · Pāli Ch.3</title>
+<style>
+  :root{
+    --paper:#ECE5D3;
+    --paper-card:#F4EFE1;
+    --ink:#22201A;
+    --muted:#6E6653;
+    --rule:#C7BB9E;
+    --rule-soft:#D8CDB2;
+    --rubric:#9E2B1B;
+    --rubric-wash:#9e2b1b10;
+    --blank:#B9AC8C;
+    --serif:"Palatino Linotype","Book Antiqua",Palatino,"Iowan Old Style",Georgia,serif;
+    --sans:"Apple SD Gothic Neo","Malgun Gothic","Noto Sans KR",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);line-height:1.5;-webkit-font-smoothing:antialiased;}
+  .sheet{max-width:840px;margin:0 auto;padding:36px 40px 44px;}
+
+  .eyebrow{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);font-weight:600;margin:0 0 10px;}
+  h1{font-family:var(--serif);font-weight:600;font-size:32px;line-height:1.1;margin:0 0 6px;letter-spacing:-.01em;}
+  .sub{color:var(--muted);font-size:14px;margin:0 0 22px;max-width:62ch;}
+  .sub em{font-family:var(--serif);font-style:italic;color:var(--ink);}
+
+  /* reminder rules */
+  .rules{display:flex;gap:0;border:1.5px solid var(--rubric);border-radius:3px;overflow:hidden;margin:0 0 26px;background:var(--rubric-wash);}
+  .rules .cell{flex:1;padding:12px 20px;}
+  .rules .cell:first-child{border-right:1.5px solid var(--rubric);}
+  .rule-tag{font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--rubric);font-weight:700;margin:0 0 3px;}
+  .rule-eq{font-family:var(--serif);font-size:20px;color:var(--ink);margin:0;}
+  .rule-eq .to,.rule-eq .out{color:var(--rubric);font-weight:700;}
+
+  /* toolbar */
+  .bar{display:flex;align-items:center;gap:14px;margin:0 0 14px;flex-wrap:wrap;}
+  .bar h2{font-family:var(--serif);font-size:18px;margin:0;font-weight:600;}
+  .bar .count{font-size:12px;color:var(--muted);}
+  .toggle{margin-left:auto;font-family:var(--sans);font-size:12.5px;font-weight:600;color:var(--paper-card);background:var(--ink);border:none;border-radius:3px;padding:7px 14px;cursor:pointer;letter-spacing:.02em;}
+  .toggle:hover{background:var(--rubric);}
+  .toggle:focus-visible{outline:2px solid var(--rubric);outline-offset:2px;}
+
+  /* worksheet table */
+  table{width:100%;border-collapse:collapse;font-size:14px;}
+  thead th{font-family:var(--sans);font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);font-weight:600;text-align:left;padding:8px 12px;border-bottom:1.5px solid var(--ink);}
+  tbody td{padding:9px 12px;border-bottom:1px solid var(--rule-soft);vertical-align:middle;}
+  tbody tr:last-child td{border-bottom:none;}
+  .n{width:26px;color:var(--muted);font-family:var(--serif);}
+  .stem{font-family:var(--serif);font-size:15.5px;letter-spacing:.02em;white-space:nowrap;}
+  .g{color:var(--muted);font-size:12.5px;font-style:normal;}
+  .gloss{color:var(--muted);font-size:12.5px;}
+  .col-sg,.col-pl{width:150px;}
+
+  /* blanks */
+  .blank{display:inline-block;min-width:120px;border-bottom:1.4px dotted var(--blank);height:1.15em;vertical-align:baseline;}
+  .ans{display:none;font-family:var(--serif);font-size:15.5px;color:var(--rubric);letter-spacing:.02em;}
+  .ans .alt{color:var(--muted);font-weight:400;}
+  .ans .rule{display:block;font-family:var(--sans);font-size:10.5px;color:var(--muted);letter-spacing:.02em;margin-top:1px;}
+  body.show-ans .blank{display:none;}
+  body.show-ans .ans{display:inline-block;}
+
+  /* section divider between gender groups */
+  .grp td{background:#00000006;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600;padding:5px 12px;}
+
+  footer{border-top:1px solid var(--rule);margin-top:24px;padding-top:12px;font-size:11.5px;color:var(--muted);display:flex;flex-wrap:wrap;gap:4px 18px;justify-content:space-between;}
+  footer .src{font-family:var(--serif);}
+  footer b{color:var(--ink);font-weight:600;}
+
+  @media (max-width:640px){
+    .sheet{padding:24px 18px 32px;}
+    h1{font-size:26px;}
+    .rules{flex-direction:column;}
+    .rules .cell:first-child{border-right:none;border-bottom:1.5px solid var(--rubric);}
+    .col-sg,.col-pl{width:auto;}
+    .stem{white-space:normal;}
+  }
+  @media print{
+    body{background:#fff;}
+    .toggle{display:none;}
+    .sheet{max-width:none;padding:0;}
+  }
+</style>
+</head>
+<body>
+<div class="sheet">
+
+  <p class="eyebrow">Pāli for New Learners · Ch.3 · Nominative · Pure Dhamma vocab</p>
+  <h1>주격 곡용 워크시트 <span style="font-family:var(--serif);font-size:20px;color:var(--muted);">— PD판</span></h1>
+  <p class="sub">각 원형[stem]을 <em>주격 단수</em>와 <em>주격 복수</em>로 바꿔 빈칸에 쓰세요. 다 풀면 <em>정답 보기</em>로 확인.</p>
+
+  <div class="rules">
+    <div class="cell">
+      <p class="rule-tag">규칙 ① 남성 sg.</p>
+      <p class="rule-eq">-a <span class="to">→</span> <span class="out">-o</span></p>
+    </div>
+    <div class="cell">
+      <p class="rule-tag">규칙 ② 중성 sg.</p>
+      <p class="rule-eq">-a <span class="to">→</span> <span class="out">-aṃ</span></p>
+    </div>
+  </div>
+
+  <div class="bar">
+    <h2>Exercise 3 · PD terms</h2>
+    <span class="count">12 문항</span>
+    <button class="toggle" id="tgl" onclick="document.body.classList.toggle('show-ans');this.textContent=document.body.classList.contains('show-ans')?'빈칸으로 돌아가기':'정답 보기'">정답 보기</button>
+  </div>
+
+  <table>
+    <thead>
+      <tr><th class="n">#</th><th>원형 (성) · gloss</th><th class="col-sg">주격 sg.</th><th class="col-pl">주격 pl.</th></tr>
+    </thead>
+    <tbody>
+      <tr class="grp"><td colspan="4">A · 남성/중성 -a  (두 붉은 규칙)</td></tr>
+
+      <tr><td class="n">1</td>
+        <td><span class="stem">dhamma</span> <span class="g">(m.)</span> <span class="gloss">— 담마[존재를 지탱하는 자연의 법]</span></td>
+        <td><span class="blank"></span><span class="ans">dhammo<span class="rule">m. -a→-o</span></span></td>
+        <td><span class="blank"></span><span class="ans">dhammā<span class="rule">-a→-ā</span></span></td></tr>
+
+      <tr><td class="n">2</td>
+        <td><span class="stem">loka</span> <span class="g">(m.)</span> <span class="gloss">— 세상</span></td>
+        <td><span class="blank"></span><span class="ans">loko<span class="rule">m. -a→-o</span></span></td>
+        <td><span class="blank"></span><span class="ans">lokā<span class="rule">-a→-ā</span></span></td></tr>
+
+      <tr><td class="n">3</td>
+        <td><span class="stem">saṅkhāra</span> <span class="g">(m.)</span> <span class="gloss">— 상카라[의도적 형성·조작]</span></td>
+        <td><span class="blank"></span><span class="ans">saṅkhāro<span class="rule">m. -a→-o</span></span></td>
+        <td><span class="blank"></span><span class="ans">saṅkhārā<span class="rule">-a→-ā</span></span></td></tr>
+
+      <tr><td class="n">4</td>
+        <td><span class="stem">citta</span> <span class="g">(nt.)</span> <span class="gloss">— 마음[찰나의 인식단위]</span></td>
+        <td><span class="blank"></span><span class="ans">cittaṃ<span class="rule">nt. -a→-aṃ</span></span></td>
+        <td><span class="blank"></span><span class="ans">cittāni<span class="rule">-a→-āni</span></span></td></tr>
+
+      <tr><td class="n">5</td>
+        <td><span class="stem">rūpa</span> <span class="g">(nt.)</span> <span class="gloss">— 물질·형색</span></td>
+        <td><span class="blank"></span><span class="ans">rūpaṃ<span class="rule">nt. -a→-aṃ</span></span></td>
+        <td><span class="blank"></span><span class="ans">rūpāni<span class="rule">-a→-āni</span></span></td></tr>
+
+      <tr><td class="n">6</td>
+        <td><span class="stem">viññāṇa</span> <span class="g">(nt.)</span> <span class="gloss">— 식[알음알이]</span></td>
+        <td><span class="blank"></span><span class="ans">viññāṇaṃ<span class="rule">nt. -a→-aṃ</span></span></td>
+        <td><span class="blank"></span><span class="ans">viññāṇāni<span class="rule">-a→-āni</span></span></td></tr>
+
+      <tr><td class="n">7</td>
+        <td><span class="stem">kamma</span> <span class="g">(nt.)</span> <span class="gloss">— 업[의도적 행위]</span></td>
+        <td><span class="blank"></span><span class="ans">kammaṃ<span class="rule">nt. -a→-aṃ</span></span></td>
+        <td><span class="blank"></span><span class="ans">kammāni<span class="rule">-a→-āni</span></span></td></tr>
+
+      <tr class="grp"><td colspan="4">B · 여성 -ā  (단수는 원형 그대로)</td></tr>
+
+      <tr><td class="n">8</td>
+        <td><span class="stem">vedanā</span> <span class="g">(f.)</span> <span class="gloss">— 느낌</span></td>
+        <td><span class="blank"></span><span class="ans">vedanā<span class="rule">f. -ā 유지</span></span></td>
+        <td><span class="blank"></span><span class="ans">vedanā <span class="alt">/ vedanāyo</span><span class="rule">-ā · -āyo</span></span></td></tr>
+
+      <tr><td class="n">9</td>
+        <td><span class="stem">saññā</span> <span class="g">(f.)</span> <span class="gloss">— 인식·지각</span></td>
+        <td><span class="blank"></span><span class="ans">saññā<span class="rule">f. -ā 유지</span></span></td>
+        <td><span class="blank"></span><span class="ans">saññā <span class="alt">/ saññāyo</span><span class="rule">-ā · -āyo</span></span></td></tr>
+
+      <tr><td class="n">10</td>
+        <td><span class="stem">taṇhā</span> <span class="g">(f.)</span> <span class="gloss">— 갈애[집착적 목마름]</span></td>
+        <td><span class="blank"></span><span class="ans">taṇhā<span class="rule">f. -ā 유지</span></span></td>
+        <td><span class="blank"></span><span class="ans">taṇhā <span class="alt">/ taṇhāyo</span><span class="rule">-ā · -āyo</span></span></td></tr>
+
+      <tr class="grp"><td colspan="4">C · 이형태 주의  (자주 나오는 PD어)</td></tr>
+
+      <tr><td class="n">11</td>
+        <td><span class="stem">gati</span> <span class="g">(f.)</span> <span class="gloss">— 성향·태어날 곳</span></td>
+        <td><span class="blank"></span><span class="ans">gati<span class="rule">f. -i 유지</span></span></td>
+        <td><span class="blank"></span><span class="ans">gatī <span class="alt">/ gatiyo</span><span class="rule">-ī · -iyo</span></span></td></tr>
+
+      <tr><td class="n">12</td>
+        <td><span class="stem">hetu</span> <span class="g">(m.)</span> <span class="gloss">— 원인</span></td>
+        <td><span class="blank"></span><span class="ans">hetu<span class="rule">m. -u 유지</span></span></td>
+        <td><span class="blank"></span><span class="ans">hetū <span class="alt">/ hetavo</span><span class="rule">-ū · -avo</span></span></td></tr>
+    </tbody>
+  </table>
+
+  <footer>
+    <span class="src">규칙: <b>03_There_is_a_book.pdf</b> Table 3.2 · 성 확인(일부): <b>L01_Vocabulary.pdf</b></span>
+    <span>어휘: Pure Dhamma 핵심어 · niggahīta 교재 <b>ṃ</b> / PD <b>ṁ</b></span>
+  </footer>
+
+</div>
+</body>
+</html>
